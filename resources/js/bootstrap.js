@@ -10,7 +10,14 @@ window._ = require('lodash');
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
-
+    window.$ = window.jQuery = require('jquery');
+    window.toastr = require('toastr');
+    window.repeater = require('jquery.repeater');
+    window.noUiSlider - require('nouislider/distribute/nouislider');
+    
+    require('bootstrap');
+    require('@fancyapps/fancybox');
+    require( 'datatables.net-bs4');
     require('bootstrap');
 } catch (e) {}
 
