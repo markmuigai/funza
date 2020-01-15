@@ -70,20 +70,20 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Register your School</a>
                         @endif
+                        
+                        <a href="{{ route('login') }}">Login</a>
                     @endauth
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Funza
                 </div>
-
+                <h2>Personalized learning assessment tool for Competency Based Curriculum and Accelerated Christian Education students</h2>
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
