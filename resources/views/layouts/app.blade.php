@@ -76,5 +76,8 @@
             @yield('content')
         </main>
     </div>
+    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ mix('js/master.js') }}"></script>
+    @yield('app.js')
 </body>
 </html>

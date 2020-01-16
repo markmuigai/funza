@@ -8,6 +8,41 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Kids custom css
+@import 'kidz';
+
+// Datatables
+@import '~datatables.net-bs4/css/dataTables.bootstrap4.min.css';
+
+//Import fancybox
+@import '~@fancyapps/fancybox/dist/jquery.fancybox.min.css';
+
+//Import font awesome
+$fa-font-path : "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+
+//Import toastr
+@import '~toastr/toastr.scss';
+
+// Import nouislider
+@import '~nouislider/distribute/nouislider';
+
+// animate.css
+@import '~animate.css/animate';
+
+// Import template files
+@import '_variables-color1';
+@import 'kidz-color1';
+
+// Owl caurosel
+// @import '~owl.caurosel/dist/assets/owl.caurosel';
+
+// isotope
+// @import '~isotope/dist/isototope.min.css';
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
