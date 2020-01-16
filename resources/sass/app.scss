@@ -11,9 +11,6 @@
 // Kids custom css
 @import 'kidz';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
 // Datatables
 @import '~datatables.net-bs4/css/dataTables.bootstrap4.min.css';
 
@@ -35,6 +32,16 @@ $fa-font-path : "~@fortawesome/fontawesome-free/webfonts";
 
 // animate.css
 @import '~animate.css/animate';
+
+// Import template files
+@import '_variables-color1';
+@import 'kidz-color1';
+
+// Owl caurosel
+// @import '~owl.caurosel/dist/assets/owl.caurosel';
+
+// isotope
+// @import '~isotope/dist/isototope.min.css';
 
 .navbar-laravel {
   background-color: #fff;

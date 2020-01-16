@@ -9,19 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Funza</title>
 
-  <!-- Plugins css Style -->
-  <link href="{{ url('assets/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-  <link href="{{ url('assets/plugins/no-ui-slider/nouislider.min.css') }}" rel="stylesheet" />
-  <link href="{{ url('assets/plugins/owl-carousel/owl.carousel.min.css') }}" rel="stylesheet" media="screen">
-  <link href="{{ url('assets/plugins/owl-carousel/owl.theme.default.min.css') }}" rel="stylesheet" media="screen">
-  <link href="{{ url('assets/plugins/fancybox/jquery.fancybox.min.css') }}" rel="stylesheet" />
-  <link href="{{ url('assets/plugins/isotope/isotope.min.css') }}" rel="stylesheet" />
-  <link href="{{ url('assets/plugins/animate/animate.css') }}" rel="stylesheet">
-  <link href="{{ url('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-  <link href="{{ url('assets/plugins/revolution/css/settings.css') }}" rel="stylesheet">
-  <link href="{{ url('assets/plugins/revolution/css/layers.css') }}" rel="stylesheet">
-  <link href="{{ url('assets/plugins/revolution/css/navigation.css') }}" rel="stylesheet">
-
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Dosis:300,400,600,700|Open+Sans:300,400,600,700" rel="stylesheet">
 
