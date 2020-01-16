@@ -103,7 +103,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('teacher')
              ->name('teacher.')
-             ->middleware(['web'])
+             ->middleware(['web', 'auth'])
              ->namespace('App\Http\Controllers\teacher')
              ->group(base_path('routes/teacher.php'));
     }
