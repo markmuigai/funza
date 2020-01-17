@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Fetch classes assigned to a teacher
+     */
+    public function classes()
+    {
+        return $this->belongsToMany('App\Classroom')->oldest('name');
+    }
 }
