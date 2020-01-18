@@ -1,6 +1,8 @@
 <?php
 
 use App\User;
+use App\Subject;
+use App\Classroom;
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 
@@ -49,7 +51,6 @@ class UsersTableSeeder extends Seeder
         /**
          * Teacher
          */
-        //System admin
         $user = User::create([
             'name' => 'Mark Muigai',
             'email' => 'mark@gmail.com',
@@ -59,6 +60,18 @@ class UsersTableSeeder extends Seeder
 
         //assign role
         $user->assignRole('teacher');
+
+        // Find classroom 3A
+        $classroom = Classroom::where('name', '3A')->get()->first();
+
+        // Find mathematics activities
+        $subject = Subject::where('name', 'Mathematics Activities')->get()->first();
+
+        // Assign grade and subject pivot instance to a teacher
+        $user->classroomSubject()->create([
+            'classroom_id' => $classroom->id,
+            'subject_id' => $subject->id
+        ]);
 
         /**
          * 20 Students 

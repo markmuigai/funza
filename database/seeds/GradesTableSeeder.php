@@ -1,6 +1,7 @@
 <?php
 
 use App\Grade;
+use App\Subject;
 use Illuminate\Database\Seeder;
 
 class GradesTableSeeder extends Seeder
@@ -21,51 +22,59 @@ class GradesTableSeeder extends Seeder
         ]);
 
         Grade::create([
-            'name' => 'Grade 1'
+            'name' => '1'
         ]);
 
         Grade::create([
-            'name' => 'Grade 2'
+            'name' => '2'
+        ]);
+
+        $grade = Grade::create([
+            'name' => '3'
+        ]);
+
+        // Fetch all subjects
+        $subjects = Subject::all();
+        
+        // Assign subjects for grade 3
+        foreach($subjects as $subject){
+            $grade->subjects()->attach($subject->id);
+        }
+
+        Grade::create([
+            'name' => '4'
         ]);
 
         Grade::create([
-            'name' => 'Grade 3'
+            'name' => '5'
         ]);
 
         Grade::create([
-            'name' => 'Grade 4'
-        ]);
-
-        Grade::create([
-            'name' => 'Grade 5'
-        ]);
-
-        Grade::create([
-            'name' => 'Grade 6'
+            'name' => '6'
         ]);
         
         Grade::create([
-            'name' => 'Grade 7'
+            'name' => '7'
         ]);
 
         Grade::create([
-            'name' => 'Grade 8'
+            'name' => '8'
         ]);
 
         Grade::create([
-            'name' => 'Grade 9'
+            'name' => '9'
         ]);
 
         Grade::create([
-            'name' => 'Grade 10'
+            'name' => '10'
         ]);
 
         Grade::create([
-            'name' => 'Grade 11'
+            'name' => '11'
         ]);
 
         Grade::create([
-            'name' => 'Grade 12'
+            'name' => '12'
         ]);
     }
 }

@@ -11,4 +11,10 @@ class Subject extends Model
     {
         return $this->hasMany('App\Topic');
     }
+
+    // Grades for a subject
+    public function grades()
+    {
+        return $this->belongsToMany('App\Grade');
+    }
 }

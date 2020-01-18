@@ -39,10 +39,10 @@ class User extends Authenticatable
     ];
 
     /**
-     * Fetch classes assigned to a teacher
+     * Fetch classSubject pivot assigned to a teacher
      */
-    public function classes()
+    public function classroomSubject()
     {
-        return $this->belongsToMany('App\Classroom')->oldest('name');
+        return $this->hasMany('App\ClassroomSubject')->oldest('name');
     }
 }

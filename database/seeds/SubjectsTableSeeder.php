@@ -12,6 +12,9 @@ class SubjectsTableSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * Grade 3 subjects
+         */
         Subject::create([ 
             'name' => 'Mathematics Activities',
         ]);

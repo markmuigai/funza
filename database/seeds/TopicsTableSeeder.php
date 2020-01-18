@@ -13,7 +13,7 @@ class TopicsTableSeeder extends Seeder
      */
     public function run()
     {
-        $subject = Subject::where('name', 'Mathematics Activities')->first()->get();
+        $subject = Subject::where('name', 'Mathematics Activities')->get()->first();
         
         Topic::create([
             'subject_id' => $subject->id,
