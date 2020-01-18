@@ -15,9 +15,11 @@ try {
     window.noUiSlider - require('nouislider/distribute/nouislider');
 
     // require('owl.caurosel');
+
     require('revslider');
     require('bootstrap');
     require('@fancyapps/fancybox');
     require( 'datatables.net-bs4');
     require('bootstrap');
+    require('select2');
 } catch (e) {}
