@@ -1,0 +1,32 @@
+{
+    "system_admin": [
+        "create",
+        "read",
+        "update",
+        "delete"
+    ],
+    "school_admin": [
+        "create",
+        "read",
+        "update",
+        "delete"
+    ],
+    "teacher":[
+        "create",
+        "read",
+        "update",
+        "delete"
+    ],
+    "parent":[
+        "create",
+        "read",
+        "update",
+        "delete"
+    ],
+    "student":[
+        "create",
+        "read",
+        "update",
+        "delete"
+    ]
+}
