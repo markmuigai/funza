@@ -14,4 +14,10 @@ class Classroom extends Model
     {
         return $this->belongsToMany('App\User')->oldest('name');
     }
+
+    // Fetch a clasrooms subject
+    public function grade()
+    {
+        return $this->belongsTo('App\Grade');
+    } 
 }

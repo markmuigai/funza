@@ -43,6 +43,6 @@ class User extends Authenticatable
      */
     public function classroomSubject()
     {
-        return $this->hasMany('App\ClassroomSubject')->oldest('name');
+        return $this->hasMany('App\classroomSubject');
     }
 }
