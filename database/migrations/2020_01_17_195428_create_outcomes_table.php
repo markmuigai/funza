@@ -16,7 +16,8 @@ class CreateOutcomesTable extends Migration
         Schema::create('outcomes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('topic_id');
-            $table->timestamps('name');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
