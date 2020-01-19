@@ -47,7 +47,11 @@ class ClassroomController extends Controller
      */
     public function show(Classroom $classroom)
     {
-        dd($classroom);
+        return view('teacher.classroom.show',[
+            'classroom' => $classroom,
+            'subjects' => $classroom->grade->subjects()->paginate(8),
+            'students' => $classroom->students()->paginate(8)
+        ]);
     }
 
     /**
