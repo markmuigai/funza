@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use App\Grade;
+use App\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,6 +14,8 @@ class AppController extends Controller
      */
     public function dashboard()
     {
-        return view('teacher.dashboard');
+        return view('teacher.dashboard',[
+            'classes' => Grade::where('name', 3)->get()->first()->classrooms
+        ]);
     }
 }

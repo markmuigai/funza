@@ -12,4 +12,4 @@
 */
 
 // Teacher Dashboard
-Route::get('/', 'AppController@dashboard');
+Route::get('/', 'AppController@dashboard')->name('dashboard');
