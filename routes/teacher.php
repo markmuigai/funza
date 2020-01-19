@@ -13,3 +13,6 @@
 
 // Teacher Dashboard
 Route::get('/', 'AppController@dashboard')->name('dashboard');
+
+// Classroom
+Route::get('/classroom/{classroom}', 'ClassroomController@show')->name('classroom');
