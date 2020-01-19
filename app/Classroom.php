@@ -22,7 +22,7 @@ class Classroom extends Model
     }
 
     // Fetch students of a class
-    public function student()
+    public function students()
     {
         return $this->hasMany('App\Student');
     }
