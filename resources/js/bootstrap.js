@@ -13,7 +13,7 @@ try {
     window.$ = window.jQuery = require('jquery');
     window.toastr = require('toastr');
     window.noUiSlider - require('nouislider/distribute/nouislider');
-
+    window.select2 = require('select2');
     // require('owl.caurosel');
 
     require('revslider');
@@ -21,5 +21,4 @@ try {
     require('@fancyapps/fancybox');
     require( 'datatables.net-bs4');
     require('bootstrap');
-    require('select2');
 } catch (e) {}

@@ -78157,7 +78157,8 @@ try {
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
   window.toastr = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
-  window.noUiSlider - __webpack_require__(/*! nouislider/distribute/nouislider */ "./node_modules/nouislider/distribute/nouislider.js"); // require('owl.caurosel');
+  window.noUiSlider - __webpack_require__(/*! nouislider/distribute/nouislider */ "./node_modules/nouislider/distribute/nouislider.js");
+  window.select2 = __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js"); // require('owl.caurosel');
 
   __webpack_require__(/*! revslider */ "./node_modules/revslider/index.js");
 
@@ -78168,8 +78169,6 @@ try {
   __webpack_require__(/*! datatables.net-bs4 */ "./node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js");
 
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
-
-  __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
 } catch (e) {}
 
 /***/ }),
