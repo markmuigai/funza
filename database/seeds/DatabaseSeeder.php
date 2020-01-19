@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             OutcomesTableSeeder::class,
             GradesTableSeeder::class,
             ClassroomsTableSeeder::class,
-            UsersTableSeeder::class
+            UsersTableSeeder::class,
+            StudentsTableSeeder::class,
+            OutcomeResultsTableSeeder::class
         ]);
     }
 }

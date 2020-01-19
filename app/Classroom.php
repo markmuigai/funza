@@ -19,5 +19,11 @@ class Classroom extends Model
     public function grade()
     {
         return $this->belongsTo('App\Grade');
-    } 
+    }
+
+    // Fetch students of a class
+    public function student()
+    {
+        return $this->hasMany('App\Student');
+    }
 }
