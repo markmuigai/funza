@@ -13,4 +13,10 @@ class Grade extends Model
     {
         return $this->belongsToMany('App\Subject');
     }
+
+    // Classrooms of a grade
+    public function classrooms()
+    {
+        return $this->hasMany('App\Classroom');
+    }
 }
