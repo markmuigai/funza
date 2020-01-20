@@ -13,7 +13,8 @@
 					</div>
 					<div class="card-body">
 						@component('components.tables.subjects',[
-							'subjects' => $subjects
+							'subjects' => $subjects,
+							'classroom' => $classroom
 						])
 						@endcomponent
 					</div>
