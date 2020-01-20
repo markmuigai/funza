@@ -19,7 +19,9 @@ Route::get('/classroom/{classroom}', 'ClassroomController@show')->name('classroo
 
 // Subjects
 Route::name('classroom.')->prefix('/classroom/{classroom}')->group(function () {
-    Route::get('subject/{subject}', 'SubjectController@show')->name('subject');
+    Route::name('subject')->prefix('subject/{subject}')->group(function () {
+        Route::get('/', 'SubjectController@show');
+    });
 });    
 
 // Classroom subject dashboard page
