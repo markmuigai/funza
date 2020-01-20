@@ -1,7 +1,7 @@
 <table class="table p-5 bg-transaparent">
     <tr>
         <th>Name</th>
-        <th>Score</th>
+        <th>Actions</th>
     </tr>
     @foreach ($students as $student)
         <tr>

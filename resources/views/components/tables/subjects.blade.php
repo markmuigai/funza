@@ -9,7 +9,7 @@
             <td>{{$subject->name}}</td>
             <td>{{$subject->topics->count()}}</td>
             <td>
-                <a href="" class="btn btn-primary btn-sm">Track Learning outcomes</a>
+                <a href="{{ Route('teacher.classroom.subject', ['classroom'=> $classroom, 'subject' => $subject])}}" class="btn btn-primary btn-sm">Track Learning outcomes</a>
             </td>
         </tr>
     @endforeach
