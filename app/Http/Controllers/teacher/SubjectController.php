@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\teacher;
 
+use App\Subject;
+use App\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -44,9 +46,11 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Classroom $classroom, Subject $subject)
     {
-        //
+        return view('teacher.subject.show',[
+            'topics' => $subject->topics()->paginate(10)
+        ]);
     }
 
     /**
