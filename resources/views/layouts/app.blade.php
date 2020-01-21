@@ -34,7 +34,7 @@
         @include('layouts.header')
 
         <main class="pb-4">
-            @yield('content')
+            @yield('app.content')
         </main>
     </div>
     

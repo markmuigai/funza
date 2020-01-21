@@ -2,7 +2,10 @@
 @section('page-title', 'Teacher Dashboard')
     
 @section('content')
-
+@component('components.breadcrumb',[
+    'title' => $classroom->name
+  ])  
+  @endcomponent
 <section class="py-5 py-md-5">
 	<div class="container-fluid ">
 		<div class="row">
