@@ -18,4 +18,15 @@ class Outcome extends Model
     {
         return $this->hasMany('App\OutcomeResult');
     }
+
+    // Fetch outcomeresult for a student
+    public function outcomeResultForStudent($student_id)
+    {
+        // Check of the outcome has any outcome results
+        if(!$this->outcomeResults->isEmpty()){
+            return $this->outcomeResults()->whereHas('student', function($query) use($student_id){
+                $query->where('id', $student_id);
+            })->first()->result;
+        }
+    }
 }
