@@ -44,5 +44,10 @@
     <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
     <script type="text/javascript" src="{{ mix('js/kidz.js') }}"></script>
     @yield('app.js')
+    <script>
+      $('.select2-select').select2({
+            minimumResultsForSearch: -1
+        });
+    </script>
 </body>
 </html>
