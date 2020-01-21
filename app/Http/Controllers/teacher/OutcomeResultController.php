@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\teacher;
 
+use App\Topic;
+use App\Subject;
+use App\Classroom;
 use App\outcomeResult;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,9 +29,13 @@ class OutcomeResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Classroom $classroom, Subject $subject , Topic $topic)
     {
-        return view('teacher.outcome-results.create');
+        return view('teacher.outcome-result.create',[
+            'classroom' => $classroom,
+            'subject' => $subject,
+            'topic' => $topic
+        ]);
     }
 
     /**
@@ -37,11 +44,18 @@ class OutcomeResultController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Classroom $classroom, Subject $subject , Topic $topic)
     {
-        OutcomeResult::create([
-
-        ]);
+        dd($request->all());
+        
+        // Create result for each outcome
+        foreach($topic->outcomes as $outcome){
+            OutcomeResult::create([
+                'student_id' => $request->student,
+                'outcome_id' => $outcome->id,
+                'result' => $results[array_rand($results)]
+            ]);
+        }
 
         return redirect()->back()->with([
             'success' => 'Outcome result uploaded successfully'
