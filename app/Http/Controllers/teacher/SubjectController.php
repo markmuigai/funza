@@ -49,6 +49,7 @@ class SubjectController extends Controller
     public function show(Classroom $classroom, Subject $subject)
     {
         return view('teacher.subject.show',[
+            'subject' => $subject,
             'topics' => $subject->topics()->paginate(10)
         ]);
     }
