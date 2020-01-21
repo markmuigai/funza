@@ -41,8 +41,6 @@
 										<i class="fa fa-clock-o mr-2" aria-hidden="true"></i>0 parents
 									</li>
 								</ul>
-								<p> It is a long established fact that a reader will be distracted by the readable content of a page when
-									looking at its layout. </p>
 								<div class="d-block">
 									<a href="{{ Route('teacher.classroom', ['classroom' => $class ]) }}" class="btn btn-white text-uppercase mb-1 btn-hover-warning">
 										<i class="fa fa-shopping-basket mr-2" aria-hidden="true"></i>Subjects
