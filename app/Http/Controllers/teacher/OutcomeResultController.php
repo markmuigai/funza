@@ -45,19 +45,21 @@ class OutcomeResultController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Classroom $classroom, Subject $subject , Topic $topic)
-    {
-        dd($request->all());
-        
-        // Create result for each outcome
-        foreach($topic->outcomes as $outcome){
-            OutcomeResult::create([
-                'student_id' => $request->student,
-                'outcome_id' => $outcome->id,
-                'result' => $results[array_rand($results)]
-            ]);
+    {   
+        // Create for each student
+        foreach($request->students as $student_id){
+            foreach($request->results as $outcome_id => $result){
+                OutcomeResult::create([
+                    'student_id' => $student_id,
+                    'outcome_id' => $outcome_id,
+                    'result' => $result
+                ]);
+            }
         }
 
-        return redirect()->back()->with([
+        // Create result for each outcome
+
+        return redirect()->route('teacher.classroom.subject', ['classroom'=> $classroom, 'subject' => $subject])->with([
             'success' => 'Outcome result uploaded successfully'
         ]);
     }
