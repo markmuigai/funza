@@ -46,8 +46,14 @@ $fa-font-path : "~@fortawesome/fontawesome-free/webfonts";
 // import select2
 @import '~select2';
 
+// Import pretty checkbox
+@import '~pretty-checkbox/src/pretty-checkbox.scss';
+
 // import tabs custom styling
 @import 'partials/tabs.scss';
+
+// import mdl font
+@import '~@mdi/font/scss/materialdesignicons';
 
 .navbar-laravel {
   background-color: #fff;
