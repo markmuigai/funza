@@ -27,7 +27,7 @@
         <div class="container">
         <div class="row py-4 align-items-center">
             <div class="col-sm-7 col-xs-12 order-1 order-md-0">
-            <p class="copyright-text"> © 2018 Copyright Kidz School Bootstrap Template by <a href="http://www.iamabdus.com/" target="_blank">Abdus.</a></p>
+            <p class="copyright-text"> © 2020 Copyright Funza Technologies</p>
             </div>
 
             <div class="col-sm-5 col-xs-12">
