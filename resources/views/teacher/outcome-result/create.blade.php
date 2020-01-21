@@ -40,7 +40,7 @@
                     <td>{{ $outcome->name }}</td>
                     <td>
                       <div class="pretty p-icon p-round p-pulse">
-                          <input type="radio" name="'results[{{$outcome->id}}]'" />
+                          <input type="radio" name="results[{{$outcome->id}}]" value="weak"/>
                           <div class="state p-danger">
                               <i class="icon mdi mdi-check"></i>
                               <label></label>
@@ -49,7 +49,7 @@
                     </td>
                     <td>
                       <div class="pretty p-icon p-round p-pulse">
-                          <input type="radio" name="'results[{{$outcome->id}}]'" />
+                          <input type="radio" name="results[{{$outcome->id}}]" value="average"/>
                           <div class="state p-warning">
                               <i class="icon mdi mdi-check"></i>
                               <label></label>
@@ -58,7 +58,7 @@
                     </td>
                     <td>
                       <div class="pretty p-icon p-round p-pulse">
-                          <input type="radio" name="'results[{{$outcome->id}}]'" />
+                        <input type="radio" name="results[{{$outcome->id}}]" value="good"/>
                           <div class="state p-primary">
                               <i class="icon mdi mdi-check"></i>
                               <label></label>
@@ -67,7 +67,7 @@
                     </td>
                     <td>
                       <div class="pretty p-icon p-round p-pulse">
-                          <input type="radio" name="'results[{{$outcome->id}}]'" />
+                        <input type="radio" name="results[{{$outcome->id}}]" value="outstanding"/>
                           <div class="state p-success">
                               <i class="icon mdi mdi-check"></i>
                               <label></label>
