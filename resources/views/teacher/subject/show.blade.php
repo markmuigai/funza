@@ -17,7 +17,10 @@
                 <button class="btn btn-warning float-right m-2 text-white btn-sm" type="button" data-toggle="collapse" data-target="#collapseOne{{$topic->id}}" aria-expanded="true" aria-controls="collapseOne{{$topic->id}}">
                   Update Topic Details
                 </button>
-                <a class="btn btn-primary btn-sm float-right m-2" href="">Assess Learning outcomes</a>
+                <a class="btn btn-primary btn-sm float-right m-2" 
+                  href="{{ Route('teacher.classroom.subject.topic.outcome-result.create', ['classroom' => $classroom, 'subject'=> $subject, 'topic' => $topic]) }}">
+                  Assess Learning outcomes
+                </a>
                 <button class="btn btn-success float-right m-2 text-white btn-sm" type="button" data-toggle="collapse" data-target="#collapseOne{{$topic->id}}" aria-expanded="true" aria-controls="collapseOne{{$topic->id}}">
                   View Learning Outcomes
                 </button>

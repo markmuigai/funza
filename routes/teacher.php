@@ -21,8 +21,10 @@ Route::get('/classroom/{classroom}', 'ClassroomController@show')->name('classroo
 Route::name('classroom.')->prefix('/classroom/{classroom}')->group(function () {
     Route::name('subject')->prefix('subject/{subject}')->group(function () {
         Route::get('/', 'SubjectController@show');
+            Route::name('.topic.outcome-result.')->prefix('topic/{topic}/outcome-result')->group(function () {
+                Route::get('/', 'OutcomeResultController@create')->name('create');
+                Route::post('/', 'OutcomeResultController@store')->name('store');
+            });
     });
 });    
 
-// Classroom subject dashboard page
-Route::get('track-progress/{classroomSubject}', 'ProgressController@index');
