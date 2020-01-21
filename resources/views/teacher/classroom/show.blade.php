@@ -30,7 +30,8 @@
 					</div>
 					<div class="card-body">
 						@component('components.tables.students',[
-							'students' => $students
+							'students' => $students,
+							'classroom' => $classroom
 						])
 						@endcomponent
 					</div>
