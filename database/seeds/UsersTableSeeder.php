@@ -39,5 +39,19 @@ class UsersTableSeeder extends Seeder
             'classroom_id' => $classroom->id,
             'subject_id' => $subject->id
         ]);
+
+        /**
+         * School Admin
+         */
+        $user = User::create([
+            'name' => 'School Admin',
+            'email' => 'luffy@gmail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('secret')
+        ]);
+
+        //assign role
+        $user->assignRole('school_admin');
+
     }   
 }
