@@ -16,6 +16,10 @@
   <!-- Styles -->
   <link href="{{ url('css/app.css') }}" rel="stylesheet">
 
+  {{-- Funza --}}
+  <link href="{{ asset('css/kidz.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/kidz-color5.css') }}" rel="stylesheet"> 
+
   <!-- Favicon -->
   <link href="assets/img/favicon.png" rel="shortcut icon">
 
