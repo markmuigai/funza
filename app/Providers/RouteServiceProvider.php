@@ -86,9 +86,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapSchoolAdminRoutes()
     {
-        Route::prefix('schoolAdmin')
+        Route::prefix('school-admin')
              ->name('schoolAdmin.')
-             ->middleware(['web'])
+             ->middleware(['web', 'auth', 'permission:read_school'])
              ->namespace('App\Http\Controllers\schoolAdmin')
              ->group(base_path('routes/schoolAdmin.php'));
     }
@@ -103,7 +103,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('teacher')
              ->name('teacher.')
-             ->middleware(['web', 'auth'])
+             ->middleware(['web', 'auth', 'permission:create_assessment'])
              ->namespace('App\Http\Controllers\teacher')
              ->group(base_path('routes/teacher.php'));
     }
