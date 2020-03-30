@@ -18,7 +18,3 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/admin-test', function(){
-    return view('layouts.master');
-});
