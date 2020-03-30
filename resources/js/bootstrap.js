@@ -16,6 +16,7 @@ try {
     window.select2 = require('select2');
     // require('owl.caurosel');
 
+    require('admin-lte');
     require('revslider');
     require('bootstrap');
     require('@fancyapps/fancybox');

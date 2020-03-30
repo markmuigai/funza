@@ -27,6 +27,7 @@
         "@fancyapps/fancybox": "^3.5.7",
         "@fortawesome/fontawesome-free": "^5.10.2",
         "@mdi/font": "^4.8.95",
+        "admin-lte": "^3.0.2",
         "animate.css": "^3.7.2",
         "datatables.net-bs4": "^1.10.19",
         "isotope": "^1.0.0-alpha.3",

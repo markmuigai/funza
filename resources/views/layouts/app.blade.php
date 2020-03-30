@@ -15,6 +15,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- Funza --}}
+    <link href="{{ asset('css/kidz.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/kidz-color5.css') }}" rel="stylesheet"> 
+
 </head>
 <body>
     <!-- ====================================
