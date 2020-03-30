@@ -41,8 +41,6 @@
 										<i class="fa fa-clock-o mr-2" aria-hidden="true"></i>0 parents
 									</li>
 								</ul>
-								<p> It is a long established fact that a reader will be distracted by the readable content of a page when
-									looking at its layout. </p>
 								<div class="d-block">
 									<a href="{{ Route('teacher.classroom', ['classroom' => $class ]) }}" class="btn btn-white text-uppercase mb-1 btn-hover-warning">
 										<i class="fa fa-shopping-basket mr-2" aria-hidden="true"></i>Subjects
@@ -59,33 +57,30 @@
 
 	<div class="mt-4">
 		<!-- ====================================
-———	PAGINATION
-===================================== -->
-<section class="py-5">
-  <div class="container">
-    <nav aria-label="Page navigation example">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center align-items-center">
-          <li class="page-item"><a class="page-link" href="#">
-            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>
-            Prev
-          </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">...</a></li>
-          <li class="page-item"><a class="page-link" href="#">15</a></li>
-          <li class="page-item"><a class="page-link" href="#">
-            Next <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i>
-          </a>
-          </li>
-        </ul>
-      </nav>      
-    </nav>
-  </div>
-</section>
-
+		———	PAGINATION
+		===================================== -->
+		<section class="py-5">
+			<div class="container">
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center align-items-center">
+					<li class="page-item"><a class="page-link" href="#">
+						<i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>
+						Prev
+					</a>
+					</li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">...</a></li>
+					<li class="page-item"><a class="page-link" href="#">15</a></li>
+					<li class="page-item"><a class="page-link" href="#">
+						Next <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i>
+					</a>
+					</li>
+					</ul>
+				</nav>      
+			</div>
+		</section>
 	</div>
 </section>
 

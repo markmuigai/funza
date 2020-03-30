@@ -25,25 +25,12 @@
                         <option value="3">Three</option>
                     </select>
                 </div>
-                <div class="mb-4">
-                    <select class="select2-select w-100" name="state">
-                        <option value="0">Ages</option>
-                        <option value="1">05</option>
-                        <option value="2">06</option>
-                        <option value="3">07</option>
-                        <option value="3">08</option>
-                        <option value="3">09</option>
-                    </select>
-                </div>
             </div>
 
             <div class="price-range mt-6" id="price-range">
                 <div class="mb-6" id="slider-non-linear-step"></div>
                 <div class="price-range-content">
                     <input class="btn btn-success text-white text-uppercase" type="submit" value="Filter">
-                    <span class="price-text">Price:</span>
-                    <span class="price-value" id="lower-value"></span>
-                    <span class="price-value" id="upper-value"></span>
                 </div>
             </div>
         </div>

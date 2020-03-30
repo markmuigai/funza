@@ -16,3 +16,16 @@ Route::get('/', 'AppController@dashboard')->name('dashboard');
 
 // Classroom
 Route::get('/classroom/{classroom}', 'ClassroomController@show')->name('classroom');
+
+// Subjects
+Route::name('classroom.')->prefix('/classroom/{classroom}')->group(function () {
+    Route::get('/student/{student}', 'StudentController@show')->name('student.show');
+    Route::name('subject')->prefix('subject/{subject}')->group(function () {
+        Route::get('/', 'SubjectController@show');
+        Route::name('.topic.outcome-result.')->prefix('topic/{topic}/outcome-result')->group(function () {
+            Route::get('/', 'OutcomeResultController@create')->name('create');
+            Route::post('/', 'OutcomeResultController@store')->name('store');
+        });
+    });
+});    
+

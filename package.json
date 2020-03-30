@@ -26,11 +26,13 @@
     "dependencies": {
         "@fancyapps/fancybox": "^3.5.7",
         "@fortawesome/fontawesome-free": "^5.10.2",
+        "@mdi/font": "^4.8.95",
         "animate.css": "^3.7.2",
         "datatables.net-bs4": "^1.10.19",
         "isotope": "^1.0.0-alpha.3",
         "nouislider": "^14.1.1",
         "owl.carousel": "^2.3.4",
+        "pretty-checkbox": "^3.0.3",
         "revslider": "^5.4.201-8.6",
         "select2": "^4.0.12",
         "toastr": "^2.1.4"

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\teacher;
 
 use App\Subject;
+use App\Student;
 use App\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SubjectController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,12 +47,11 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Classroom $classroom, Subject $subject)
+    public function show(Classroom $classroom, Student $student)
     {
-        return view('teacher.subject.show',[
+        return view('teacher.student.show',[
+            'student' => $student,
             'classroom' => $classroom,
-            'subject' => $subject,
-            'topics' => $subject->topics()->paginate(10)
         ]);
     }
 
