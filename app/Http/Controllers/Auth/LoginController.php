@@ -38,11 +38,16 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // /**
-    //  * Custom redirect route
-    //  */
-    // protected function authenticated(Request $request, $user)
-    // {
-    //     return redirect('/');
-    // }
+    /**
+     * Custom redirect route
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        // Check if the user is a system admin
+        if($user->can('read_school')){
+            return redirect()->route('schoolAdmin.dashboard');
+        }
+
+        return redirect()->route('teacher.dashboard');
+    }
 }
