@@ -1,29 +1,23 @@
 {
     "system_admin": [
-        "create",
-        "read",
-        "update",
-        "delete"
+        "create_school",
+        "read_school",
+        "update_school",
+        "delete_school"
     ],
     "school_admin": [
-        "create",
-        "read",
-        "update",
-        "delete"
+        "create_school",
+        "read_school",
+        "update_school",
+        "delete_school"
     ],
     "teacher":[
-        "create",
-        "read",
-        "update",
-        "delete"
+        "create_assessment",
+        "read_assessment",
+        "update_assessment",
+        "delete_assessment"
     ],
     "parent":[
-        "create",
-        "read",
-        "update",
-        "delete"
-    ],
-    "student":[
         "create",
         "read",
         "update",
