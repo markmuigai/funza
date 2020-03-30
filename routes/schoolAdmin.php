@@ -11,3 +11,5 @@
 |
 */
 
+// School Admin Dashboard
+Route::get('/', 'AppController@dashboard')->name('dashboard');
