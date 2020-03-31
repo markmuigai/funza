@@ -56,8 +56,7 @@
                       Login
                   </a>
                   <span class="text-white opacity-80">or</span>
-                  <a class="text-white font-weight-medium opacity-80" href="javascript:void(0)" data-toggle="modal" data-target="#modal-createAccount">Create
-                      an account</a>
+                  <a class="text-white font-weight-medium opacity-80" href="{{Route('school.create')}}">Register your school</a>
                   </li>
                   @else
                     <li class="nav-item dropdown">
