@@ -29,10 +29,10 @@ Route::get('/register-school', 'Guest\SchoolController@create')->name('school.cr
 Route::post('/register-school', 'Guest\SchoolController@storeSchoolDetails')->name('school.store');
 
 // Show school admin form
-Route::get('/register-school/register-admin', 'Guest\SchoolController@createAdmin')->name('school.admin.create');
+Route::get('/register-school/{school}/register-admin', 'Guest\SchoolController@createAdmin')->name('school.admin.create');
 
 // Store school admin
-Route::post('/register-school/register-admin', 'Guest\SchoolController@storeSchoolAdminDetails')->name('school.admin.store');
+Route::post('/register-school/{school}/register-admin', 'Guest\SchoolController@storeSchoolAdminDetails')->name('school.admin.store');
 
 // Show confirm form
 Route::get('/register-school/confirm', 'Guest\SchoolController@confirmSchoolRegistrationForm')->name('school.confirm-registration.create');
