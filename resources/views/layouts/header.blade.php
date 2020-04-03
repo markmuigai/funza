@@ -51,8 +51,7 @@
                   <span class="bg-purple icon-header mr-1 mr-md-2 mr-lg-1 mr-xl-2">
                       <i class="fa fa-unlock-alt text-white font-size-13" aria-hidden="true"></i>
                   </span>
-                  <a class="text-white font-weight-medium opacity-80" href="javascript:void(0)" data-toggle="modal"
-                      data-target="#modal-login">
+                  <a class="text-white font-weight-medium opacity-80" href="{{ route('login') }}">
                       Login
                   </a>
                   <span class="text-white opacity-80">or</span>

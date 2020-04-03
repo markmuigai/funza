@@ -18,7 +18,7 @@
             
                   <div class="col-sm-4 col-xs-12 progress-wizard-step complete">
                     <div class="progress"><div class="progress-bar"></div></div>
-                    <a href="{{ Route('school.admin.create') }}" class="progress-wizard-dot">
+                    <a href="#" class="progress-wizard-dot">
                       <i class="fa fa-user" aria-hidden="true"></i>
                     </a>
                     <div class="progress-info">Admin Account</div>
