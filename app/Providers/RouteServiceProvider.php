@@ -88,7 +88,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('school-admin')
              ->name('schoolAdmin.')
-             ->middleware(['web', 'auth', 'permission:read_school'])
+             ->middleware(['web', 'auth'])
              ->namespace('App\Http\Controllers\schoolAdmin')
              ->group(base_path('routes/schoolAdmin.php'));
     }
