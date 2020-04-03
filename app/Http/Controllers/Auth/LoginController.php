@@ -44,7 +44,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         // Check if the user is a system admin
-        if($user->can('read_school')){
+        if($user->schoolAdministration($user->schools->first())->hasPermissionTo('read_school')){
             return redirect()->route('schoolAdmin.dashboard');
         }
 
