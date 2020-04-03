@@ -45,4 +45,23 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\classroomSubject');
     }
+
+    /**
+     * School can have many users
+     */
+    public function schools()
+    {
+        return $this->belongsToMany('App\School');
+    }
+
+    /**
+     * Get the schoolAdministration pivot instance as a model instance
+     *
+     */
+    public function schoolAdministration($school)
+    {
+        return SchoolUser::where('user_id', $this->id)
+                                ->where('school_id', $school->id)
+                                ->first();
+    }
 }
