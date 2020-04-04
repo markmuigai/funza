@@ -23015,6 +23015,11 @@ button.toast-close-button {
   font-weight: 600;
 }
 
+.nav-sidebar li.active .nav-link {
+  background-color: #3f51bf !important;
+  color: #fff !important;
+}
+
 /* MaterialDesignIcons.com */
 
 @font-face {
