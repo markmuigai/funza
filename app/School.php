@@ -22,4 +22,20 @@ class School extends Model
     {
         return $this->belongsToMany('App\User');
     }
+
+    /**
+     * Fetch teachers of a school
+     */
+    public function teachers()
+    {
+        
+    }
+
+    /**
+     * Fetch students of a school
+     */
+    public function students()
+    {
+
+    }
 }
