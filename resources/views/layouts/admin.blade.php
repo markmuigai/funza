@@ -45,10 +45,10 @@
       </div>
     </form>
     <ul class="nav navbar-nav ml-auto">
-      <li class="nav-item d-none d-sm-inline-block">
-        <router-link to="/register-school" class="nav-link">
+      <li class="nav-item}} d-none d-sm-inline-block">
+        <a class="nav-link">
           <p>Register School</p>
-        </router-link>
+        </a>
       </li>
     </ul>
   </nav>
@@ -80,29 +80,39 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <router-link to="/dashboard" class="nav-link">
+          <li class="nav-item {{ request()->routeIs('schoolAdmin.dashboard') ? 'active' : '' }}">
+            <a href="{{ route('schoolAdmin.dashboard') }}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt blue"></i>
-              <p>
                 Dashboard
-              </p>
-            </router-link>
+            </a>
+          </li>
+          <li class="nav-item {{ request()->routeIs('schoolAdmin.teachers.index') ? 'active' : '' }}">
+            <a href="{{ route('schoolAdmin.teachers.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-chalkboard-teacher green"></i>
+                Teachers
+            </a>
+          </li>
+          <li class="nav-item {{ request()->routeIs('schoolAdmin.students.index') ? 'active' : '' }}">
+            <a href="{{ route('schoolAdmin.students.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-user-graduate teal"></i>
+                Students
+            </a>
           </li>
           <li class="nav-item">
-            <router-link to="/schools" class="nav-link">
-              <i class="nav-icon fas fa-school cyan"></i>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-line orange"></i>
               <p>
-                All Schools
+                Performance metrics
               </p>
-            </router-link>
+            </a>
           </li>
           <li class="nav-item">
-            <router-link to="/schoolProfile" class="nav-link">
-              <i class="nav-icon fas fa-school cyan"></i>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-clipboard purple"></i>
               <p>
-                My School
+                Lesson Plans
               </p>
-            </router-link>
+            </a>
           </li>
           <li class="nav-item has-treeview">
             <a href="pages/widgets.html" class="nav-link">
@@ -114,36 +124,28 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link to="/users" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="fas fa-users nav-icon"></i>
                   <p>Users</p>
-                </router-link>
+                </a>
               </li>
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link to="/schoolProfile" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="fas fa-school cyan nav-icon"></i>
                   <p>My School</p>
-                </router-link>
+                </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
-            <router-link to="/profile" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user orange"></i>
               <p>
                 My Profile
               </p>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/developer" class="nav-link">
-              <i class="nav-icon fas fa-cogs indigo"></i>
-              <p>
-                Developer
-              </p>
-            </router-link>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
