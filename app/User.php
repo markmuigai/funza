@@ -64,4 +64,12 @@ class User extends Authenticatable
                                 ->where('school_id', $school->id)
                                 ->first();
     }
+
+    /**
+     * Currently, one school per user
+     */
+    public function school()
+    {
+        $this->schools->first();
+    }
 }
