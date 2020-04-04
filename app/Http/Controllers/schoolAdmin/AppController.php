@@ -12,6 +12,12 @@ class AppController extends Controller
      */
     public function dashboard()
     {
-        return view('schoolAdmin.dashboard');
+        // Get auth user
+        $user = auth()->user();
+
+        return view('schoolAdmin.dashboard', [
+            'teachers' => collect([]),
+            'students' => collect([]),
+        ]);
     }
 }
