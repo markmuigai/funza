@@ -73,5 +73,25 @@ class SchoolsTableSeeder extends Seeder
 
         // Assign school admin role to the pivot table instances of the users selected
         $school_admin->schoolAdministration($school)->roles()->attach(Role::where('name','school_admin')->first()->id);
+
+        /**
+         * 20 Teachers 
+         */
+        for($i=0; $i<20; $i++)
+        {
+            $firstname = $faker->firstname;
+            $lastname = $kenyan_names[array_rand($kenyan_names)];
+            $teacher = User::create([
+                'name' => $firstname.' '.$lastname,
+                'email' => $firstname.$lastname.'@gmail.com',
+                'password' => Hash::make('secret'),
+            ]);
+
+        // Assign user to school    
+        $school->users()->attach($teacher->id);
+
+        // Assign school admin role to the pivot table instances of the users selected
+        $teacher->schoolAdministration($school)->roles()->attach(Role::where('name','teacher')->first()->id);
+        }
     }
 }
