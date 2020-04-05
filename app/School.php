@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class School extends Model
 {
@@ -28,7 +29,9 @@ class School extends Model
      */
     public function teachers()
     {
-        
+        return $this->users->filter(function ($user) {
+            return $user->schoolAdministration($this)->hasRole('teacher');
+        });
     }
 
     /**
