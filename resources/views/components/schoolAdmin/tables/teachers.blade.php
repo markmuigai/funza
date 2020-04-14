@@ -7,7 +7,8 @@
       </tr>
       @foreach ($teachers as $teacher)
           <tr>
-              <td>{{$teacher->name}}</td>
+              <td>{{ $teacher->name }}</td>
+              <td>{{ $teacher->email }}</td>
               <td>
                 <a href="#" class="btn btn-primary btn-sm">View Performance</a>
                 <a href="#" class="btn btn-success btn-sm">Edit classes</a>

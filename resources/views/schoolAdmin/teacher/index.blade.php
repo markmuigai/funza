@@ -37,6 +37,7 @@
                   'teachers' => $teachers
                 ])   
                 @endcomponent
+                {{$teachers->links()}}
               </div>
               <!-- /.box-body -->
             </div>

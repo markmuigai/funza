@@ -16,7 +16,7 @@ class TeacherController extends Controller
     {
         //
         return view('schoolAdmin.teacher.index',[
-            'teachers' => collect([])
+            'teachers' => auth()->user()->schools->first()->teachers()->paginate(5)
         ]);
     }
 
