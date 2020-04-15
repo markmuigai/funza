@@ -28,3 +28,6 @@ Route::get('csv/teachers/csv-template', 'TeacherController@exportCSVTemplate')->
 
 // Import teachers csv
 Route::get('csv/teachers/import', 'TeacherController@import')->name('teachers.import');
+
+// Grades
+Route::resource('grades', 'GradeController');

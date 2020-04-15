@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
             RolesTableSeeder::class,
             SchoolsTableSeeder::class,
             // UsersTableSeeder::class,
-            // SubjectsTableSeeder::class,
+            SubjectsTableSeeder::class,
             // TopicsTableSeeder::class,
             // OutcomesTableSeeder::class,
-            // GradesTableSeeder::class,
-            // ClassroomsTableSeeder::class,
+            GradesTableSeeder::class,
+            ClassroomsTableSeeder::class,
             // StudentsTableSeeder::class,
             // OutcomeResultsTableSeeder::class
         ]);
