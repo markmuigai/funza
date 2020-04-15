@@ -19,3 +19,12 @@ Route::resource('teachers', 'TeacherController');
 
 // Students
 Route::resource('students', 'StudentController');
+
+// Teachers export csv
+Route::get('csv/teachers/export', 'TeacherController@export')->name('teachers.export');
+
+// Export csv template
+Route::get('csv/teachers/csv-template', 'TeacherController@exportCSVTemplate')->name('teachers.export.csv-template');
+
+// Import teachers csv
+Route::get('csv/teachers/import', 'TeacherController@import')->name('teachers.import');

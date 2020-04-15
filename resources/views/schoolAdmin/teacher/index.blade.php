@@ -28,7 +28,10 @@
                     <div class="col-md-2">
                         <button type="submit" class="btn btn-primary">Apply</button>
                     </div>
-                </div>
+                    <div class="col-md-2 offset-md-6">
+                      <a href="{{ Route('schoolAdmin.teachers.export') }}" class="btn btn-success">Export CSV</a>
+                    </div>
+                  </div>
                 </div>
               </div>
               <!-- /.box-header -->
@@ -56,7 +59,8 @@
             </button>
           </div>
           <div class="modal-body">
-            ...
+            <a href="{{ Route('schoolAdmin.teachers.export.csv-template') }}" class="btn btn-primary">Download CSV Template </a>
+            <a href="{{ Route('schoolAdmin.teachers.import') }}" class="btn btn-success">Import</a>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
