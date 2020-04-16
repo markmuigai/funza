@@ -11,7 +11,7 @@
               <td>{{ $teacher->email }}</td>
               <td>
                 <a href="#" class="btn btn-primary btn-sm">View Performance</a>
-                <a href="#" class="btn btn-success btn-sm">Edit classes</a>
+                <a href="{{ Route('schoolAdmin.teachers.class-assignment', ['teacher' => $teacher]) }}" class="btn btn-success btn-sm">Edit classes</a>
               </td>
           </tr>
       @endforeach

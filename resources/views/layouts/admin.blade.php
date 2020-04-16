@@ -238,5 +238,6 @@
 
     {{-- app.js --}}
     <script src="/js/app.js/"></script>
+    @yield('app.js')
 </body>
 </html>

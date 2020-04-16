@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\schoolAdmin;
 
+use App\User;
+use App\Grade;
+use App\Subject;
 use Illuminate\Http\Request;
 use App\Exports\UsersExport;
 use App\Exports\UsersExportTemplate;
@@ -114,5 +117,39 @@ class TeacherController extends Controller
     public function exportCSVTemplate() 
     {
         return Excel::download(new UsersExportTemplate, 'users.xlsx');
+    }
+
+    /**
+     * Show teacher class assignments
+     */
+    public function classAssignment($user_id)
+    {
+        return view('schoolAdmin.teacher.classAssignment',[
+            'teacher' => User::find($user_id),
+            'grades' => Grade::all(),
+            'subjects' => Subject::all()
+        ]);
+    }
+
+    /**
+     * Ajax call to fetch classes based on a grade
+     */
+    public function fetchGradeClasses($grade_id)
+    {
+        return json_encode(Grade::find($grade_id)->classrooms->pluck('name','id'));
+    }
+
+    /**
+     * Store class assignment
+     */
+    public function storeClassAssignment(Request $request, User $teacher)
+    {
+        // Assign grade and subject pivot instance to the teacher
+        $teacher->classroomSubject()->create([
+            'classroom_id' => $request->class,
+            'subject_id' => $request->subject
+        ]);
+
+        return redirect()->back();
     }
 }
