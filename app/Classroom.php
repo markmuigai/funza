@@ -12,7 +12,10 @@ class Classroom extends Model
      */
     public function teachers()
     {
-        return $this->belongsToMany('App\User')->oldest('name');
+        // Fetch users of each classroom subject
+        return $this->classroomSubjects->map(function($classroomSubject){
+            return $classroomSubject->teacher;
+        });
     }
 
     // Fetch a clasrooms subject
@@ -25,5 +28,10 @@ class Classroom extends Model
     public function students()
     {
         return $this->hasMany('App\Student');
+    }
+
+    public function classroomSubjects()
+    {
+        return $this->hasMany('App\ClassroomSubject');
     }
 }

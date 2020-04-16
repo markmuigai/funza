@@ -34,8 +34,10 @@
 												<tr>
 														<td>{{ $classroom->name }}</td>
 														<td>
-															<a href="#" class="btn btn-primary btn-sm">View Performance</a>
-															<a href="#" class="btn btn-success btn-sm">Assign Teachers</a>
+															<a href="#" class="btn btn-primary btn-sm">View Class Performance</a>
+															<a href="{{ Route('schoolAdmin.grade.classroom.teacher.index', ['grade' => $grade, 'classroom' => $classroom])}}"
+																 class="btn btn-success btn-sm">Assign Teachers</a>
+															<a href="#" class="btn btn-secondary btn-sm">Assign Students</a>
 														</td>
 												</tr>
 											@endforeach

@@ -40,3 +40,6 @@ Route::get('csv/teachers/import', 'TeacherController@import')->name('teachers.im
 
 // Grades
 Route::resource('grades', 'GradeController');
+
+// Show classroom teachers
+Route::get('grade/{grade}/classroom/{classroom}/teachers', 'ClassroomController@showTeachers')->name('grade.classroom.teacher.index');

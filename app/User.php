@@ -64,4 +64,15 @@ class User extends Authenticatable
                                 ->where('school_id', $school->id)
                                 ->first();
     }
+
+    // Fetch subjects teaching for a certain class 
+    public function subjectsForClass($class_id)
+    {
+        // Fetch classroom subject pivot instance
+        $classroomSubjects =  $this->classroomSubject()->where('classroom_id', $class_id)->get();
+
+        return $classroomSubjects->map(function($classroomSubject){
+            return $classroomSubject->subject;
+        });
+    }
 }

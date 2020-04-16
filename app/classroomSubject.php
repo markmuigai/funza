@@ -22,4 +22,10 @@ class classroomSubject extends Pivot
         return $this->belongsTo('App\Subject');
     }
 
+    // Fetch teacher assigned to a classroom subject
+    public function teacher()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
 }
