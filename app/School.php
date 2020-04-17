@@ -39,6 +39,6 @@ class School extends Model
      */
     public function students()
     {
-
+        return $this->belongsToMany('App\Student');
     }
 }

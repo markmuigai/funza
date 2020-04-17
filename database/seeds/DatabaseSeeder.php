@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             // OutcomesTableSeeder::class,
             GradesTableSeeder::class,
             ClassroomsTableSeeder::class,
-            // StudentsTableSeeder::class,
+            StudentsTableSeeder::class,
             // OutcomeResultsTableSeeder::class
         ]);
     }

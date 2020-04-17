@@ -1,5 +1,6 @@
 <?php
 
+use App\School;
 use App\Student;
 use App\Classroom;
 use Faker\Generator as Faker;
@@ -48,7 +49,7 @@ class StudentsTableSeeder extends Seeder
         'Waweru'];
 
         // Fecth class 3A
-        $classroom = Classroom::where('name', '3A')->get()->first();
+        $classroom = Classroom::where('name', '4A')->get()->first();
 
         /**
          * 20 Students 
@@ -59,8 +60,15 @@ class StudentsTableSeeder extends Seeder
             $lastname = $kenyan_names[array_rand($kenyan_names)];
             $student = Student::create([
                 'name' => $firstname.' '.$lastname,
-                'classroom_id' => $classroom->id
+                'telno' => '0712345678',
+                'address' => 'Mwakinda Lane, Kiambaa'
             ]);
+
+            // Assign to school
+            School::first()->students()->attach($student->id);
+
+            // Assign to classroom 
+            $classroom->students()->attach($student->id, ['status' => true]);
         }
     }
 }

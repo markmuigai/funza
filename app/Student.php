@@ -11,4 +11,20 @@ class Student extends Model
     {
         return $this->hasMany('App\Outcome');
     }
+
+    /**
+     * Fetch school of a student
+     */
+    public function school()
+    {
+        return $this->belongsToMany('App\School');
+    }
+
+    /**
+     * Fetch classes of a student
+     */
+    public function classroom()
+    {
+        return $this->belongsToMany('App\Classroom');
+    }
 }

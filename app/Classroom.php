@@ -27,7 +27,7 @@ class Classroom extends Model
     // Fetch students of a class
     public function students()
     {
-        return $this->hasMany('App\Student');
+        return $this->belongsToMany('App\Student');
     }
 
     public function classroomSubjects()

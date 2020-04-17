@@ -15,6 +15,9 @@ class StudentController extends Controller
     public function index()
     {
         //
+        return view('schoolAdmin.student.index',[
+            'students' => auth()->user()->schools->first()->students
+        ]);
     }
 
     /**
