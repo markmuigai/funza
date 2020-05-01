@@ -27,4 +27,12 @@ class Student extends Model
     {
         return $this->belongsToMany('App\Classroom');
     }
+
+    /**
+     * Fetch a students current class 
+     */
+    public function currentClass()
+    {
+        return $this->classroom()->wherePivot('status', true)->first();
+    }
 }

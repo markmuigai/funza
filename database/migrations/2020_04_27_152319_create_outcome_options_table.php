@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOutcomesTable extends Migration
+class CreateOutcomeOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateOutcomesTable extends Migration
      */
     public function up()
     {
-        Schema::create('outcomes', function (Blueprint $table) {
+        Schema::create('outcome_options', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('substrand_id');
             $table->string('name');
+            $table->unsignedInteger('outcome_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateOutcomesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('outcomes');
+        Schema::dropIfExists('outcome_options');
     }
 }

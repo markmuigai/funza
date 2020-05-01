@@ -17,4 +17,10 @@ class Subject extends Model
     {
         return $this->belongsToMany('App\Grade');
     }
+
+    // Fetch a strands for a subject
+    public function strands()
+    {
+        return $this->hasMany('App\Strand');
+    }
 }

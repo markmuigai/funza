@@ -13,6 +13,11 @@ class Outcome extends Model
      */
     protected $fillable = ['name'];
 
+    public function outcomeOptions()
+    {
+        return $this->hasMany('App\OutcomeOption');
+    }
+
     // Fetch results for an outcome
     public function outcomeResults()
     {
