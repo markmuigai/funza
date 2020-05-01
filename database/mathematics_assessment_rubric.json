@@ -622,6 +622,54 @@
 				"Inconsistently uses IT devices for learning and enjoyment.",
 				"Little evidence in using IT devices for learning and enjoyment."
 			]
+		},
+		"data" : {
+			"Represent data using frequency tables." : [
+				"Represents data using frequency tables correctly and with ease.",
+				"Represents data using frequency tables correctly.",
+				"Inconsistently represents data using frequency tables.",
+				"Little evidence data in using frequency tables."
+			],
+			"Interpret frequency tables." : [
+				"Interprets frequency tables correctly and with ease.",
+				"Interprets frequency tables correctly.",
+				"Inconsistently interprets frequency tables.",
+				"Little evidence in interpreting frequency tables."
+			],
+			"Uses IT devices for learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
+		}
+	},
+	"algebra" : {
+		"user of letters" : {
+			"Represent unknown using letters." : [
+				"Represents unknown using letters correctly and with ease.",
+				"Represents unknown using letters correctly.",
+				"Inconsistently represents unknown using letters.",
+				"Little evidence in representing unknown using letters."
+			],
+			"Form algebraic expressions."  : [
+				"Forms algebraic expressions correctly and with ease.",
+				"Forms algebraic expressions correctly.",
+				"Inconsistently forms algebraic expressions.",
+				"Little evidence in forming algebraic expressions."
+			],
+			"Simplify algebraic expressions." : [
+				"Simplifies algebraic expressions correctly and with ease.",
+				"Simplifies algebraic expressions correctly.",
+				"Inconsistently simplifies algebraic expressions.",
+				"Little evidence in simplifying algebraic expressions."
+			],
+			"Uses IT devices for learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
 		}
 	}
 }
