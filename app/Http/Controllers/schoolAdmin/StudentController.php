@@ -16,7 +16,7 @@ class StudentController extends Controller
     {
         //
         return view('schoolAdmin.student.index',[
-            'students' => auth()->user()->schools->first()->students
+            'students' => auth()->user()->schools->first()->students->paginate(7)
         ]);
     }
 
@@ -84,5 +84,31 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function import() 
+    {
+        Excel::import(new UsersImport,request()->file('file'));
+           
+        return back();
+    }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function export() 
+    {
+        return Excel::download(new UsersExport(auth()->user()->schools->first()->teachers()->toArray()), 'users.xlsx');
+    }
+
+        /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function exportCSVTemplate() 
+    {
+        return Excel::download(new UsersExportTemplate, 'users.xlsx');
     }
 }

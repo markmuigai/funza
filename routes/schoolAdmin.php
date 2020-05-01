@@ -17,6 +17,15 @@ Route::get('/', 'AppController@dashboard')->name('dashboard');
 // Teachers
 Route::resource('teachers', 'TeacherController');
 
+// Export teachers  csv
+Route::get('csv/teachers/export', 'TeacherController@export')->name('teachers.export');
+
+// Export teachers csv template
+Route::get('csv/teachers/csv-template', 'TeacherController@exportCSVTemplate')->name('teachers.export.csv-template');
+
+// Import teachers csv
+Route::get('csv/teachers/import', 'TeacherController@import')->name('teachers.import');
+
 // Assignment classes and subjects to teachers
 Route::get('teachers/{teacher}/classAssignment', 'TeacherController@classAssignment')->name('teachers.class-assignment');
 
@@ -29,14 +38,14 @@ Route::post('teachers/{teacher}/classAssignment', 'TeacherController@storeClassA
 // Students
 Route::resource('students', 'StudentController');
 
-// Teachers export csv
-Route::get('csv/teachers/export', 'TeacherController@export')->name('teachers.export');
+// Export students csv
+Route::get('csv/students/export', 'StudentController@export')->name('students.export');
 
-// Export csv template
-Route::get('csv/teachers/csv-template', 'TeacherController@exportCSVTemplate')->name('teachers.export.csv-template');
+// Export students csv template
+Route::get('csv/students/csv-template', 'StudentController@exportCSVTemplate')->name('students.export.csv-template');
 
-// Import teachers csv
-Route::get('csv/teachers/import', 'TeacherController@import')->name('teachers.import');
+// Import students csv
+Route::get('csv/students/import', 'StudentController@import')->name('students.import');
 
 // Grades
 Route::resource('grades', 'GradeController');

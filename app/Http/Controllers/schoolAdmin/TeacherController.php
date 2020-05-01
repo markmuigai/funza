@@ -35,6 +35,10 @@ class TeacherController extends Controller
     public function create()
     {
         //
+        return view('schoolAdmin.teacher.create',[
+            'grades' => Grade::all(),
+            'subjects' => Subject::all()
+        ]);
     }
 
     /**
@@ -46,6 +50,7 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         //
+        return $request->all();
     }
 
     /**
