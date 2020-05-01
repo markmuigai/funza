@@ -1,0 +1,627 @@
+{
+    "numbers" : { 
+		"whole numbers" : {
+				"Use place value up to ten thousand" : [
+					"Uses place value up to ten thousand and beyond correctly",
+					"Uses place value up to ten thousand correctly ",
+					"Inconsistently uses placevalue up to ten thousand",
+					"Little evidence in use of place value up to ten thousand"
+				],
+				"Use total values up to ten thousand" : [
+				"Uses total values up to ten thousand and beyond correctly",
+				"Uses total values up to ten thousand correctly",
+				"Inconsistently uses total values up to ten thousand",
+				"Little evidence in use of total values up to ten thousand"
+				],
+				"Read and write numbers in symbols up to 10,000" : [
+				"Reads and write numbers in symbols up to 10,000 and beyond correctly",
+				"Reads and write numbers in symbols up to 10,000 correctly",
+				"Inconsistently reads and writes numbers in symbols up to 10,000",
+				"Little evidence in reading and writing numbers in symbols up to 10,000"
+				],
+				"Read and write numbers in words up to 1,000" : [
+				"Reads and writes numbers in words up to 1,000 and beyond correctly",
+				"Reads and writes numbers in words up to 1,000 correctly",
+				"Inconsistently reads and writes numbers in words up to 1,000",
+				"Little evidence in reading and writing numbers in words up to 1,000"
+				],
+				"Order numbers up to 1,000 Orders numbers up to 1,000 and beyond correctly" : [
+				"Orders numbers up to 1,000 correctly",
+				"Inconsistently orders numbers up to 1,000",
+				"Little evidence in ordering numbers up to 1,000"
+				],
+				"Round off numbers up to 1,000 to the nearest ten" : [
+				"Rounds off numbers up to 1,000 to the nearest ten and beyond correctly",
+				"Rounds off numbers up to 1,000 to the nearest ten correctly",
+				"Inconsistently rounds off numbers up to 1,000 to the nearest ten",
+				"Little evidence in rounding off numbers up to 1,000 to the nearest ten"
+				],
+				"Identify divisors and factors of numbers up to 50" : [
+				"Identifies divisors and factors of numbers up to 50 and beyond correctly",
+				"Identifies divisors and factors of numbers up to 50 correctly",
+				"Inconsistently identifies divisors and factors of numbers up to 50",
+				"Little evidence in identifying divisors and factors of numbers up to 50"
+				],
+				"Identify multiples of numbers up to 100" : [
+				"Identifies multiples of numbers up to 100 and beyond correctly",
+				"Identifies multiples of numbers up to 100 correctly",
+				"Inconsistently identifies multiples of numbers up to 100",
+				"Little evidence in identifying multiples of numbers up to 100"
+				],
+				"Make patterns involving even and odd numbers up to 100" : [
+				"Makes patterns involving even and odd numbers up to 100 and beyond correctly",
+				"Makes patterns involving even and odd numbers up to 100 correctly",
+				"Inconsistently makes patterns involving even and odd numbers up to 100",
+				"Little evidence in making patterns involving even and odd numbers up to 100"
+				],
+				"Use IT devices  for learning and leisure" : [
+				"Uses IT devices for learning and leisure fast",
+				"Uses IT devices for learning and leisure",
+				"Inconsistently uses IT devices for learning",
+				"Little evidence in using IT for learning"
+				]
+		},
+		"addition" : {
+			"Add up to two 4-digit numbers with single regrouping" :[
+				"Adds up to two 4-digit numbers with single regrouping and beyond correctly.",
+				"Adds up to two 4-digit numbers with single regrouping correctly.",
+				"Inconsistently Adds up to two 4-digit numbers with single regrouping.",
+				"Little evidence in adding up to two 4-digit numbers with single regrouping."
+			],
+			"Add up to two 4-digit numbers with double regrouping." : [
+				"Adds up to two 4-digit numbers with double regrouping and beyond correctly.",
+				"Adds up to two 4-digit numbers with double regrouping correctly.",
+				"Inconsistently adds up to two 4-digit numbers with double regrouping.",
+				"Little evidence in adding up to two 4-digit numbers with double regrouping."
+			],
+			"Estimate answers by rounding off." :[
+				"Estimates answers by rounding off numbers to the nearest ten and beyond correctly.",
+				"Estimates answers by rounding off correctly",
+				"Inconsistently estimates answers by rounding off.",
+				"Little evidence in estimating answers by rounding off."
+			],
+			"Create patterns involving addition up to sum of 10,000." : [
+				"Creates patterns involving addition up to sum of 10,000 and beyond correctly.",
+				"Creates patterns involving addition up to sum of 10,000 correctly.",
+				"Inconsistently creates patterns involving addition up to sum of 10,000.",
+				"Little evidence in creating patterns involving addition up to sum of 10,000."
+			],
+			"Use IT devices f or learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and correctly.",
+				"Uses IT devices for learning and enjoyment correctly.",
+				"Inconsistently uses IT devices for learning and enjoyment uses.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
+		},
+		"subtraction" : {
+			"Subtract up to 4-digit numbers without regrouping." : [
+				"Subtracts up to 4-digit numbers without regrouping and beyond correctly.",
+				"Subtracts up to 4-digit numbers without regrouping correctly.",
+				"Inconsistently subtracts up to 4-digit numbers without regrouping.",
+				"Little evidence in subtracting up to 4-digit numbers without regrouping."
+			],
+			"Subtract up to 4-digit numbers with regrouping." : [
+				"Subtracts up to 4-digit numbers with regrouping and beyond correctly.",
+				"Subtracts up to 4-digit numbers with regrouping correctly.",
+				"Inconsistently subtracts up to 4-digit numbers with regrouping.",
+				"Little evidence in subtracting up to 4-digit numbers with regrouping."
+			],
+			"Estimate difference by rounding off numbers to the nearest ten." : [
+				"Estimates difference by rounding off numbers to the nearest ten and beyond correctly.",
+				"Estimates difference by rounding off numbers to the nearest ten correctly.",
+				"Inconsistently estimates difference by rounding off numbers to the nearest ten.",
+				"Little evidence in estimating difference by rounding off numbers to the nearest ten."
+			],
+			"Create patterns involving subtraction from up to 10,000." : [
+				"Creates patterns involving subtraction from up to 10,000 and beyond correctly.",
+				"Creates patterns involving subtraction from up to 10,000 correctly.",
+				"Inconsistently creates patterns involving subtraction from up to 10,000.",
+				"Little evidence in creating patterns involving subtraction from up to 10,000."
+			],
+			"Use IT for learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
+		},
+		"multiplication" : {
+			"Multiply up to a 2-digit number by multiples of 10." : [
+				"Multiplies up to a 2-digit number by multiples of 10 and beyond correctly.",
+				"Multiplies up to a 2-digit number by multiples of 10 correctly.",
+				"Inconsistently multiplies up to a 2-digit number by multiples of 10.",
+				"Little evidence in multiplying up to a 2-digit number by multiples of 10."
+			],
+			"Multiply up to a 2-digit number by a 2-digit number." : [
+				"Multiplies up to a 2-digit number by a 2-digit number and beyond correctly.",
+				"Multiplies up to a 2-digit number by a 2-digit number correctly.",
+				"Inconsistently multiplies up to a 2-digit number by a 2- digit number.",
+				"Little evidence in multiplying up to a 2-digit number by a 2- digit number."
+			],
+			"Estimate products in multiplication by rounding off numbers to the nearest ten." : [
+				"Estimates products in multiplication by rounding off numbers to the nearest ten and beyond correctly.",
+				"Estimates products in multiplication by rounding off numbers to the nearest ten correctly.",
+				"Inconsistently estimates products in multiplication by rounding off numbers to the nearest ten.",
+				"Little evidence in estimating products in multiplication by rounding off numbers to the nearest ten."
+			],
+			"Create patterns involving multiplication with products not exceeding 100." : [
+				"Creates patterns involving multiplication with products not exceeding 100 and beyond correctly.",
+				"Creates patterns involving multiplication with products not exceeding 100 correctly.",
+				"Inconsistently creates patterns involving multiplication with products not exceeding 100.",
+				"Little evidence in creating patterns involving multiplication with products not exceeding 100."
+			],
+			"Use IT devices f or learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices f or learning and enjoyment."
+			]
+		},
+		"division" : {
+			"Divide up to a 2-digit number by a 1- digit number without remainder." : [
+				"Divides a 2-digit number and beyond by a 1- digit number without remainder correctly.",
+				"Divides up to a 2-digit number by a 1- digit number without remainder correctly.",
+				"Inconsistently divides up to a 2-digit number by a 1- digit number without remainder.",
+				"Little evidence in dividing up to a 2-digit number by a 1- digit number without remainder."
+			],
+			"Divide up to a 2-digit by a 1- digit number with remainder." : [
+				"Divides a 2-digit number and beyond by a 1-digit number with remainder correctly.",
+				"Divides up to a 2-digit by a 1-digit number with remainder correctly.",
+				"Inconsistently divides up to a 2-digit by a 1-digit number with remainder.",
+				"Little evidence in dividing up to a 2-digit number by a 1- digit number with remainder."
+			],
+			"Estimate quotient by rounding off dividend to the nearest ten." : [
+				"Estimates quotient by rounding off numbers accurately.",
+				"Estimates quotient by rounding off dividend to the nearest ten accurately.",
+				"Inconsistently estimates quotient by rounding off numbers.",
+				"Little evidence in estimating quotient by rounding off numbers."
+			],
+			"Use relationship between multiplication and division to work out problems in real life situations" : [
+				"Uses relationship between multiplication and division to work out problems correctly and with ease.",
+				"Uses relationship between multiplication and division to work out problems correctly.",
+				"Inconsistently uses relationship between multiplication and division to work out problems.",
+				"Little evidence in using relationship between multiplication and division to work out problems"
+			],
+			"Use IT devices f or learning and leisure." : [
+				"Uses IT devices for learning and leisure fast and efficiently.",
+				"Uses IT devices for learning and leisure efficiently.",
+				"Inconsistently uses IT devices for learning and leisure.",
+				"Little evidence in using IT devices for learning and leisure."
+			]
+		},
+		"fractions" : {
+			"Represent fractions as part of a whole." : [
+				"Represents fractions as part of a whole correctly and with ease.",
+				"Represents fractions as part of a whole correctly.",
+				"Inconsistently represents fractions as part of a whole.",
+				"Little evidence in representing fractions as par of a whole."
+			],
+			"Represent and write fractions with denominators up to 12." : [
+				"Represents and writes fractions with denominators up to 12 correctly and with ease.",
+				"Represents and writes fractions with denominators up to 12 correctly.",
+				"Inconsistently represents and writes fractions with denominators up to 12.",
+				"Little evidence in representing and writing fractions with denominators up to 12."
+			],
+			"Identify numerator and denominator." : [
+				"Identifies numerator and denominator correctly and with ease.",
+				"Identifies numerator and denominator correctly.",
+				"Inconsistently identifies numerator and denominator.",
+				"Little evidence in identifying numerator and denominator."
+			],
+			"Represent fractions as part of a group." : [
+				"Represents fractions as part of a group correctly and with ease.",
+				"Represents fractions as part of a group correctly.",
+				"Inconsistently represents fractions as part of a group.",
+				"Little evidence in representing fractions as par of a group."
+			],
+			"Identify types of fractions." : [
+				"Identifies types of fractions correctly and with ease.",
+				"Identifies types of fractions correctly.",
+				"Inconsistently identifies types of fractions.",
+				"Little evidence in identifying types of fractions."
+			],
+			"Convert improper fractions to mixed fractions." : [
+				"Converts improper fractions to mixed fractions correctly and with ease.",
+				"Converts improper fractions to mixed fractions correctly.",
+				"Inconsistently converts improper fractions to mixed fractions.",
+				"Little evidence in converting improper fractions to mixed fractions."
+			],
+			"Convert fractions from mixed fractions to improper fractions." : [
+				"Converts mixed fractions to improper fractions correctly and with ease.",
+				"Converts mixed fractions to improper fractions correctly.",
+				"Inconsistently converts mixed fractions to improper fractions.",
+				"Little evidence in converting mixed fractions to improper fractions."
+			],
+			"Use IT devices f or learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
+		},
+		"decimals" : {
+			"Identify a tenth and a hundredth." : [
+				"Identifies a tenth and a hundredth and beyond correctly.",
+				"Identifies a tenth and a hundredth correctly.",
+				"Inconsistently identifies a tenth and a hundredth.",
+				"Little evidence in identifying a tenth and a hundredth."
+			],
+			"Represent decimals using decimal notation." : [
+				"Represents decimals using decimal notation correctly and with ease.",
+				"Represents decimals using decimal notation correctly.",
+				"Inconsistently represents decimals using decimal notation.",
+				"Little evidence in representing decimals using decimal notation."
+			],
+			"Identify place value of decimals up to hundredths." : [
+				"Identifies place value of decimals up to hundredths and beyond correctly.",
+				"Identifies place value of decimals up to hundredths correctly.",
+				"Inconsistently identifies place value of decimals up to hundredths.",
+				"Little evidence in identifying place value of decimals up to hundredths."
+			],
+			"Order decimals up to hundredths." : [
+				"Orders decimals to hundredths and beyond correctly.",
+				"Orders decimals up to hundredths correctly.",
+				"Inconsistently orders decimals up to hundredths.",
+				"Little evidence in ordering decimals up to hundredths."
+			],
+			"Use IT devices f or learning and leisure." : [
+				"Uses IT devices for learning and leisure fast and efficiently.",
+				"Uses IT devices for learning and leisure efficiently.",
+				"Inconsistently uses IT devices for learning and leisure.",
+				"Little evidence in using IT devices for learning and leisure."
+			]
+		}
+	},
+	"measurements" : {
+		"length" : {
+			"Identify the Centimetre as a unit of measuring length." : [
+				"Identifies the centimetre as a unit of measuring length accurately and with ease.",
+				"Identifies the centimetre as a unit of measuring length accurately.",
+				"Inconsistently identifies the centimetre as a unit of measuring length.",
+				"Little evidence in identifying the centimetre as a unit of measuring length."
+			],
+			"Measure length in centimetres." : [
+				"Measures length in centimetres accurately and with ease.",
+				"Measures length in centimetres accurately.",
+				"Inconsistently measures length in centimetres.",
+				"Little evidence in measuring length in centimetres."
+			],
+			"Estimate length in centimetres." : [
+				"Estimates length in centimetres accurately and with ease.",
+				"Estimates length in centimetres accurately.",
+				"Inconsistently estimates length in centimetres.",
+				"Little evidence in estimating length in centimetres."
+			],
+			"Establish the relationship between metres and centimetres." : [
+				"Establishes the relationship between metres and centimetres correctly and with ease.",
+				"Establishes the relationship between metres and centimetres correctly.",
+				"Inconsistently establishes the relationship between metres and centimetres.",
+				"Little evidence in estimating the relationship between metres and centimetres."
+			],
+			"Convert metres to centimetres." : [
+				"Converts metres to centimetres and beyond correctly.",
+				"Converts metres to centimetres correctly.",
+				"Inconsistently converts metres to centimetres.",
+				"Little evidence in converting metres to centimetres."
+			],
+			"Convert centimetres to metres." : [
+				"Converts centimetres to metres and beyond correctly.",
+				"Converts centimetres to metres correctly.",
+				"Inconsistently converts centimetres to metres.",
+				"Little evidence in converting centimetres to metres."
+			],
+			"Work out perimeter of plane shapes." : [
+				"Works out perimeter of plane shapes correctly and with ease.",
+				"Works out perimeter of plane shapes correctly.",
+				"Inconsistently works out perimeter of plane shapes.",
+				"Little evidence in working out perimeter of plane shapes."
+			],
+			"Add length in centimetres" : [
+				"Adds length in centimetres and metres.",
+				"Adds length in centimetres and metres correctly and with ease.",
+				"Inconsistently adds length in centimetres and metres.", 
+				"Little evidence in adding length in centimetres and metres."
+			],
+			"Subtract length in centimetres and metres." : [
+				"Subtracts length in centimetres and metres correctly and with ease.",
+				"Subtracts length in centimetres and metres correctly.",
+				"Inconsistently subtracts length in centimetres and metres.",
+				"Little evidence in subtracting length in centimetres and metres."
+			],
+			"Multiply length in centimetres and metres." : [
+				"Multiplies length in centimetres and metres correctly and with ease.",
+				"Multiplies length in centimetres and metres correctly.",
+				"Inconsistently multiplies length in centimetres and metres.",
+				"Little evidence in multiplying length in centimetres and metres."
+			],
+			"Divide length in centimetres and metres." : [
+				"Divides length in centimetres and metres correctly and with ease.",
+				"Divides length in centimetres and metres correctly.",
+				"Inconsistently divides length in centimetres and metres.",
+				"Little evidence in dividing length in centimetres and metres."
+			],
+			"Use IT devices for learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
+		},
+		"area" : {
+			"Compare area of surfaces." : [
+				"Compares area of surfaces correctly and with ease.",
+				"Compares area of surfaces correctly.",
+				"Inconsistently compares area of surfaces.",
+				"Little evidence in comparing area of surfaces."
+			],
+			"Calculate area of squares and rectangles through counting." : [
+				"Calculates area of squares and rectangles through counting correctly and with ease.",
+				"Calculate area of squares and rectangles through counting correctly.",
+				"Inconsistently calculates area of squares and rectangles through counting.",
+				"Little evidence in calculating area of squares and rectangles through counting."
+			],
+			"Calculate area of squares and rectangles as product of number of rows and columns." : [
+				"Calculates area of squares and rectangles as product of number of rows and columns correctly and with ease.",
+				"Calculates area of squares and rectangles as product of number of rows and columns correctly.",
+				"Inconsistently calculates area of squares and rectangles as product of number of rows and columns.",
+				"Little evidence in calculating area of squares and rectangles as product of number of rows and columns."
+			],
+			"Use IT devices f or learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices f or learning and enjoyment."
+			]
+		},
+		"mass" : {
+			"Use a Kilogram mass to measure mass of different objects." : [
+				"Uses a Kilogram mass to measure mass of different objects accurately and with ease.",
+				"Uses a Kilogram mass to measure mass of different objects accurately.",
+				"Inconsistently uses a Kilogram mass to measure mass of different objects.",
+				"Little evidence in using a Kilogram mass to measure mass of different objects."
+			],
+			"Use ½ kg and ¼ kg masses to measure mass of different objects." : [
+				"Use ½ kg and ¼ kg masses to measure mass of different objects accurately and with ease.",
+				"Use ½ kg and ¼ kg masses to measure mass of different objects accurately.",
+				"Inconsistently uses ½ kg and ¼ kg masses to measure mass of different objects.",
+				"Little evidence in using ½ kg and ¼ kg masses to measure mass of different objects."
+			],
+			"Add mass in kg." : [
+				"Adds mass in kg correctly and with ease.",
+				"Adds mass in kg correctly.",
+				"Inconsistently adds mass i n kg.",
+				"Little evidence in adding mass in kg."
+			],
+			"Subtract mass in kg." : [
+				"Subtracts mass in kg correctly and with ease.",
+				"Subtracts mass in kg correctly.",
+				"Inconsistently subtracts mass in kg.",
+				"Little evidence subtracting mass in kg."
+			],
+			"Use IT devices for learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
+		},
+		"volume" : {
+			"Work out volume of cubes and cuboids." : [
+				"Works out volume of cubes correctly and with ease.",
+				"Works out volume of cubes correctly.",
+				"Inconsistently works out volume of cubes.",
+				"Little evidence in working out volume of cubes."
+			],
+			"Work out volume of cuboids." : [
+				"Works out volume of cuboids correctly and with ease.",
+				"Works out volume of cuboids correctly",
+				"Inconsistently works out Little evidence in working volume of cuboids.",
+				"Little evidence in working out volume of cuboids."
+			],
+			"Uses IT devices for learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
+		},
+		"capacity" : {
+			"Measure capacity in litres by filling and emptying." : [
+				"Measures capacity in litres by filling and emptying accurately and with ease.",
+				"Measures capacity in litres by filling and emptying accurately.",
+				"Inconsistently measures capacity in litres by filling and emptying.",
+				"Little evidence in measuring capacity in litres by filling and emptying."
+			],
+			"Measure Capacity using ½ litres and ¼ litres." : [
+				"Measures capacity using ½ litres and ¼ litres accurately and with ease.",
+				"Measures capacity using ½ litres and ¼ litres accurately.",
+				"Inconsistently measures capacity using ½ litres and ¼ litres.",
+				"Little evidence in measuring capacity using ½ litres and ¼ litres."
+			],
+			"Add Capacity in litres." : [
+				"Adds capacity in litres correctly and with ease.",
+				"Adds capacity in litres correctly.",
+				"Inconsistently adds capacity in litres.",
+				"Little evidence in adding capacity in litres."
+			],
+			"Subtract Capacity in litres." : [
+				"Subtracts capacity in litres correctly and with ease.",
+				"Subtracts capacity in litres correctly.",
+				"Inconsistently subtracts capacity in litres.",
+				"Little evidence in subtracting capacity in litres."
+			],
+			"Uses IT devices for learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment ef ficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
+		},
+		"time" : {
+			"Read time in a.m and p.m." : [
+				"Reads time in a.m and p.m. correctly and with ease.",
+				"Reads time in a.m and p.m. correctly.",
+				"Inconsistently reads time in a.m and p.m.",
+				"Little evidence in reading time in a.m and p.m."
+			],
+			"Tell time in a.m and p.m." : [
+				"Tells time in a.m and p.m. correctly and with ease.",
+				"Tells time in a.m and p.m. correctly.",
+				"Inconsistently tells time in a.m and p.m.",
+				"Little evidence in telling time in a.m and p.m."
+			],
+			"Estimate time using a.m and p.m." : [
+				"Estimates time accurately and with ease.",
+				"Estimates time accurately." ,
+				"Inconsistently estimates time.",
+				"Little evidence in estimating time."
+			],
+			"Convert units of time." : [
+				"Converts units of time correctly and with ease.",
+				"Converts units of time correctly.",
+				"Inconsistently converts units of time.",
+				"Little evidence in converting units of time."
+			],
+			"Measure and record time durations in hours and minutes." : [
+				"Measures and records time durations in hours and",
+				"minutes accurately and with ease.",
+				"Measures and records time durations in hours and minutes accurately.",
+				"Inconsistently measures and records time in hours and minutes."
+			],
+			"Little evidence in measuring and recording time in hours and minutes." : [
+				"Work out addition involving units of time.",
+				"Adds units of time correctly and with ease.",
+				"Adds units of time correctly. Inconsistently adds units of time.",
+				"Little evidence in adding units of time."
+			],
+			"Work out subtraction involving units of time." : [
+				"Subtracts units of time correctly and with ease.",
+				"Subtracts units of time correctly.",
+				"Inconsistently subtracts units of time.",
+				"Little evidence in subtracting units of time."
+			],
+			"Uses IT devices for learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."	
+			]
+		},
+		"money" : {
+			"Clockwise and anticlockwise turn." :[
+				"Turns clockwise and anticlockwise accurately and with ease.",
+				"Turns clockwise and anticlockwise accurately.",
+				"Inconsistently turns clockwise and anticlockwise.",
+				"Little evidence in turning clockwise and anticlockwise."
+			],
+			"Quarter, half and full turn." : [
+				"Demonstrates quarter, half and full turn accurately and with ease.",
+				"Demonstrates quarter, half and full turn accurately.",
+				"Inconsistently Demonstrates quarter, half and full turn.",
+				"Little evidence in demonstrating quarter, half and full turn accurately."
+			],
+			"Identify turns." : [
+				"Identifies quarter, half and full turn correctly and with ease.", 
+				"Identifies quarter, half and full turn correctly.",
+				"Inconsistently identifies quarter, half and full turn.",
+				"Little evidence in identifying quarter, half and full turn."
+			],
+			"Uses IT devices for learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
+		}
+	},
+	"geometry" : {
+		"angles" : {
+			"Identify Angles." : [
+				"Identifies angles correctly and with ease.",
+				"Identifies angles correctly",
+				"Inconsistently identifies angles.",
+				"Little evidence in identifying angles."
+			],
+			"Identify Right angles." : [
+				"Identifies right angles correctly and with ease.",
+				"Identifies right angles correctly.",
+				"Inconsistently identifies right angles.",
+				"Little evidence in identifying right angles."
+			],
+			"Identify Acute angles." : [
+				"Identifies acute angles correctly and with ease.",
+				"Identifies acute angles correctly.",
+				"Inconsistently identifies acute angles.",
+				"Little evidence in identifying acute angles."
+			],
+			"Identify Obtuse angles." : [
+				"Identifies obtuse angles correctly and with ease.",
+				"Identifies obtuse angles correctly.",
+				"Inconsistently identifies obtuse angles.",
+				"Little evidence in identifying obtuse angles."
+			],
+			"Identify Reflex angles." : [
+				"Identifies reflex angles correctly and with ease.",
+				"Identifies reflex angles correctly.",
+				"Inconsistently identifies reflex angles.",
+				"Little evidence in identifying reflex angles."
+			],
+			"Compare angles." : [
+				"Compares angles correctly and with ease.",
+				"Compares angles correctly.",
+				"Inconsistently compares angles.",
+				"Little evidence in comparing angles."
+			],
+			"Uses IT devices for learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
+		},
+		"2-D shapes" : {
+			"Identify different shapes in the environment." : [
+				"Identifies different shapes in the environment correctly and with ease.",
+				"Identifies different shapes in the environment correctly.",
+				"Inconsistently identifies different shapes in the environment.",
+				"Little evidence in identifying different shapes in the environment."
+			],
+			"Identify lines of symmetry." : [
+				"Identifies lines of symmetry correctly and with ease.",
+				"Identifies lines of symmetry correctly.",
+				"Inconsistently identifies lines of symmetry.",
+				"Little evidence in identifying lines of symmetry."
+			],
+			"Make patterns using different shapes." : [
+				"Makes patterns using different shapes fast and effectively.",
+				"Identifies patterns using different shapes effectively.",
+				"Inconsistently identifies patterns using different shapes.",
+				"Little evidence in making patterns using different shapes."	
+			],
+			"Identify properties of squares." : [
+				"Identifies properties of squares correctly and with ease.",
+				"Identifies properties of squares correctly.",
+				"Inconsistently identifies properties of squares.",
+				"Little evidence in identifying properties of squares."
+			],
+			"Identify properties of rectangles." : [
+				"Identifies properties of rectangles correctly and with ease.",
+				"Identifies properties of rectangles correctly.",
+				"Inconsistently identifies properties of rectangles.",
+				"Little evidence in identifying properties of rectangles."
+			],
+			"Identify properties of triangle." : [
+				"Identifies properties of triangles correctly and with ease.",
+				"Identifies properties of triangles correctly.",
+				"Inconsistently identifies properties of triangles.",
+				"Little evidence in identifying properties of triangles."
+			],
+			"Uses IT devices for learning and enjoyment." : [
+				"Uses IT devices for learning and enjoyment fast and efficiently.",
+				"Uses IT devices for learning and enjoyment efficiently.",
+				"Inconsistently uses IT devices for learning and enjoyment.",
+				"Little evidence in using IT devices for learning and enjoyment."
+			]
+		}
+	}
+}
