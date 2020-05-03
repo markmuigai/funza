@@ -24,7 +24,7 @@ class Classroom extends Model
         return $this->belongsTo('App\Grade');
     }
 
-    // Fetch students of a class
+    // Fetch students of a class ever
     public function students()
     {
         return $this->belongsToMany('App\Student');
@@ -33,5 +33,13 @@ class Classroom extends Model
     public function classroomSubjects()
     {
         return $this->hasMany('App\ClassroomSubject');
+    }
+
+    // Fetch curent students of a class
+    public function currentStudents()
+    {
+        return $this->students->filter(function($student){
+            return $student->currentClass()->name == $this->name;
+        });
     }
 }

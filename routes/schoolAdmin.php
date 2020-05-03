@@ -52,3 +52,6 @@ Route::resource('grades', 'GradeController');
 
 // Show classroom teachers
 Route::get('grade/{grade}/classroom/{classroom}/teachers', 'ClassroomController@showTeachers')->name('grade.classroom.teacher.index');
+
+// Show classroom students
+Route::get('grade/{grade}/classroom/{classroom}/students', 'ClassroomController@showStudents')->name('grade.classroom.student.index');

@@ -36,7 +36,7 @@
 														<a href="#" class="btn btn-primary btn-sm">View Class Performance</a>
 														<a href="{{ Route('schoolAdmin.grade.classroom.teacher.index', ['grade' => $grade, 'classroom' => $classroom])}}"
 																class="btn btn-success btn-sm">View Teachers</a>
-														<a href="#" class="btn btn-secondary btn-sm">View Students</a>
+														<a href="{{ Route('schoolAdmin.grade.classroom.student.index', ['grade' => $grade, 'classroom' => $classroom])}}" class="btn btn-secondary btn-sm">View Students</a>
 													</td>
 											</tr>
 										@endforeach

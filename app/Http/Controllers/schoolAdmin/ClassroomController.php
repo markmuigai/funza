@@ -96,5 +96,14 @@ class ClassroomController extends Controller
         ]);
     }
 
-    
+    /**
+     * Show students
+     */
+    public function showStudents(Grade $grade, Classroom $classroom)
+    {
+        return view('schoolAdmin.grade.student.index',[
+            'students' => $classroom->currentStudents()->paginate(6),
+            'classroom' => $classroom
+        ]);
+    }
 }

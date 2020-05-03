@@ -23,7 +23,7 @@ class Student extends Model
     /**
      * Fetch classes of a student
      */
-    public function classroom()
+    public function classrooms()
     {
         return $this->belongsToMany('App\Classroom');
     }
@@ -33,6 +33,6 @@ class Student extends Model
      */
     public function currentClass()
     {
-        return $this->classroom()->wherePivot('status', true)->first();
+        return $this->classrooms()->wherePivot('status', true)->first();
     }
 }
