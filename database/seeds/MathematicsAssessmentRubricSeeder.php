@@ -47,12 +47,38 @@ class MathematicsAssessmentRubricSeeder extends Seeder
                         'name' => $outcome
                     ]);
 
+                    // Outcome option counter
+                    $outcome_option_count = 1;
+
                     // Loop through all substrands
                     foreach ($outcomeOptions as $outcomeOption) {
+                        // Calculate score
+                        switch ($outcome_option_count) {
+                            case 1:
+                                $score = 1;
+                                break;
+                            case 2:
+                                $score = 2.5;
+                                break;
+                            case 3:
+                                $score = 4;
+                                break;
+                            case 4:
+                                $score = 5;
+                                break;
+                        }
+
                         // Create outcome option
                         $outcome->outcomeOptions()->updateOrCreate(
-                            ['name' => $outcomeOption], ['name' => $outcomeOption]
+                            ['name' => $outcomeOption],
+                            [
+                                'name' => $outcomeOption,
+                                'score' => $score
+                            ]
                         );
+
+                        // Increment
+                        $outcome_option_count++;
                     }
                 }
                 

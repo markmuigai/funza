@@ -9,7 +9,7 @@ class OutcomeResult extends Model
     /**
      * Attributes that are mass assignable
      */
-    protected $fillable = ['student_id','outcome_id', 'result'];
+    protected $fillable = ['student_id','outcome_id', 'score'];
 
     // fetch student for the result
     public function student()

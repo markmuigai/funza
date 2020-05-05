@@ -17,7 +17,7 @@ class CreateOutcomeResultsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('student_id');
             $table->unsignedInteger('outcome_id');
-            $table->enum('result', ['weak', 'average', 'good' ,'outstanding']);
+            $table->integer('score');
             $table->timestamps();
         });
     }
