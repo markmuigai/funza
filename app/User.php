@@ -65,6 +65,20 @@ class User extends Authenticatable
                                 ->first();
     }
 
+    // Fetch classroom subject instances
+    public function classroomSubjects()
+    {
+        return $this->hasMany('App\ClassroomSubject');
+    }
+
+    // Fetch classes a teacher has been assigned to
+    public function assignedClasses()
+    {
+        return $this->classroomSubjects->map(function($classroomSubject){
+            return $classroomSubject->classroom;
+        });
+    }
+
     // Fetch subjects teaching for a certain class 
     public function subjectsForClass($class_id)
     {

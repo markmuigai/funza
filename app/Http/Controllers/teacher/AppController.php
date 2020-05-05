@@ -15,7 +15,7 @@ class AppController extends Controller
     public function dashboard()
     {
         return view('teacher.dashboard',[
-            'classes' => Grade::where('name', 3)->get()->first()->classrooms
+            'classes' => auth()->user()->assignedClasses()
         ]);
     }
 }

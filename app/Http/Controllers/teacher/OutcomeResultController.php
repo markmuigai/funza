@@ -5,6 +5,7 @@ namespace App\Http\Controllers\teacher;
 use App\Topic;
 use App\Subject;
 use App\Classroom;
+use App\Substrand;
 use App\outcomeResult;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,12 +30,14 @@ class OutcomeResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Classroom $classroom, Subject $subject , Topic $topic)
+    public function create(Classroom $classroom, Subject $subject , Substrand $substrand)
     {
+        // return $substrand;
+
         return view('teacher.outcome-result.create',[
             'classroom' => $classroom,
             'subject' => $subject,
-            'topic' => $topic
+            'substrand' => $substrand
         ]);
     }
 
@@ -44,8 +47,10 @@ class OutcomeResultController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Classroom $classroom, Subject $subject , Topic $topic)
+    public function store(Request $request, Classroom $classroom, Subject $subject , Substrand $substrand)
     {   
+        return $request->all();
+
         // Create for each student
         foreach($request->students as $student_id){
             foreach($request->results as $outcome_id => $result){

@@ -3,13 +3,13 @@
     
 @section('content')
   @component('components.breadcrumb',[
-    'title' => 'Assess '.$topic->name.' outcomes'
+    'title' => 'Assess '.$substrand->name.' outcomes'
   ])  
   @endcomponent
 
   <section class="py-8 py-md-10">
     <div class="container">
-      <form action="{{ Route('teacher.classroom.subject.topic.outcome-result.store', ['classroom' => $classroom, 'subject'=> $subject, 'topic' => $topic]) }}" method="POST">
+      <form action="{{ Route('teacher.classroom.subject.topic.outcome-result.store', ['classroom' => $classroom, 'subject'=> $subject, 'substrand' => $substrand]) }}" method="POST">
         @csrf
         <div class="card">
           <div class="card-header bg-success text-white">
@@ -23,62 +23,28 @@
           </select>
           </div>
         </div>
-        <div class="table-responsive-sm table-cart">
-            <table class="table mb-0">
-              <thead>
-                <tr>
-                  <th scope="col">Student's Ability To:</th>
-                  <th scope="col">Weak</th>
-                  <th scope="col">Average</th>
-                  <th scope="col">Good</th>
-                  <th scope="col">Outstanding</th>
-                </tr>
-              </thead>
-              <tbody>
-                  @foreach ($topic->outcomes as $outcome)
-                  <tr>
-                    <td>{{ $outcome->name }}</td>
-                    <td>
-                      <div class="pretty p-icon p-round p-pulse">
-                          <input type="radio" name="results[{{$outcome->id}}]" value="weak"/>
-                          <div class="state p-danger">
-                              <i class="icon mdi mdi-check"></i>
-                              <label></label>
-                          </div>
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <span style="font-weight: 600">STUDENT'S ABILITY TO</span>
+          </div>
+          <div class="card-body border bg-white">
+              @foreach ($substrand->outcomes as $outcome)
+                <h4>{{ $outcome->name }}</h4>
+                @foreach ($outcome->outcomeOptions as $outcomeOption)
+                  <div class="form-check my-1">
+                    <div class="pretty p-icon p-round p-pulse">
+                      <input type="radio" name="results[{{$outcome->id}}]" value="{{ $outcomeOption->id }}"/>
+                      <div class="state p-danger">
+                          <i class="icon mdi mdi-check"></i>
+                          <label>{{ $outcomeOption->name }}</label>
                       </div>
-                    </td>
-                    <td>
-                      <div class="pretty p-icon p-round p-pulse">
-                          <input type="radio" name="results[{{$outcome->id}}]" value="average"/>
-                          <div class="state p-warning">
-                              <i class="icon mdi mdi-check"></i>
-                              <label></label>
-                          </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="pretty p-icon p-round p-pulse">
-                        <input type="radio" name="results[{{$outcome->id}}]" value="good"/>
-                          <div class="state p-primary">
-                              <i class="icon mdi mdi-check"></i>
-                              <label></label>
-                          </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="pretty p-icon p-round p-pulse">
-                        <input type="radio" name="results[{{$outcome->id}}]" value="outstanding"/>
-                          <div class="state p-success">
-                              <i class="icon mdi mdi-check"></i>
-                              <label></label>
-                          </div>
-                      </div>
-                    </td>
-                  </tr>
-                  @endforeach
-              </tbody>
-            </table>
+                    </div>
+                  </div>
+                @endforeach
+              @endforeach
+          </div>
         </div>
+
         <button class="btn btn-primary my-3" type="submit">Submit</button>
       </form>
     </div>

@@ -50,7 +50,7 @@ class ClassroomController extends Controller
         return view('teacher.classroom.show',[
             'classroom' => $classroom,
             'subjects' => $classroom->grade->subjects()->paginate(8),
-            'students' => $classroom->students()->paginate(8)
+            'students' => $classroom->currentStudents()->paginate(8)
         ]);
     }
 

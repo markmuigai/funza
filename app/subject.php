@@ -23,4 +23,10 @@ class Subject extends Model
     {
         return $this->hasMany('App\Strand');
     }
+
+    // Fetch substrands for a topic
+    public function substrands()
+    {
+        return $this->hasManyThrough('App\Substrand', 'App\Strand');
+    }
 }

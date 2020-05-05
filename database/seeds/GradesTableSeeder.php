@@ -29,21 +29,21 @@ class GradesTableSeeder extends Seeder
             'name' => '2'
         ]);
 
-        $grade = Grade::create([
+        Grade::create([
             'name' => '3'
         ]);
 
+        $grade = Grade::create([
+            'name' => '4'
+        ]);
+        
         // Fetch all subjects
         $subjects = Subject::all();
         
-        // Assign subjects for grade 3
+        // Assign subjects for grade 4
         foreach($subjects as $subject){
             $grade->subjects()->attach($subject->id);
         }
-
-        Grade::create([
-            'name' => '4'
-        ]);
 
         Grade::create([
             'name' => '5'

@@ -51,7 +51,7 @@ class SubjectController extends Controller
         return view('teacher.subject.show',[
             'classroom' => $classroom,
             'subject' => $subject,
-            'topics' => $subject->topics()->paginate(10)
+            'substrands' => $subject->substrands->paginate(10)
         ]);
     }
 

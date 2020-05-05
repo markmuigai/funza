@@ -385,6 +385,25 @@ MONEY
 "Inconsistently uses IT devices for learning and enjoyment.",
 "Little evidence in using IT devices for learning and enjoyment.",
 
+POSITION AND DIRECCTION
+"Clockwise and anticlockwise turn.",
+"Turns clockwise and anticlockwise accurately and with ease.",
+"Turns clockwise and anticlockwise accurately.",
+"Inconsistently turns clockwise and anticlockwise.",
+"Little evidence in turning clockwise and anticlockwise.",
+"Quarter, half and full turn. Demonstrates quarter, half and full turn accurately and with ease.",
+"Demonstrates quarter, half and full turn accurately.",
+"Inconsistently Demonstrates quarter, half and full turn.",
+"Little evidence in demonstrating quarter, half and full turn accurately.",
+"Identify turns. Identifies quarter, half and full turn correctly and with ease.",
+"Identifies quarter, half and full turn correctly.",
+"Inconsistently identifies quarter, half and full turn.",
+"Little evidence in identifying quarter, half and full turn.",
+"Uses IT devices for learning and enjoyment.",
+"Uses IT devices for learning and enjoyment fast and efficiently.",
+"Uses IT devices for learning and enjoyment efficiently.",
+"Inconsistently uses IT devices for learning and enjoyment.",
+"Little evidence in using IT devices for learning and enjoyment.",
 
 ANGLES
 "Identify Angles. Identifies angles correctly and with ease.",
@@ -491,3 +510,4 @@ USE OF LETTERS
 "Inconsistently uses IT devices for learning and enjoyment."
 "Little evidence in using IT devices for learning and enjoyment."
 
+JAN 4 

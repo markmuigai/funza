@@ -1,0 +1,69 @@
+{
+    "numbers" : { 
+		"whole numbers" : [
+			20
+		],
+		"addition" : [
+			8
+		],
+		"subtraction" : [
+			8
+		],
+		"multiplication" : [
+			8
+		],
+		"division" : [
+			8
+		],
+		"fractions" : [
+			6
+		],
+		"decimals" : [
+			10
+		]
+	},
+	"measurements" : {
+		"length" : [
+			10
+		],
+		"area" : [
+			8
+		],
+		"mass" : [
+			6
+		],
+		"volume" : [
+			6
+		],
+		"capacity" : [
+			6
+		],
+		"time" : [
+			10
+		],
+		"money" : [
+			8
+		]
+	},
+	"geometry" : {
+		"position and direction" : [
+			4
+		],
+		"angles" : [
+			4
+		],
+		"2-D shapes" : [
+			6
+		]
+	},
+	"data handling" : {
+		"data" : [
+			8
+		]
+	},
+	"algebra" : {
+		"user of letters" : [
+			6
+		]
+	}
+}
