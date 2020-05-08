@@ -14,14 +14,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RolesTableSeeder::class,
             SchoolsTableSeeder::class,
-            // UsersTableSeeder::class,
             SubjectsTableSeeder::class,
             TopicsTableSeeder::class,
-            // OutcomesTableSeeder::class,
             GradesTableSeeder::class,
             ClassroomsTableSeeder::class,
             StudentsTableSeeder::class,
-            MathematicsAssessmentRubricSeeder::class
+            MathematicsAssessmentRubricSeeder::class,
+            LessonPlanTableSeeder::class
+            // UsersTableSeeder::class,
             // OutcomeResultsTableSeeder::class
         ]);
     }

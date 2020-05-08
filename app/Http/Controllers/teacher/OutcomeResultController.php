@@ -34,7 +34,6 @@ class OutcomeResultController extends Controller
     public function create(Classroom $classroom, Subject $subject , Substrand $substrand)
     {
         // return $substrand;
-
         return view('teacher.outcome-result.create',[
             'classroom' => $classroom,
             'subject' => $subject,
@@ -50,7 +49,7 @@ class OutcomeResultController extends Controller
      */
     public function store(Request $request, Classroom $classroom, Subject $subject , Substrand $substrand)
     {   
-        // return $request->all();
+        // Check if the students have been assessed before
 
         // Create for each student
         foreach($request->students as $student_id){

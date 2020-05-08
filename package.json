@@ -31,6 +31,7 @@
         "animate.css": "^3.7.2",
         "datatables.net-bs4": "^1.10.19",
         "isotope": "^1.0.0-alpha.3",
+        "loadingio-bar": "^0.1.1",
         "nouislider": "^14.1.1",
         "owl.carousel": "^2.3.4",
         "pretty-checkbox": "^3.0.3",

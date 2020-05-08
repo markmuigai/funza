@@ -22,4 +22,5 @@ try {
     require('@fancyapps/fancybox');
     require( 'datatables.net-bs4');
     require('bootstrap');
+    require('loadingio-bar');
 } catch (e) {}

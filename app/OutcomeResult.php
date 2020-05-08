@@ -30,6 +30,6 @@ class OutcomeResult extends Model
             $query->where('id', $student_id);
         })->whereHas('outcome', function($query) use($topic_id){
             $query->where('id', $topic_id);
-        })->first();
+        });
     } 
 }

@@ -58,6 +58,9 @@ $fa-font-path : "~@fortawesome/fontawesome-free/webfonts";
 // import mdl font
 @import '~@mdi/font/scss/materialdesignicons';
 
+// Import loadingbar.io
+@import '~loadingio-bar/dist/loading-bar';
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

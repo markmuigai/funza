@@ -15,14 +15,14 @@
             <div class="card-header" id="headingOne"> 
                 <h4 class="float-left m-3">{{ $substrand->name }}</h4>
                 <button class="btn btn-warning float-right m-2 text-white btn-sm" type="button" data-toggle="collapse" data-target="#collapseOne{{$substrand->id}}" aria-expanded="true" aria-controls="collapseOne{{$substrand->id}}">
-                  Update Topic Details
+                  Mark as Complete
                 </button>
                 <a class="btn btn-primary btn-sm float-right m-2" 
                   href="{{ Route('teacher.classroom.subject.topic.outcome-result.create', ['classroom' => $classroom, 'subject'=> $subject, 'substrand' => $substrand]) }}">
                   Assess Learning outcomes
                 </a>
                 <button class="btn btn-success float-right m-2 text-white btn-sm" type="button" data-toggle="collapse" data-target="#collapseOne{{$substrand->id}}" aria-expanded="true" aria-controls="collapseOne{{$substrand->id}}">
-                  View Learning Outcomes
+                  Lesson Plan
                 </button>
             </div>
         
