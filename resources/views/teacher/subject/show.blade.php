@@ -18,7 +18,7 @@
                   Mark as Complete
                 </button>
                 <a class="btn btn-primary btn-sm float-right m-2" 
-                  href="{{ Route('teacher.classroom.subject.topic.outcome-result.create', ['classroom' => $classroom, 'subject'=> $subject, 'substrand' => $substrand]) }}">
+                  href="{{ Route('teacher.classroom.subject.topic.outcome-result.create', ['classroom' => $classroom, 'subject'=> $subject, 'substrand' => $substrand, 'assessment_count' => $substrand->assessmentcount($classroom->currentStudents())]) }}">
                   Assess Learning outcomes
                 </a>
                 <button class="btn btn-success float-right m-2 text-white btn-sm" type="button" data-toggle="collapse" data-target="#collapseOne{{$substrand->id}}" aria-expanded="true" aria-controls="collapseOne{{$substrand->id}}">

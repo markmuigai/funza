@@ -9,7 +9,7 @@ class OutcomeResult extends Model
     /**
      * Attributes that are mass assignable
      */
-    protected $fillable = ['student_id','outcome_id', 'score'];
+    protected $fillable = ['student_id','outcome_id', 'score', 'count'];
 
     // fetch student for the result
     public function student()
@@ -32,4 +32,16 @@ class OutcomeResult extends Model
             $query->where('id', $topic_id);
         });
     } 
+
+    // Fetch outcomeresults for a substrand
+    public function forSubstrand($substrand)
+    {
+        
+    }
+
+    // Get outcome by level
+    public function scopeAssessmentCount($query, $count)
+    {
+        return $query->where('count', $count)->get();
+    }
 }

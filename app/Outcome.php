@@ -13,6 +13,12 @@ class Outcome extends Model
      */
     protected $fillable = ['name'];
 
+    // Get the substrand associated with an outcome
+    public function substrand()
+    {
+        return $this->belongsTo('App\Substrand');
+    }
+
     public function outcomeOptions()
     {
         return $this->hasMany('App\OutcomeOption');

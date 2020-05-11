@@ -31,13 +31,17 @@ class OutcomeResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Classroom $classroom, Subject $subject , Substrand $substrand)
+    public function create(Classroom $classroom, Subject $subject , Substrand $substrand, $assessment_count)
     {
+        // Only return students who have not  been assessed
+
+
         // return $substrand;
         return view('teacher.outcome-result.create',[
             'classroom' => $classroom,
             'subject' => $subject,
-            'substrand' => $substrand
+            'substrand' => $substrand,
+            'assessment_count' => $assessment_count
         ]);
     }
 
@@ -47,17 +51,16 @@ class OutcomeResultController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Classroom $classroom, Subject $subject , Substrand $substrand)
+    public function store(Request $request, Classroom $classroom, Subject $subject , Substrand $substrand, $assessment_count)
     {   
-        // Check if the students have been assessed before
-
         // Create for each student
         foreach($request->students as $student_id){
             foreach($request->results as $outcome_id => $outcome_option_id){
                 OutcomeResult::create([
                     'student_id' => $student_id,
                     'outcome_id' => $outcome_id,
-                    'score' => OutcomeOption::find($outcome_option_id)->score
+                    'score' => OutcomeOption::find($outcome_option_id)->score,
+                    'count' => $request->count
                 ]);
             }
         }

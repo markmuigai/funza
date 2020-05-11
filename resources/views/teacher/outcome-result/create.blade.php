@@ -11,26 +11,23 @@
     <div class="container">
       <div class="row">
         <div
-  data-preset="circle"
-  class="ldBar label-center"
-  data-value="35"
-></div>
+          data-preset="circle"
+          class="ldBar label-center"
+          data-value="35"
+        ></div>
       </div>
       <ul class="nav nav-pills my-3">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Assessment 1</a>
+          <a class="nav-link {{$assessment_count == 1 ? 'active' : ''}}" href="#">Assessment 1</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Assessment 2</a>
+          <a class="nav-link {{$assessment_count == 2 ? 'active' : ''}}" href="#">Assessment 2</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Assessment 3</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link {{$assessment_count == 3 ? 'active' : ''}}" href="#">Assessment 3</a>
         </li>
       </ul>
-      <form action="{{ Route('teacher.classroom.subject.topic.outcome-result.store', ['classroom' => $classroom, 'subject'=> $subject, 'substrand' => $substrand]) }}" method="POST">
+      <form action="{{ Route('teacher.classroom.subject.topic.outcome-result.store', ['classroom' => $classroom, 'subject'=> $subject, 'substrand' => $substrand, 'assessment_count' => $assessment_count]) }}" method="POST">
         @csrf
         <div class="card">
           <div class="card-header bg-success text-white">
@@ -39,9 +36,12 @@
           <div class="card-body border bg-white">
             <select class="select2-select-student w-100" name="students[]" multiple="multiple">
               @foreach ($classroom->currentStudents() as $student)
-                <option value="{{ $student->id }}">{{ $student->name }}</option>    
+                @if($student->assessmentCounter($substrand->id) == $assessment_count-1)
+                  <option value="{{ $student->id }}">{{ $student->name }}</option>    
+                @endif
               @endforeach
           </select>
+          <input type="checkbox" id="checkbox" >Select All
           </div>
         </div>
         <div class="card">
@@ -77,6 +77,15 @@
        $(".select2-select-student").select2({
           placeholder: "Click to select a student",
           allowClear: true
-      });
+        });
+
+        $("#checkbox").click(function(){
+            if($("#checkbox").is(':checked') ){
+                $("select > option").prop("selected","selected");
+            }else{
+                $("select > option").removeAttr("selected");
+            }
+        });
+        // Dynamic assess
      </script>
  @endsection
