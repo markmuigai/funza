@@ -36,6 +36,16 @@ class Student extends Model
         return $this->classrooms()->wherePivot('status', true)->first();
     }
 
+    /**
+     * Fetch all outcome results for a substrand
+     */
+    public function allOutcomeResultsForSubstrand($substrand_id)
+    {
+        return $this->outcomeResults->filter(function($outcome_result) use($substrand_id){
+            return $outcome_result->outcome->substrand->id == $substrand_id; 
+        });
+    }
+
     // Fetch outcome results for a substrand and a certain assessment count
     public function outcomeResultsForSubstrand($substrand_id, $assessment_count)
     {
@@ -48,7 +58,7 @@ class Student extends Model
     // Get assessment counter for a substrand
     public function assessmentCounter($substrand_id)
     {
-        return $this->outcomeResultsForSubstrand($substrand_id)->count()/
+        return $this->allOutcomeResultsForSubstrand($substrand_id)->count()/
                 Substrand::find($substrand_id)->outcomes->count();
     }
 

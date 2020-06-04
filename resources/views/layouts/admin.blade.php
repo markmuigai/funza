@@ -122,13 +122,28 @@
                 Students
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item has-treeview {{ request()->routeIs('schoolAdmin.performance.*') ? 'menu-open' : '' }}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-line orange"></i>
               <p>
                 Performance metrics
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview ml-3">
+              <li class="nav-item {{ request()->routeIs('schoolAdmin.performance.subjects.results.index') ? 'active' : '' }}">
+                <a href="{{ route('schoolAdmin.performance.subjects.results.index') }}" class="nav-link">
+                  <i class="fas fa-users nav-icon"></i>
+                  <p>Subject Performance</p>
+                </a>
+              </li>
+              <li class="nav-item {{ request()->routeIs('schoolAdmin.performance.results.students.index') ? 'active' : '' }}">
+                <a href="{{ route('schoolAdmin.performance.results.students.index') }}" class="nav-link">
+                  <i class="nav-icon fas fa-user-graduate teal"></i>
+                  <p>Student Performance</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -146,15 +161,13 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview ml-3">
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fas fa-users nav-icon"></i>
                   <p>Users</p>
                 </a>
               </li>
-            </ul>
-            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fas fa-school cyan nav-icon"></i>

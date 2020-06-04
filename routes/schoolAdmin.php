@@ -55,3 +55,13 @@ Route::get('grade/{grade}/classroom/{classroom}/teachers', 'ClassroomController@
 
 // Show classroom students
 Route::get('grade/{grade}/classroom/{classroom}/students', 'ClassroomController@showStudents')->name('grade.classroom.student.index');
+
+// Student Performance metrics
+Route::name('performance.results.')->namespace('Performance')->prefix('/performance/results')->group(function () {
+    Route::resource('students', 'StudentController');
+});
+
+// Subject Performance metrics
+Route::name('performance.subjects.')->namespace('subject')->prefix('/performance/subjects')->group(function () {
+    Route::resource('results', 'ResultController');
+});
