@@ -213,7 +213,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2>{{ auth()->user()->schools->first()->name }} Admin</h2>
+            <h2>@yield('header')</h2>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

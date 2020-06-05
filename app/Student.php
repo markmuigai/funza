@@ -37,6 +37,14 @@ class Student extends Model
     }
 
     /**
+     * Fetch a students current grade 
+     */
+    public function currentGrade()
+    {
+        return $this->classrooms()->wherePivot('status', true)->first()->grade;
+    }
+
+    /**
      * Fetch all outcome results for a substrand
      */
     public function allOutcomeResultsForSubstrand($substrand_id)

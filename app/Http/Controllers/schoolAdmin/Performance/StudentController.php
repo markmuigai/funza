@@ -55,7 +55,11 @@ class StudentController extends Controller
     public function show(Student $student)
     {
         //
-        return $student;
+        return view('schoolAdmin.performance.student.show', [
+            'student' => $student,
+            'grades' => Grade::all(),
+            'subjects' => Subject::all()
+        ]);
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('layouts.schoolAdmin')
 @section('page-title', 'School Admin Dashboard')
-    
+@section('header', 'Student performance')
 @section('content')
     <div class="container-fluid pt-4">
         <h2 class="text-center p-2">All Students</h2>
@@ -42,7 +42,7 @@
                     <div class="col-md-2">
                         <button type="submit" class="btn btn-primary">Filter</button>
                     </div>
-                </div>
+                  </div>
                 </div>
               </div>
               <!-- /.box-header -->

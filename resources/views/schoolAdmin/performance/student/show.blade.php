@@ -1,88 +1,99 @@
 @extends('layouts.schoolAdmin')
 @section('page-title', 'School Admin Dashboard')
-    
+@section('header', $student->name.' detailed performance')
 @section('content')
-    <div class="container-fluid pt-4">
-        <h2 class="text-center p-2">All Students</h2>
-        <a href="{{ Route('schoolAdmin.students.create') }}" class="btn btn-primary my-3">Add New Student</a>
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
-          Download Performance PDF
-        </button>
+  <div class="container-fluid">
+    <h3>Performance By Subject</h3>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+          <select name="grade" id="grade" class="form-control">
+              <option value="{{ $student->currentGrade()->id }}">Current Grade: {{ $student->currentGrade()->name }}</option>
+              @foreach ($grades as $grade)
+                  <option value="{{ $grade->id }}">{{ $grade->name }}</option>
+              @endforeach
+          </select>
+      </div>
+      <div class="form-group col-md-4">
+          <select name="subject" id="action" class="form-control">
+              {{-- <option selected>Select subject</option> --}}
+              @foreach ($student->currentGrade()->subjects as $subject)
+                  <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+              @endforeach
+          </select>
+      </div>
+      <div class="col-md-2">
+          <button type="submit" class="btn btn-primary">Filter</button>
+      </div>
     </div>
-    <div class="container-fluid">
-      <div class="card">
-        <div class="card-body">
-          <form style="display: inline-block float-left" action="" method="POST">
-            @csrf
-            <div class="box">
-              <div class="box-header">
-                <div class="box-tools">
-                  <div class="form-row">
-                    <div class="form-group col-md-2">
-                        <select name="grade" id="grade" class="form-control">
-                            <option selected>Grade</option>
-                            @foreach ($grades as $grade)
-                                <option value="{{ $grade->id }}">{{ $grade->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <select name="class" id="class" class="form-control">
-                            <option selected>Class</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <select name="subject" id="action" class="form-control">
-                            <option selected>subject</option>
-                            @foreach ($subjects as $subject)
-                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-primary">Filter</button>
-                    </div>
-                </div>
-                </div>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body table-responsive no-padding">
-                @component('components.schoolAdmin.tables.performance.topics', [
-                  'topics' => $subject->topics,
-                ])   
-                @endcomponent
-                {{-- {{$subject->topics->links()}} --}}
-              </div>
-              <!-- /.box-body -->
+    <div class="row">
+      @php
+        $colors = ['blue', 'green',  'purple', 'red'];
+        $scores = [80,85,70,90];
+        $topics = $subjects->first()->topics
+      @endphp
+      @foreach ($topics->take(4) as $key => $topic)
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-{{$colors[$key]}} text-white">
+            <div class="inner">
+              <h3>{{$scores[$key]}}<sup style="font-size: 20px">%</sup></h3>
+
+              <p>{{ $topic->name }}</p>
             </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Import Students CSV</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <a href="{{ Route('schoolAdmin.students.export.csv-template') }}" class="btn btn-primary">Download CSV Template </a>
-            <a href="{{ Route('schoolAdmin.students.import') }}" class="btn btn-success">Import</a>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer white">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
           </div>
         </div>
+      @endforeach
+    </div>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTopicsPerformance" aria-expanded="false" aria-controls="collapseTopicsPerformance">View All Strands</button>
+    <div class="collapse mt-4" id="collapseTopicsPerformance">
+      <div class="row">
+        @foreach ($topics->except($topics->take(4)->keys()->toArray()) as $key => $topic)
+          <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-{{$colors[$key % 4]}} text-white">
+              <div class="inner">
+                <h3>{{$scores[$key % 4]}}<sup style="font-size: 20px">%</sup></h3>
+  
+                <p>{{ $topic->name }}</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer white">
+                More info <i class="fa fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+        @endforeach
       </div>
     </div>
+    <div class="card mt-5">
+      <div class="card-header">
+        Overall performance Chart
+      </div>
+      <div class="card-body">
+        scores
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('js')
 <script type="text/javascript">
+      $(".btn[data-toggle='collapse']").click(function() {
+          if ($(this).text() == 'View All Strands') {
+              $(this).text('View less');
+          } else {
+              $(this).text('View All Strands');
+          }
+      });
+
     $(document).ready(function() {
         $('select[name="class"]').attr('disabled', 'disabled');
 				$('select[name="subject"]').attr('disabled', 'disabled');
