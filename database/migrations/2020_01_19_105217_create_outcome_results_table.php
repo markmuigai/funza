@@ -18,7 +18,7 @@ class CreateOutcomeResultsTable extends Migration
             $table->unsignedInteger('student_id');
             $table->unsignedInteger('outcome_id');
             $table->unsignedInteger('count');
-            $table->integer('score');
+            $table->unsignedInteger('outcome_option_id');
             $table->timestamps();
         });
     }

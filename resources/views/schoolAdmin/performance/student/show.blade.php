@@ -29,21 +29,21 @@
       @php
         $colors = ['blue', 'green',  'purple', 'red'];
         $scores = [80,85,70,90];
-        $topics = $subjects->first()->topics
+        $strands = $subjects->first()->strands
       @endphp
-      @foreach ($topics->take(4) as $key => $topic)
+      @foreach ($strands->take(4) as $key => $strand)
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-{{$colors[$key]}} text-white">
             <div class="inner">
               <h3>{{$scores[$key]}}<sup style="font-size: 20px">%</sup></h3>
 
-              <p>{{ $topic->name }}</p>
+              <p>{{ $strand->name }}</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer white">
+            <a href="{{ Route('schoolAdmin.performance.results.students.strands.show', ['student' => $student, 'strand' => $strand  ]) }}" class="small-box-footer white">
               More info <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
@@ -53,19 +53,19 @@
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTopicsPerformance" aria-expanded="false" aria-controls="collapseTopicsPerformance">View All Strands</button>
     <div class="collapse mt-4" id="collapseTopicsPerformance">
       <div class="row">
-        @foreach ($topics->except($topics->take(4)->keys()->toArray()) as $key => $topic)
+        @foreach ($strands->except($strands->take(4)->keys()->toArray()) as $key => $strand)
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-{{$colors[$key % 4]}} text-white">
               <div class="inner">
                 <h3>{{$scores[$key % 4]}}<sup style="font-size: 20px">%</sup></h3>
   
-                <p>{{ $topic->name }}</p>
+                <p>{{ $strand->name }}</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer white">
+              <a href="{{ Route('schoolAdmin.performance.results.students.strands.show', ['student' => $student, 'strand' => $strand  ]) }}" class="small-box-footer white">
                 More info <i class="fa fa-arrow-circle-right"></i>
               </a>
             </div>

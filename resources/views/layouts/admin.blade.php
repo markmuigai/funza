@@ -131,13 +131,13 @@
               </p>
             </a>
             <ul class="nav nav-treeview ml-3">
-              <li class="nav-item {{ request()->routeIs('schoolAdmin.performance.subjects.results.index') ? 'active' : '' }}">
+              <li class="nav-item {{ request()->routeIs('schoolAdmin.performance.subjects.*') ? 'active' : '' }}">
                 <a href="{{ route('schoolAdmin.performance.subjects.results.index') }}" class="nav-link">
                   <i class="fas fa-users nav-icon"></i>
                   <p>Subject Performance</p>
                 </a>
               </li>
-              <li class="nav-item {{ request()->routeIs('schoolAdmin.performance.results.students.index') ? 'active' : '' }}">
+              <li class="nav-item {{ request()->routeIs('schoolAdmin.performance.results.*') ? 'active' : '' }}">
                 <a href="{{ route('schoolAdmin.performance.results.students.index') }}" class="nav-link">
                   <i class="nav-icon fas fa-user-graduate teal"></i>
                   <p>Student Performance</p>
@@ -234,10 +234,10 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2020 funza.com</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.0
+      <b>Version</b> Beta
     </div>
   </footer>
 

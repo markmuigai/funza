@@ -59,7 +59,7 @@ class OutcomeResultController extends Controller
                 OutcomeResult::create([
                     'student_id' => $student_id,
                     'outcome_id' => $outcome_id,
-                    'score' => OutcomeOption::find($outcome_option_id)->score,
+                    'outcome_option_id' => $outcome_option_id,
                     'count' => $request->count
                 ]);
             }

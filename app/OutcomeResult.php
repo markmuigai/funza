@@ -9,7 +9,7 @@ class OutcomeResult extends Model
     /**
      * Attributes that are mass assignable
      */
-    protected $fillable = ['student_id','outcome_id', 'score', 'count'];
+    protected $fillable = ['student_id','outcome_id', 'outcome_option_id', 'count'];
 
     // fetch student for the result
     public function student()
@@ -21,6 +21,14 @@ class OutcomeResult extends Model
     public function outcome()
     {
         return $this->belongsTo('App\Outcome');
+    }
+
+    /**
+     * Fetch the outcome option associated with a result
+     */
+    public function outcomeOption()
+    {
+        return $this->belongsTo('App\OutcomeOption', 'outcome_option_id');
     }
 
     // Fetch outcome result for a specific outcome and student

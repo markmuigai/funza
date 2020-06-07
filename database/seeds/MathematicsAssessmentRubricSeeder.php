@@ -55,16 +55,16 @@ class MathematicsAssessmentRubricSeeder extends Seeder
                         // Calculate score
                         switch ($outcome_option_count) {
                             case 1:
-                                $score = 1;
+                                $score = 5;
                                 break;
                             case 2:
-                                $score = 2.5;
-                                break;
-                            case 3:
                                 $score = 4;
                                 break;
+                            case 3:
+                                $score = 2.5;
+                                break;
                             case 4:
-                                $score = 5;
+                                $score = 1;
                                 break;
                         }
 
