@@ -131,13 +131,13 @@
               </p>
             </a>
             <ul class="nav nav-treeview ml-3">
-              <li class="nav-item {{ request()->routeIs('schoolAdmin.performance.subjects.*') ? 'active' : '' }}">
-                <a href="{{ route('schoolAdmin.performance.subjects.results.index') }}" class="nav-link">
+              <li class="nav-item {{ request()->routeIs('schoolAdmin.performance.results.subjects.*') ? 'active' : '' }}">
+                <a href="{{ route('schoolAdmin.performance.results.subjects.index') }}" class="nav-link">
                   <i class="fas fa-users nav-icon"></i>
                   <p>Subject Performance</p>
                 </a>
               </li>
-              <li class="nav-item {{ request()->routeIs('schoolAdmin.performance.results.*') ? 'active' : '' }}">
+              <li class="nav-item {{ request()->routeIs('schoolAdmin.performance.results.students*') ? 'active' : '' }}">
                 <a href="{{ route('schoolAdmin.performance.results.students.index') }}" class="nav-link">
                   <i class="nav-icon fas fa-user-graduate teal"></i>
                   <p>Student Performance</p>

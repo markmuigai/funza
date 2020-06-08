@@ -1,8 +1,52 @@
 @extends('layouts.schoolAdmin')
 @section('page-title', 'School Admin Dashboard')
-@section('header', 'Student performance')
+@section('header', 'Subject performance')
 @section('content')
-    <div class="container-fluid">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-4 col-xs-6">
+						<!-- small box -->
+						<div class="small-box bg-blue text-white">
+							<div class="inner">
+									<h3>Mathematics</h3>
+
+									<p>Best Performance</p>
+							</div>
+							<div class="icon">
+									<i class="ion ion-stats-bars"></i>
+							</div>
+						</div>
+				</div>
+				<div class="col-lg-4 col-xs-6">
+					<!-- small box -->
+					<div class="small-box bg-green text-white">
+						<div class="inner">
+								<h3>English Language Activities</h3>
+
+								<p>Worst Performance</p>
+						</div>
+						<div class="icon">
+								<i class="ion ion-stats-bars"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-xs-6">
+					<!-- small box -->
+					<div class="small-box bg-purple text-white">
+						<div class="inner">
+								<h3>20%</h3>
+
+								<p>Assessment Completion</p>
+						</div>
+						<div class="icon">
+								<i class="ion ion-stats-bars"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    <div class="container-fluid pt-4">
         <a href="{{ Route('schoolAdmin.students.create') }}" class="btn btn-primary my-3">Add New Student</a>
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
           Download Performance PDF
@@ -21,21 +65,13 @@
                         <select name="grade" id="grade" class="form-control">
                             <option selected>Grade</option>
                             @foreach ($grades as $grade)
-                                <option value="{{ $grade->id }}">{{ $grade->name }}</option>
+                                <option value="{{ $grade->id }}">Grade: {{ $grade->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-2">
                         <select name="class" id="class" class="form-control">
                             <option selected>Class</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <select name="subject" id="action" class="form-control">
-                            <option selected>subject</option>
-                            @foreach ($subjects as $subject)
-                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                            @endforeach
                         </select>
                     </div>
                     <div class="col-md-2">
@@ -46,12 +82,10 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body table-responsive no-padding">
-                @component('components.schoolAdmin.tables.students.performance', [
-                  'students' => $students,
+                @component('components.schoolAdmin.tables.subjects.performance', [
                   'subjects' => $subjects
                 ])   
                 @endcomponent
-                {{$students->links()}}
               </div>
               <!-- /.box-body -->
             </div>

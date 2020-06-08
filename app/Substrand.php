@@ -13,6 +13,14 @@ class Substrand extends Model
      */
     protected $fillable = ['name'];
 
+    /**
+     * Fetch the associated strand
+     */
+    public function strand()
+    {
+        return $this->belongsTo('App\Strand');
+    }
+    
     // Get the outcomes of a substrand
     public function outcomes()
     {

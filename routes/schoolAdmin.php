@@ -56,11 +56,17 @@ Route::get('grade/{grade}/classroom/{classroom}/teachers', 'ClassroomController@
 // Show classroom students
 Route::get('grade/{grade}/classroom/{classroom}/students', 'ClassroomController@showStudents')->name('grade.classroom.student.index');
 
-// Student Performance metrics
+// Performance metrics
 Route::name('performance.results.')->namespace('Performance')->prefix('/performance/results')->group(function () {
-    Route::resource('students', 'StudentController');
+    Route::resource('students', 'StudentController');;
+    Route::resource('subjects', 'SubjectController');
     Route::name('students.')->prefix('/students/{student}/')->group(function () {
         Route::resource('strands', 'StrandController');
+    });
+
+    // Subject performance by substrand
+    Route::name('subjects.strand.')->prefix('/subject/{subject}/strand/{strand}/')->group(function () {
+        Route::resource('substrands', 'SubstrandController');
     });
 });
 
