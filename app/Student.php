@@ -124,6 +124,22 @@ class Student extends Model
     }
 
     /**
+     * Fetch substrand percentages
+     */
+    public function assessmentScoresPercentage($substrand_id)
+    {
+        // fetch the number of outcomes for the substrand
+        $outcome_count = Substrand::find($substrand_id)->outcomes->count();
+
+        // maximum score for each assessment
+        $max_score = $outcome_count*5;
+
+        return $this->rawSubstrandScores($substrand_id)->map(function($score) use($max_score){
+            return ($score/$max_score)*100;
+        });
+    }
+
+    /**
      * Fetch total average score for a substrand
      */
     public function averageSubstrandScore($substrand_id)
@@ -137,7 +153,7 @@ class Student extends Model
         // Calculate the maxumum score
         $max_score = $outcome_count * 5 * $assessment_count;
 
-        return ($this->rawSubstrandScores($substrand_id)->sum()/100)*100;
+        return ($this->rawSubstrandScores($substrand_id)->sum()/$max_score)*100;
     }
 
     /**

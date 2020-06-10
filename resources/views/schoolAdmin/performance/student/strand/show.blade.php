@@ -26,7 +26,7 @@
 									<td>{{$student->averageSubstrandScore($substrand->id)}}%</td>
 									<td>{{$student->assessmentsCountForSubstrand($substrand->id)}}</td>
 									<td>
-										@foreach($student->rawSubstrandScores($substrand->id) as $score)
+										@foreach($student->assessmentScoresPercentage($substrand->id) as $score)
 											<span class="badge badge-pill badge-primary rem-2" style="font-size:1.2em">{{$score}}%</span>
 										@endforeach
 									</td>
@@ -70,7 +70,7 @@
 					</div>
 					<div id="collapseOne{{$substrand->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 						<div class="card-body">
-							@if($student->outcomeResultsForSubstrand($substrand->id, 1)->isEmpty())
+							@if($student->outcomeResultsForSubstrand($substrand->id, 2)->isEmpty())
 								<h3>The substrand has not been assessed yet</h3>
 							@else
 								<table class="table table-hover">
