@@ -16,7 +16,7 @@ class CreateOutcomeOptionsTable extends Migration
         Schema::create('outcome_options', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('score');
+            $table->smallInteger('score');
             $table->unsignedInteger('outcome_id');
             $table->timestamps();
         });

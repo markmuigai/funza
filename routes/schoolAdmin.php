@@ -51,10 +51,10 @@ Route::get('csv/students/import', 'StudentController@import')->name('students.im
 Route::resource('grades', 'GradeController');
 
 // Show classroom teachers
-Route::get('grade/{grade}/classroom/{classroom}/teachers', 'ClassroomController@showTeachers')->name('grade.classroom.teacher.index');
+Route::get('grade/{grade}/classroom/{classroom}/teachers', 'ClassroomController@showTeachers')->name('grades.classroom.teacher.index');
 
 // Show classroom students
-Route::get('grade/{grade}/classroom/{classroom}/students', 'ClassroomController@showStudents')->name('grade.classroom.student.index');
+Route::get('grade/{grade}/classroom/{classroom}/students', 'ClassroomController@showStudents')->name('grades.classroom.student.index');
 
 // Performance metrics
 Route::name('performance.results.')->namespace('Performance')->prefix('/performance/results')->group(function () {

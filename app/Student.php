@@ -54,6 +54,14 @@ class Student extends Model
         });
     }
 
+    /**
+     * Get how many assessments have been made for a substrand
+     */
+    public function assessmentsCountForSubstrand($substrand_id)
+    {
+        return $this->allOutcomeResultsForSubstrand($substrand_id)->pluck('count')->unique()->max();
+    }
+
     // Fetch outcome results for a substrand and a certain assessment count
     public function outcomeResultsForSubstrand($substrand_id, $assessment_count)
     {
@@ -73,20 +81,52 @@ class Student extends Model
     /**
      * Get a students score for a substrand
      */
-    public function substrandScore($substrand_id, $assessment_count)
+    public function rawSubstrandScores($substrand_id)
     {
-        $outcome_scores =  $this->outcomeresultsForSubstrand($substrand_id, $assessment_count)->pluck('score');
-
-        // Carry is the inital iteration value
-        // Fetch the total score 
-        $score_total = $outcome_scores->reduce(function ($carry, $score) {
-            return $carry + $score;
-        });
+        // Fetch Number of assessments done for a substrand
+        $assessment_count = $this->assessmentsCountForSubstrand($substrand_id);
 
         // fetch the number of outcomes for the substrand
         $outcome_count = Substrand::find($substrand_id)->outcomes->count();
 
-        // Calculate the average
-        return $average_score = ($score_total/($outcome_count*5))*100;
+        // Calculate the maxumum score
+        $max_score = $outcome_count * 5 * $assessment_count;
+
+        // Array of assessment totals
+        $assessment_results = collect();
+
+        // Iterate through all assessments
+        for($i=1; $i<=$assessment_count; $i++){
+            // Return array of the scores
+            $outcome_scores =  $this->outcomeresultsForSubstrand($substrand_id, $i)
+                ->map(function($item){
+                    return $item->outcomeOption->score;
+                });
+
+            // Fetch the total score 
+            $score_total = $outcome_scores->sum();
+
+            // Append score to assessment results array
+            $assessment_results->push($score_total);
+        }
+
+        return $assessment_results;
+    }
+
+    /**
+     * Fetch total average score for a substrand
+     */
+    public function averageSubstrandScore($substrand_id)
+    {
+        // Fetch Number of assessments done for a substrand
+        $assessment_count = $this->assessmentsCountForSubstrand($substrand_id);
+
+        // fetch the number of outcomes for the substrand
+        $outcome_count = Substrand::find($substrand_id)->outcomes->count();
+
+        // Calculate the maxumum score
+        $max_score = $outcome_count * 5 * $assessment_count;
+
+        return ($this->rawSubstrandScores($substrand_id)->sum()/100)*100;
     }
 }
