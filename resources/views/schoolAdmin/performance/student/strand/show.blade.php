@@ -1,12 +1,48 @@
 @extends('layouts.schoolAdmin')
 @section('page-title', 'School Admin Dashboard')
-@section('header', $student->name.' '.$strand->name.' performance')
+@section('header', $student->name.' '.$strand->name.' performance')	
 @section('content')
 
 	<div class="container-fluid pt-4">
-		<h3>Substrands</h3>
+		<div class="card">
+			<div class="card-header">
+				<h3>Assessed Substrands</h3>
+			</div>
+			<div class="card-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Substrand</th>
+							<th>Total Average score</th>
+							<th>N.o of assessments</th>
+							<th>Assessment scores</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach ($student->substrandsAssessed($strand->id) as $substrand)
+								<tr>
+									<td>{{$substrand->name}}</td>
+									<td>{{$student->averageSubstrandScore($substrand->id)}}%</td>
+									<td>{{$student->assessmentsCountForSubstrand($substrand->id)}}</td>
+									<td>
+										@foreach($student->rawSubstrandScores($substrand->id) as $score)
+											<span class="badge badge-pill badge-primary rem-2" style="font-size:1.2em">{{$score}}%</span>
+										@endforeach
+									</td>
+									<td>
+										<button class="btn btn-primary">
+											View Detailed Results
+										</button>
+									</td>
+								</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
+		</div>
 		<div class="accordion" id="accordionExample">
-			@foreach ($strand->substrands as $substrand)
+			@foreach ($student->substrandsAssessed($strand->id) as $substrand)
 				<div class="card">
 					<div class="card-header" id="headingOne">
 						<h4 class="mb-0">
@@ -15,7 +51,7 @@
 									{{ $substrand->name }}
 								</div>
 								<div class="col-md-2">
-									<span class="">Average score: 30% </span>
+									<span class="">Total Score: {{$student->averageSubstrandScore($substrand->id)}}%</span>
 								</div>
 								<div class="col-md-6 offset-md-2">
 									<button class="btn btn-primary float-right" type="button" data-toggle="collapse" data-target="#collapseOne{{$substrand->id}}" aria-expanded="true" aria-controls="collapseOne">

@@ -45,6 +45,16 @@ class Student extends Model
     }
 
     /**
+     * Fetch substrands which have been assessed
+     */
+    public function substrandsAssessed($strand_id)
+    {
+        return Strand::find($strand_id)->substrands->filter(function($substrand){
+            return $this->allOutcomeResultsForSubstrand($substrand->id)->isNotEmpty();
+        });
+    }
+
+    /**
      * Fetch all outcome results for a substrand
      */
     public function allOutcomeResultsForSubstrand($substrand_id)
@@ -129,4 +139,8 @@ class Student extends Model
 
         return ($this->rawSubstrandScores($substrand_id)->sum()/100)*100;
     }
+
+    /**
+     * Fetch strand scores for a student
+     */
 }
