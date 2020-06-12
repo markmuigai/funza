@@ -55,6 +55,30 @@ class Student extends Model
     }
 
     /**
+     * Check strands which have been assessed for a subject
+     */
+    public function strandsAssessed($subject_id)
+    {
+        // Fetch subject
+        $subject = Subject::find($subject_id);
+
+        // Fetch the number of assessed strands
+        return $assessed_strands = $subject->strands->filter(function($strand){
+            return $this->strandScore($strand->id);
+        });
+    }
+
+    /**
+     * Fetch subjects which have been assessed
+     */
+    public function subjectsAssessed()
+    {
+        return $this->currentGrade()->subjects->filter(function($subject){
+            return $this->subjectScore($subject->id);
+        });
+    }
+
+    /**
      * Fetch all outcome results for a substrand
      */
     public function allOutcomeResultsForSubstrand($substrand_id)
@@ -159,4 +183,73 @@ class Student extends Model
     /**
      * Fetch strand scores for a student
      */
+    /**
+     * Fetch strand scores for a student
+     */
+    public function strandScore($strand_id)
+    {
+        // Check if a strand has been assessed
+        if($this->substrandsAssessed($strand_id)->isEmpty()){
+            return 0;
+        }else{
+            $strand = Strand::find($strand_id);
+
+            // Maximum score
+            $max_score = $this->substrandsAssessed($strand_id)->count() * 100;
+    
+            // strand total score
+            $raw_strand_score = $this->substrandsAssessed($strand_id)->map(function($substrand){
+                return $this->averageSubstrandScore($substrand->id);
+            })->sum();
+    
+            return $percentage_strand_score = ($raw_strand_score/$max_score) * 100;
+        }
+    }
+
+    /**
+     * Fetch subject score
+     */
+    public function subjectScore($subject_id)
+    {
+        // Check if a subject has been assessed
+        if($this->strandsAssessed($subject_id)->isEmpty()){
+            return 0;
+        }else{
+            // Fetch subject
+            $subject = Subject::find($subject_id);
+
+            // Maximum score
+            $max_score = $this->strandsAssessed($subject_id)->count() * 100;
+
+            // strand total score
+            $raw_subject_score = $this->strandsAssessed($subject_id)->map(function($strand){
+                return $this->strandScore($strand->id);
+            })->sum();
+
+            // Return the percentage
+            return $percentage_subject_score = ($raw_subject_score/$max_score) * 100;
+        }
+    }
+
+    /**
+     * Fetch the student overall score
+     */
+    public function totalScore()
+    {
+        // Check if a subject has been assessed
+        if($this->subjectsAssessed()->isEmpty()){
+            return 0;
+        }else{
+            // Max possible score
+            $max_score = $this->subjectsAssessed()->count() * 100;
+
+            // Total raw student score
+            $raw_score = $this->currentGrade()->subjects->map(function($subject){
+                return $this->subjectScore($subject->id);
+            })->sum();
+
+            // Return the total score percentage
+            return $percentage_total_score = ($raw_score/$max_score)*100;
+        }
+    }
 }
