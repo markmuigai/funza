@@ -36,8 +36,11 @@
           <!-- small box -->
           <div class="small-box bg-{{$colors[$key]}} text-white">
             <div class="inner">
-              <h3>{{$scores[$key]}}<sup style="font-size: 20px">%</sup></h3>
-
+              @if($student->strandScore($strand->id)==0)
+                <h3>Pending</h3>
+              @else
+                <h3>{{$student->strandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
+              @endif
               <p>{{ $strand->name }}</p>
             </div>
             <div class="icon">
@@ -58,8 +61,11 @@
             <!-- small box -->
             <div class="small-box bg-{{$colors[$key % 4]}} text-white">
               <div class="inner">
-                <h3>{{$scores[$key % 4]}}<sup style="font-size: 20px">%</sup></h3>
-  
+                @if($student->strandScore($strand->id)==0)
+                  <h3>Pending</h3>
+                @else
+                  <h3>{{$student->strandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
+                @endif
                 <p>{{ $strand->name }}</p>
               </div>
               <div class="icon">

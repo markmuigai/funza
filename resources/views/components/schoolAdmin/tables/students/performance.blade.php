@@ -10,7 +10,7 @@
           <div class="accordion" id="accordionExample1">
             <td>{{$student->name}}</td>
             <td>{{$student->currentClass()->name}}</td>
-            <td>10%</td>
+            <td>{{$student->totalScore()}}%</td>
             <td>
                 <a href="{{ Route('schoolAdmin.performance.results.students.show', ['student' => $student]) }}" class="btn btn-primary btn-sm">Detailed Performance Data</a>
                 <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#performanceSummary-{{$student->id}}" aria-expanded="true" aria-controls="collapseOne">
