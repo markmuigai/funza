@@ -120,11 +120,8 @@ class Student extends Model
         // Fetch Number of assessments done for a substrand
         $assessment_count = $this->assessmentsCountForSubstrand($substrand_id);
 
-        // fetch the number of outcomes for the substrand
-        $outcome_count = Substrand::find($substrand_id)->outcomes->count();
-
         // Calculate the maxumum score
-        $max_score = $outcome_count * 5 * $assessment_count;
+        $max_score = Substrand::find($substrand_id)->maxScore($this->id);
 
         // Array of assessment totals
         $assessment_results = collect();
@@ -180,9 +177,6 @@ class Student extends Model
         return ($this->rawSubstrandScores($substrand_id)->sum()/$max_score)*100;
     }
 
-    /**
-     * Fetch strand scores for a student
-     */
     /**
      * Fetch strand scores for a student
      */

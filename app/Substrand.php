@@ -101,4 +101,28 @@ class Substrand extends Model
         // Number of students wno have been assessed for a certain level
         // Divide by Total number of students
     }
+
+    /**
+     * Maximum possible score
+     */
+    public function maxScore($student_id)
+    {
+        // Fetch Student
+        $student = Student::find($student_id);
+
+        // Fetch Number of assessments done for a substrand
+        $assessment_count = $student->assessmentsCountForSubstrand($this->id);
+
+        // Return scores if substrand has been assessed atleast once 
+        if(is_null($assessment_count)){
+            return 0;
+        }else{
+            // fetch the number of outcomes for the substrand
+            $outcome_count = $this->outcomes->count();
+
+            // Calculate the maxumum score
+            return $max_score = $outcome_count * 5 * $assessment_count;
+        }
+    }
+    
 }
