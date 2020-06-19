@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SchoolAdmin\Performance;
 
 use App\Grade;
 use App\Subject;
+use App\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -19,6 +20,7 @@ class SubjectController extends Controller
         // Fetch students of a class
         return view('schoolAdmin.performance.subject.index',[
             'grades' => Grade::all(),
+            'classroom' => Classroom::find(21),
             'subjects' => Subject::all()
         ]);
     }

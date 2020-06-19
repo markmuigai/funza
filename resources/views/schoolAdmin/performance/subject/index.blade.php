@@ -83,7 +83,8 @@
               <!-- /.box-header -->
               <div class="box-body table-responsive no-padding">
                 @component('components.schoolAdmin.tables.subjects.performance', [
-                  'subjects' => $subjects
+                  'subjects' => $subjects,
+                  'classroom' => $classroom
                 ])   
                 @endcomponent
               </div>
