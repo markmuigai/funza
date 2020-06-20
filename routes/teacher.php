@@ -29,3 +29,22 @@ Route::name('classroom.')->prefix('/classroom/{classroom}')->group(function () {
     });
 });    
 
+// Performance metrics
+Route::name('performance.results.')->namespace('Performance')->prefix('/performance/results')->group(function () {
+    Route::resource('students', 'StudentController');;
+    Route::resource('subjects', 'SubjectController');
+    Route::name('students.')->prefix('/students/{student}/')->group(function () {
+        Route::resource('strands', 'StrandController');
+    });
+
+    // Subject performance by substrand
+    Route::name('subjects.strand.')->prefix('/subject/{subject}/strand/{strand}/')->group(function () {
+        Route::resource('substrands', 'SubstrandController');
+    });
+});
+
+// Subject Performance metrics
+Route::name('performance.subjects.')->namespace('subject')->prefix('/performance/subjects')->group(function () {
+    Route::resource('results', 'ResultController');
+});
+
