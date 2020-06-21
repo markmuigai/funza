@@ -4,7 +4,9 @@ use Carbon\Carbon;
 use App\Substrand;
 // use App\TermDates;
 use App\LessonPlan;
+use Carbon\CarbonPeriod;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class LessonPlanTableSeeder extends Seeder
 {
@@ -33,48 +35,62 @@ class LessonPlanTableSeeder extends Seeder
         $term3_start_date = Carbon::parse('9/3/2020');
         $term3_end_date = Carbon::parse('11/28/2020');
 
+        function generateDates($start_date, $end_date)
+        {
+            $period = CarbonPeriod::create($start_date, $end_date);
+
+            // Initialize dates array
+            $term_days = [];
+
+            // Iterate over the period
+            foreach ($period as $date) {
+                if($date->isWeekday()){
+                    array_push($term_days, $date->format('Y-m-d'));
+                }
+            }
+
+            return $term_days;
+        }
+
+        // Term 1
+        $term_1_dates = generateDates($term1_start_date, $term1_end_date);
+
+        // Term 2
+        $term_2_dates = generateDates($term2_start_date, $term2_end_date);
+
+        // Term 3
+        $term_3_dates = generateDates($term3_start_date, $term3_end_date);
+        
+        // Create all year dates array
+        $all_dates = array_merge($term_1_dates, $term_2_dates, $term_3_dates);
+
         // First iteration start date
-        $start_date = $term1_start_date;
+        $start_date = $all_dates[0];
+
         // for each strand
         foreach($lesson_plans as $strands => $substrands)
         {
             foreach($substrands as $substrand => $lesson_count)
-            {
-                // Select starting date to consider long holidays
-                // Check if starting date is less than term 1, if more, starting date becomes term2/starting date
-                if($start_date > $term1_end_date && $start_date < $term2_start_date){
-                    // Fetch new starting date in the next term
-                    $start_date = $term2_start_date;
-                }elseif($start_date > $term2_end_date && $start_date < $term3_start_date){
-                    $start_date = $term3_start_date;
-                }
-
-                // Days to add to consider weekends
-                if($lesson_count <= 5){
-                    $weekend_days = 0;
-                }else{
-                    // Divide by 7 to get the weekends
-                    // Multiply by 2 to get the day count 
-                    $weekend_days = floor($lesson_count/7)*2;
-                }
-
-                // new start date, wont work without this lol
-                // $temp_start_date = $start_date;
-
+            {   
                 // Calculate assessment deadline
                 // $deadline = $start_date + $lesson_count + weekend days;
-                $deadline = $start_date->copy()->addDays($lesson_count + $weekend_days);
-                // dd($deadline);
+                $deadline = $all_dates[array_search($start_date, $all_dates) + $lesson_count];
 
-                // dd($start_date,$deadline);
-                
+                try
+                {
+                    // Fetch substrand
+                    $substrand = Substrand::where('name', $substrand)->get()->first();
+                }
+                // catch(Exception $e) catch any exception
+                catch(ModelNotFoundException $e)
+                {
+                    dd($substrand);
 
-                // Fetch substrand
-                $substrand = Substrand::where('name', $substrand)->first();
+                }
 
                 // Create lesson plan
                 $lesson_plan = LessonPlan::create([
-                    'substrand_id' => 1,
+                    'substrand_id' => $substrand->id,
                     'start_date' => $start_date,
                     'end_date' => $deadline,
                     'status' => 'pending',
@@ -87,7 +103,7 @@ class LessonPlanTableSeeder extends Seeder
 
                 // Calculate new starting date
                 // $start_date = $deadline + $one_day;
-                $start_date = $deadline->addDays(1);
+                $start_date = $deadline;
             }
         }
 

@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             ClassroomsTableSeeder::class,
             StudentsTableSeeder::class,
             MathematicsAssessmentRubricSeeder::class,
-            // LessonPlanTableSeeder::class
+            LessonPlanTableSeeder::class
             // UsersTableSeeder::class,
             // OutcomeResultsTableSeeder::class
         ]);
