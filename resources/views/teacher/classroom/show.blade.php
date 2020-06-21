@@ -21,6 +21,7 @@
 							<h3>{{ucfirst($subject->name)}}</h3>
 							<a href="{{ Route('teacher.classroom.subject', ['classroom'=> $classroom, 'subject' => $subject])}}" class="btn btn-success text-white">Track Learning outcomes</a>
 							<a href="{{ Route('teacher.performance.results.subjects.show', ['subject' => $subject]) }}" class="btn btn-success text-white">View Performance</a>
+							<a href="{{ Route('teacher.classroom.subject.lessonPlan.index', ['classroom'=> $classroom, 'subject' => $subject]) }}" class="btn btn-success text-white">Lesson Plan</a>
             </div>
           </div>
         </div>

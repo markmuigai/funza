@@ -48,3 +48,7 @@ Route::name('performance.subjects.')->namespace('subject')->prefix('/performance
     Route::resource('results', 'ResultController');
 });
 
+// Lesson Plan
+Route::name('classroom.subject.')->prefix('/classroom/{classroom}/subject/{subject}')->group(function () {
+    Route::resource('lessonPlan', 'LessonPlanController');
+});
