@@ -152,7 +152,7 @@ class Classroom extends Model
     }
 
     /**
-     * FEtch substrand scores based on strand
+     * Fetch substrand scores based on strand
      */
     public function substrandScoresForStrand($strand)
     {

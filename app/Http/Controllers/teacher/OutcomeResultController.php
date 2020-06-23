@@ -4,11 +4,13 @@ namespace App\Http\Controllers\teacher;
 
 use App\Topic;
 use App\Subject;
+use App\Student;
 use App\Classroom;
 use App\Substrand;
 use App\outcomeResult;
 use App\OutcomeOption;
 use Illuminate\Http\Request;
+use App\Events\ClassAssessed;
 use App\Events\StudentAssessed;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -69,7 +71,10 @@ class OutcomeResultController extends Controller
             }
 
             // Generate results algorithm
-            event(new StudentAssessed($classroom, $substrand));
+            event(new StudentAssessed($request->students, $substrand));
+
+            // Generate results algorithm
+            event(new ClassAssessed($classroom, $substrand));
         });
         
         return redirect()->route('teacher.classroom.subject', ['classroom'=> $classroom, 'subject' => $subject])->with([

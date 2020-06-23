@@ -17,6 +17,7 @@ class CreateStudentTotalScoresTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('student_id');
             $table->unsignedInteger('score');
+            $table->timestamps();
         });
     }
 

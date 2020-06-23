@@ -18,6 +18,7 @@ class CreateStudentSubstrandScoresTable extends Migration
             $table->unsignedInteger('student_id');
             $table->unsignedInteger('substrand_id');
             $table->unsignedInteger('score');
+            $table->timestamps();
 
         });
     }

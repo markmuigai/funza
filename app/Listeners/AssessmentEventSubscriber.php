@@ -2,12 +2,115 @@
 
 namespace App\Listeners;
 
+use App\Student;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class AssessmentEventSubscriber implements ShouldQueue
 {
     public function onStudentAssessed($event)
+    {
+        foreach($event->students as $student_id)
+        {
+            $student = Student::find($student_id);
+
+            $substrand = $event->substrand;
+    
+            $strand = $substrand->strand;
+    
+            $subject = $strand->subject;
+    
+            /**
+             * Fetch substrand performance percentage
+             */
+            // Fetch Number of assessments done for a substrand
+            $assessment_count = $student->assessmentsCountForSubstrand($substrand->id);
+
+            // fetch the number of outcomes for the substrand
+            $outcome_count = $substrand->outcomes->count();
+
+            // Calculate the maxumum score
+            $max_score = $outcome_count * 5 * $assessment_count;
+    
+            // Store scores in database
+            $student->substrandScores()->create([
+                'substrand_id' => $event->substrand->id,
+                'score' => ($student->rawSubstrandScores($substrand->id)->sum()/$max_score)*100
+            ]);
+    
+            /**
+             * Fetch strand performance
+             */
+            $substrand_scores =  $strand->substrands->map(function($substrand) use($student){
+                return $student->substrandScores->where('substrand_id', $substrand->id)->pluck('score');
+            })->flatten();
+
+            // max score attained
+            $total_score = $substrand_scores->sum();
+
+            // Check if strand has been assessed
+            if($total_score == 0){
+                return 0;
+            }else{
+                // max possible score
+                $max_score = $substrand_scores->count()*100;
+                    
+                // Store scores in database
+                $student->strandScores()->create([
+                    'strand_id' => $strand->id,
+                    'score' => ($total_score/$max_score)*100
+                ]);
+            }
+    
+            /**
+             * Fetch subject performance 
+             */
+            // strand scores
+            $strand_scores =  $subject->strands->map(function($strand) use($student){
+                return $student->strandScores->where('strand_id', $strand->id)->pluck('score');;
+            })->flatten();
+
+            // max score attained
+            $total_score = $strand_scores->sum();
+
+            // Check if strand has been assessed
+            if($total_score == 0){
+                return 0;
+            }else{
+                // max possible score
+                $max_score = $strand_scores->filter()->count()*100;
+
+                // Store scores in database
+                $student->subjectScores()->create([
+                    'subject_id' => $subject->id,
+                    'score' => ($total_score/$max_score)*100
+                ]);   
+            }
+
+            /**
+             * Fetch total student score
+             */
+            $subject_scores =  $student->subjectScores->pluck('score');
+
+            // max score attained
+            $total_score = $subject_scores->sum();
+
+            // Check if strand has been assessed
+            if($total_score == 0){
+                return 0;
+            }else{
+                // max possible score
+                $max_score = $strand_scores->filter()->count()*100;
+
+                // Store scores in database
+                $student->totalScores()->create([
+                    'score' => ($total_score/$max_score)*100
+                ]);   
+            }
+        }
+    }
+
+    public function onClassAssessed($event)
     {
         $classroom = $event->classroom;
 
@@ -28,17 +131,17 @@ class AssessmentEventSubscriber implements ShouldQueue
 
             // Calculate the possible maximum raw score 
             $max_possible_total = $classroom->currentStudents()->map(function($student) use($substrand){
-                return $substrand->maxScore($student->id);
-            })->sum();
+                return $student->substrandScores->where('substrand_id', $substrand->id)->pluck('score');
+            })->flatten()->count()*100;
 
             // Check if a substrand has been assessed for all students
             if($max_possible_total == 0){
                 return 0;
             }else{
-                // Calculate the total score 
-                $raw_total = $classroom->currentStudents()->map(function($student) use($substrand){
-                    return $student->averageSubstrandScore($substrand->id);
-                })->sum();
+                // Fetch number of assessments made for a substrand for the whole class
+                $raw_total =  $classroom->currentStudents()->map(function($student) use($substrand){
+                    return $student->substrandScores->where('substrand_id', $substrand->id)->pluck('score');
+                })->flatten()->sum();
 
                 // Calculate the pssible maximum percentage score 
                 $class_total = $classroom->currentStudents()->count()*100;
@@ -88,12 +191,6 @@ class AssessmentEventSubscriber implements ShouldQueue
         $event->classroom->strandScores()->create([
             'strand_id' => $strand->id,
             'score' => getStrandScore($event)
-        ]);
-
-        // Store scores in database
-        $event->classroom->strandScores()->create([
-            'strand_id' => 2,
-            'score' => 80
         ]);
 
         /**
@@ -146,6 +243,11 @@ class AssessmentEventSubscriber implements ShouldQueue
         $events->listen(
             'App\Events\StudentAssessed',
             'App\Listeners\AssessmentEventSubscriber@onStudentAssessed'
-        );        
+        );
+        
+        $events->listen(
+            'App\Events\ClassAssessed',
+            'App\Listeners\AssessmentEventSubscriber@onClassAssessed'
+        );
     }
 }

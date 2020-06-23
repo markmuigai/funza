@@ -18,6 +18,7 @@ class CreateStudentSubjectScoresTable extends Migration
             $table->unsignedInteger('student_id');
             $table->unsignedInteger('subject_id');
             $table->unsignedInteger('score');
+            $table->timestamps();
         });
     }
 

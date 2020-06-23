@@ -10,7 +10,11 @@
           <div class="accordion" id="accordionExample1">
             <td>{{$student->name}}</td>
             <td>{{$student->currentClass()->name}}</td>
-            <td>{{$student->totalScore()}}%</td>
+            @if ($student->recentTotalScore()!==null)
+              <td>{{$student->recentTotalScore()}}%</td>
+            @else
+            <td>Pending</td>
+            @endif
             <td>
                 <a href="{{ Route('teacher.performance.results.students.show', ['student' => $student]) }}" class="btn btn-primary btn-sm">Detailed Performance Data</a>
                 <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#performanceSummary-{{$student->id}}" aria-expanded="true" aria-controls="collapseOne">

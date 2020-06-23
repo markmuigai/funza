@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Classroom;
 use App\Substrand;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
@@ -11,11 +12,12 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class StudentAssessed
+class ClassAssessed
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $students;
+    public $classroom;
+
     public $substrand;
 
     /**
@@ -23,9 +25,9 @@ class StudentAssessed
      *
      * @return void
      */
-    public function __construct($students, Substrand $substrand)
+    public function __construct(Classroom $classroom, Substrand $substrand)
     {
-        $this->students = $students;
+        $this->classroom = $classroom;
         $this->substrand = $substrand;
     }
 

@@ -23,7 +23,7 @@
 						@foreach ($student->substrandsAssessed($strand->id) as $substrand)
 								<tr>
 									<td>{{$substrand->name}}</td>
-									<td>{{$student->80%</td>
+									<td>{{$student->recentSubstrandScore($substrand->id)}}%</td>
 									<td>{{$student->assessmentsCountForSubstrand($substrand->id)}}</td>
 									<td>
 										@foreach($student->assessmentScoresPercentage($substrand->id) as $score)
