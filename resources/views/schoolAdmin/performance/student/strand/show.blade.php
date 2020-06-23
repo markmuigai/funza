@@ -23,7 +23,7 @@
 						@foreach ($student->substrandsAssessed($strand->id) as $substrand)
 								<tr>
 									<td>{{$substrand->name}}</td>
-									<td>{{$student->averageSubstrandScore($substrand->id)}}%</td>
+									<td>{{$student->recentSubstrandScore($substrand->id)}}%</td>
 									<td>{{$student->assessmentsCountForSubstrand($substrand->id)}}</td>
 									<td>
 										@foreach($student->assessmentScoresPercentage($substrand->id) as $score)
@@ -51,7 +51,7 @@
 									{{ $substrand->name }}
 								</div>
 								<div class="col-md-2">
-									<span class="">Total Score: {{$student->averageSubstrandScore($substrand->id)}}%</span>
+									<span class="">Total Score: 80%</span>
 								</div>
 								<div class="col-md-6 offset-md-2">
 									<button class="btn btn-primary float-right" type="button" data-toggle="collapse" data-target="#collapseOne{{$substrand->id}}" aria-expanded="true" aria-controls="collapseOne">

@@ -8,8 +8,8 @@
         <tr>
           <div class="accordion" id="accordionExample1">
             <td>{{$subject->name}}</td>
-            @if ($classroom->subjectScore($subject->id)!==0)
-              <td>{{$classroom->subjectScore($subject->id)}}%</td>
+            @if ($classroom->recentSubjectScore($subject->id)!==null)
+              <td>{{$classroom->recentSubjectScore($subject->id)}}%</td>
             @else
               <td>Pending</td>
             @endif

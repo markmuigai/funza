@@ -17,6 +17,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
+        // dd(Classroom::find(21)->recentSubjectScore(Subject::find(2)));
         // Fetch students of a class
         return view('schoolAdmin.performance.subject.index',[
             'grades' => Grade::all(),

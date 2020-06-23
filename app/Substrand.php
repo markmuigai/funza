@@ -76,7 +76,7 @@ class Substrand extends Model
         // Get an array of unique values of number of times 
         // students have been assessed for a substrand
         $assessment_counter_array =  $students->map(function($student){
-            return $student->assessmentCounter($this->id);
+            return $student->assessmentsCountForSubstrand($this->id);
         })->unique();
 
         // Get the maximum number of assessments for a student

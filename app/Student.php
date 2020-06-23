@@ -45,6 +45,38 @@ class Student extends Model
     }
 
     /**
+     * Fetch substrand performance 
+     */
+    public function substrandScores()
+    {
+        return $this->hasMany('App\StudentSubstrandScore', 'student_id');
+    }
+
+    /**
+     * Fetch strand performance
+     */
+    public function strandScores()
+    {
+        return $this->hasMany('App\StudentStrandScore', 'student_id');
+    }
+
+    /**
+     * Fetch subject performance 
+     */
+    public function subjectScores()
+    {
+        return $this->hasMany('App\StudentSubjectScore', 'student_id');
+    }
+
+    /**
+     * Fetch total score
+     */
+    public function totalScores()
+    {
+        return $this->hasMany('App\StudentTotalScore', 'student_id');
+    }
+
+    /**
      * Fetch substrands which have been assessed
      */
     public function substrandsAssessed($strand_id)
@@ -105,13 +137,6 @@ class Student extends Model
         });
     }
 
-    // Get assessment counter for a substrand
-    public function assessmentCounter($substrand_id)
-    {
-        return $this->allOutcomeResultsForSubstrand($substrand_id)->count()/
-                Substrand::find($substrand_id)->outcomes->count();
-    }
-
     /**
      * Get a students score for a substrand
      */
@@ -161,89 +186,58 @@ class Student extends Model
     }
 
     /**
-     * Fetch total average score for a substrand
+     * Fetch substrand performance 
      */
-    public function averageSubstrandScore($substrand_id)
+    public function recentSubstrandScore($substrand_id)
     {
-        // Fetch Number of assessments done for a substrand
-        $assessment_count = $this->assessmentsCountForSubstrand($substrand_id);
+        $score_model = $this->substrandScores->where('substrand_id', $substrand_id)->last();
 
-        // fetch the number of outcomes for the substrand
-        $outcome_count = Substrand::find($substrand_id)->outcomes->count();
-
-        // Calculate the maxumum score
-        $max_score = $outcome_count * 5 * $assessment_count;
-
-        return ($this->rawSubstrandScores($substrand_id)->sum()/$max_score)*100;
-    }
-
-    /**
-     * Fetch strand scores for a student
-     */
-    public function strandScore($strand_id)
-    {
-        // Check if a strand has been assessed
-        if($this->substrandsAssessed($strand_id)->isEmpty()){
-            return 0;
+        if($score_model==null){
+            return null;
         }else{
-            $strand = Strand::find($strand_id);
-
-            // Maximum score
-            $max_score = $this->substrandsAssessed($strand_id)->count() * 100;
-    
-            // strand total score
-            $raw_strand_score = $this->substrandsAssessed($strand_id)->map(function($substrand){
-                return $this->averageSubstrandScore($substrand->id);
-            })->sum();
-    
-            return $percentage_strand_score = ($raw_strand_score/$max_score) * 100;
+            return $score_model->score;
         }
     }
 
     /**
-     * Fetch subject score
+     * Fetch strand performance
      */
-    public function subjectScore($subject_id)
+    public function recentStrandScore($strand_id)
     {
-        // Check if a subject has been assessed
-        if($this->strandsAssessed($subject_id)->isEmpty()){
-            return 0;
+        $score_model = $this->strandScores->where('strand_id', $strand_id)->last();
+
+        if($score_model==null){
+            return null;
         }else{
-            // Fetch subject
-            $subject = Subject::find($subject_id);
-
-            // Maximum score
-            $max_score = $this->strandsAssessed($subject_id)->count() * 100;
-
-            // strand total score
-            $raw_subject_score = $this->strandsAssessed($subject_id)->map(function($strand){
-                return $this->strandScore($strand->id);
-            })->sum();
-
-            // Return the percentage
-            return $percentage_subject_score = ($raw_subject_score/$max_score) * 100;
+            return $score_model->score;
         }
     }
 
     /**
-     * Fetch the student overall score
+     * Fetch subject performance 
      */
-    public function totalScore()
+    public function recentSubjectScore($subject_id)
     {
-        // Check if a subject has been assessed
-        if($this->subjectsAssessed()->isEmpty()){
-            return 0;
+        $score_model = $this->subjectScores->where('subject_id', $subject_id)->last();
+
+        if($score_model==null){
+            return null;
         }else{
-            // Max possible score
-            $max_score = $this->subjectsAssessed()->count() * 100;
+            return $score_model->score;
+        }
+    }
 
-            // Total raw student score
-            $raw_score = $this->currentGrade()->subjects->map(function($subject){
-                return $this->subjectScore($subject->id);
-            })->sum();
+    /**
+     * Fetch recent total score
+     */
+    public function recentTotalScore()
+    {
+        $score_model = $this->totalScores->last();
 
-            // Return the total score percentage
-            return $percentage_total_score = ($raw_score/$max_score)*100;
+        if($score_model==null){
+            return null;
+        }else{
+            return $score_model->score;
         }
     }
 }

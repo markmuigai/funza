@@ -36,7 +36,7 @@
           <div class="card-body border bg-white">
             <select class="select2-select-student w-100" name="students[]" multiple="multiple">
               @foreach ($classroom->currentStudents() as $student)
-                @if($student->assessmentCounter($substrand->id) == $assessment_count-1)
+                @if($student->assessmentsCountForSubstrand($substrand->id) == $assessment_count-1)
                   <option value="{{ $student->id }}">{{ $student->name }}</option>    
                 @endif
               @endforeach

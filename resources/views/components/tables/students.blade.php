@@ -19,10 +19,18 @@
 						<td colspan="2">
 							<div class="row">
 								<div class="col-md-2 d-flex justify-content-center">
-									{{$student->totalScore()}}
+									@if ($student->recentTotalScore()!==null)
+										{{$student->recentTotalScore()}}%
+									@else
+										Pending
+									@endif
 								</div>
 								<div class="col-md-5 d-flex justify-content-center">
-									{{$student->subjectScore($subject_id = 1 )}}
+									@if ($classroom->recentSubjectScore($subject_id = 1)!==null)
+										{{$classroom->recentSubjectScore($subject_id = 1)}}%
+									@else
+										Pending
+									@endif
 								</div>
 							</div>
 						</td>
