@@ -9,6 +9,8 @@ use App\Substrand;
 use App\outcomeResult;
 use App\OutcomeOption;
 use Illuminate\Http\Request;
+use App\Events\StudentAssessed;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class OutcomeResultController extends Controller
@@ -52,19 +54,24 @@ class OutcomeResultController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Classroom $classroom, Subject $subject , Substrand $substrand, $assessment_count)
-    {   
-        // Create for each student
-        foreach($request->students as $student_id){
-            foreach($request->results as $outcome_id => $outcome_option_id){
-                OutcomeResult::create([
-                    'student_id' => $student_id,
-                    'outcome_id' => $outcome_id,
-                    'outcome_option_id' => $outcome_option_id,
-                    'count' => $request->count
-                ]);
+    {
+        DB::transaction(function () use ($request, $classroom, $subject, $substrand, $assessment_count){           
+            // Create for each student
+            foreach($request->students as $student_id){
+                foreach($request->results as $outcome_id => $outcome_option_id){
+                    OutcomeResult::create([
+                        'student_id' => $student_id,
+                        'outcome_id' => $outcome_id,
+                        'outcome_option_id' => $outcome_option_id,
+                        'count' => $request->count
+                    ]);
+                }
             }
-        }
 
+            // Generate results algorithm
+            event(new StudentAssessed($classroom, $substrand));
+        });
+        
         return redirect()->route('teacher.classroom.subject', ['classroom'=> $classroom, 'subject' => $subject])->with([
             'success' => 'Outcome result uploaded successfully'
         ]);

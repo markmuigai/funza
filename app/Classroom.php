@@ -78,84 +78,86 @@ class Classroom extends Model
     }
 
     /**
-     * Fetch substrand performance percentage
+     * Fetch substrand performance 
      */
-    public function substrandScore($substrand_id)
+    public function substrandScores()
     {
-        // Fetch substrand
-        $substrand = Substrand::find($substrand_id);
-        
-        // Calculate the possible maximum raw score 
-        $max_possible_total = $this->currentStudents()->map(function($student) use($substrand){
-            return $substrand->maxScore($student->id);
-        })->sum();
+        return $this->hasMany('App\ClassroomSubstrandScore', 'classroom_id');
+    }
 
-        // Check if a substrand has been assessed for all students
-        if($max_possible_total == 0){
-            return 0;
+    /**
+     * Fetch strand performance
+     */
+    public function strandScores()
+    {
+        return $this->hasMany('App\ClassroomStrandScore', 'classroom_id');
+    }
+
+    /**
+     * Fetch subject performance 
+     */
+    public function subjectScores()
+    {
+        return $this->hasMany('App\ClassroomSubjectScore', 'classroom_id');
+    }
+
+    /**
+     * Fetch total score
+     */
+    public function totalScore()
+    {
+        return $this->hasMany('App\ClassroomTotalScore', 'classroom_id');
+    }
+
+    /**
+     * Fetch substrand performance 
+     */
+    public function recentSubstrandScore($substrand_id)
+    {
+        $score_model = $this->substrandScores->where('substrand_id', $substrand_id)->last();
+
+        if($score_model==null){
+            return null;
         }else{
-            // Calculate the total score 
-            $raw_total = $this->currentStudents()->map(function($student) use($substrand){
-                return $student->averageSubstrandScore($substrand->id);
-            })->sum();
-
-            // Calculate the pssible maximum percentage score 
-            $class_total = $this->currentStudents()->count()*100;
-            
-            return $avg_substrand_score = ($raw_total/$class_total)*100;
+            return $score_model->score;
         }
     }
 
     /**
      * Fetch strand performance
      */
-    public function strandScore($strand_id)
+    public function recentStrandScore($strand_id)
     {
-        // Fetch strand
-        $strand = Strand::find($strand_id);
+        $score_model = $this->strandScores->where('strand_id', $strand_id)->last();
 
-        $substrand_scores = $strand->substrands->map(function($substrand){
-            return $this->substrandScore($substrand->id);
-        });
-
-        // max score attained
-        $total_score = $substrand_scores->sum();
-
-        // Check if strand has been assessed
-        if($total_score == 0){
-            return 0;
+        if($score_model==null){
+            return null;
         }else{
-            // max possible score
-            $max_score = $substrand_scores->filter()->count()*100;
-
-            return ($total_score/$max_score)*100;
+            return $score_model->score;
         }
     }
 
     /**
      * Fetch subject performance 
      */
-    public function subjectScore($subject_id)
+    public function recentSubjectScore($subject_id)
     {
-        // Fetch subject
-        $subject = Subject::find($subject_id);
+        $score_model = $this->subjectScores->where('subject_id', $subject_id)->last();
 
-        // strand scores
-        $strand_scores = $subject->strands->map(function($strand){
-            return $this->strandScore($strand->id);
-        });
-
-        // max score attained
-        $total_score = $strand_scores->sum();
-
-        // Check if strand has been assessed
-        if($total_score == 0){
-            return 0;
+        if($score_model==null){
+            return null;
         }else{
-            // max possible score
-            $max_score = $strand_scores->filter()->count()*100;
-
-            return ($total_score/$max_score)*100;
+            return $score_model->score;
         }
+    }
+
+    /**
+     * FEtch substrand scores based on strand
+     */
+    public function substrandScoresForStrand($strand)
+    {
+        return $strand->substrands->map(function($substrand) use($classroom){
+            return $this->substrandScores->where('substrand_id', $substrand->id)->pluck('score');
+        });
     }
 }

@@ -13,8 +13,19 @@ class Strand extends Model
      */
     protected $fillable = ['name'];
     
+    /**
+     * Get associated substrands
+     */
     public function substrands()
     {
         return $this->hasMany('App\Substrand');
+    }
+
+    /**
+     * Get associated subject
+     */
+    public function subject()
+    {
+        return $this->belongsTo('App\Subject');
     }
 }

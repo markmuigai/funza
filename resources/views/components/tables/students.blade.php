@@ -22,7 +22,11 @@
 									{{$student->totalScore()}}
 								</div>
 								<div class="col-md-5 d-flex justify-content-center">
-									{{$student->subjectScore($subject_id = 1 )}}
+									@if ($classroom->recentSubjectScore($subject_id = 1)!==null)
+										{{$classroom->recentSubjectScore($subject_id = 1)}}%
+									@else
+										Pending
+									@endif
 								</div>
 							</div>
 						</td>

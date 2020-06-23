@@ -36,10 +36,10 @@
           <!-- small box -->
           <div class="small-box bg-{{$colors[$key]}} text-white">
             <div class="inner">
-              @if($student->strandScore($strand->id)==0)
+              @if($student->recentStrandScore($strand->id)==null)
                 <h3>Pending</h3>
               @else
-                <h3>{{$student->strandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{$student->recentStrandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
               @endif
               <p>{{ $strand->name }}</p>
             </div>
@@ -61,10 +61,10 @@
             <!-- small box -->
             <div class="small-box bg-{{$colors[$key % 4]}} text-white">
               <div class="inner">
-                @if($student->strandScore($strand->id)==0)
+                @if($student->recentStrandScore($strand->id)==null)
                   <h3>Pending</h3>
                 @else
-                  <h3>{{$student->strandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
+                  <h3>{{$student->recentStrandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
                 @endif
                 <p>{{ $strand->name }}</p>
               </div>

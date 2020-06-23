@@ -8,10 +8,10 @@
         <tr>
           <div class="accordion" id="accordionExample1">
             <td>{{$substrand->name}}</td>
-            @if (App\Classroom::find(21)->substrandScore($substrand->id)==0)
+            @if (App\Classroom::find(21)->recentSubstrandScore($substrand->id)==null)
                 <td>Pending</td>
             @else
-                <td>{{App\Classroom::find(21)->substrandScore($substrand->id)}}%</td>
+                <td>{{App\Classroom::find(21)->recentSubstrandScore($substrand->id)}}%</td>
             @endif
             <td>
                 <a href="{{ Route('schoolAdmin.performance.results.subjects.strand.substrands.show', ['subject' => $subject, 'strand' => $substrand->strand, 'substrand' => $substrand ]) }}" class="btn btn-primary btn-sm">Detailed Performance Data</a>

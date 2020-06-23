@@ -39,10 +39,10 @@
         <div class="col-lg-3 col-xs-6">
           <div class="card bg-{{$colors[$key]}} text-white">
             <div class="card-body">
-              @if($student->strandScore($strand->id)==0)
+              @if($student->recentStrandScore($strand->id)==null)
                 <h3>Pending</h3>
               @else
-                <h3>{{$student->strandScore($strand->id)}}%</h3>
+                <h3>{{$student->recentStrandScore($strand->id)}}%</h3>
               @endif
               <h3>{{ ucfirst($strand->name) }}</h3>
               <a href="{{ Route('teacher.performance.results.students.strands.show', ['student' => $student, 'strand' => $strand  ]) }}" class="btn text-white btn-sm text-uppercase text-hover-success">
@@ -60,10 +60,10 @@
           <div class="col-lg-3 col-xs-6">
             <div class="card bg-{{$colors[$key]}} text-white">
               <div class="card-body">
-                @if($student->strandScore($strand->id)==0)
+                @if($student->recentStrandScore($strand->id)==null)
                   <h3>Pending</h3>
                 @else
-                  <h3>{{$student->strandScore($strand->id)}}%</h3>
+                  <h3>{{$student->recentStrandScore($strand->id)}}%</h3>
                 @endif
                 <h3>{{ ucfirst($strand->name) }}</h3>
                 <a href="{{ Route('teacher.performance.results.students.strands.show', ['student' => $student, 'strand' => $strand  ]) }}" class="btn text-white btn-sm text-uppercase text-hover-success">
