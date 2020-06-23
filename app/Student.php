@@ -137,13 +137,6 @@ class Student extends Model
         });
     }
 
-    // Get assessment counter for a substrand
-    public function assessmentCounter($substrand_id)
-    {
-        return $this->allOutcomeResultsForSubstrand($substrand_id)->count()/
-                Substrand::find($substrand_id)->outcomes->count();
-    }
-
     /**
      * Get a students score for a substrand
      */
