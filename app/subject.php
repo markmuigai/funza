@@ -29,4 +29,12 @@ class Subject extends Model
     {
         return $this->hasManyThrough('App\Substrand', 'App\Strand');
     }
+
+    // Fetch substrands for a topic
+    public function lessonPlans()
+    {
+        return $this->substrands->map(function($substrand){
+            return $substrand->lessonPlan;
+        });
+    }
 }

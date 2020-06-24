@@ -28,7 +28,7 @@ class Substrand extends Model
     }
 
     // Get the lesson plans of s substrand
-    public function lessonPlans()
+    public function lessonPlan()
     {
         return $this->hasOne('App\LessonPlan');
     }

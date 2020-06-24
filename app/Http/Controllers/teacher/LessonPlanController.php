@@ -16,7 +16,13 @@ class LessonPlanController extends Controller
      */
     public function index(Classroom $classroom, Subject $subject)
     {
-        //
+        // //
+        // $plans = $subject->strands->map(function($strand){
+        //     return $strand->substrands()->with('lessonPlan')->get();
+        // })->toArray();
+
+        // dd($plans);
+
         return view('teacher.lessonPlan.index',[
             'classroom' => $classroom,
             'subject' => $subject 

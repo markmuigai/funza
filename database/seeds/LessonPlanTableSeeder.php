@@ -91,6 +91,7 @@ class LessonPlanTableSeeder extends Seeder
                 // Create lesson plan
                 $lesson_plan = LessonPlan::create([
                     'substrand_id' => $substrand->id,
+                    'lesson_count' => $lesson_count,
                     'start_date' => $start_date,
                     'end_date' => $deadline,
                     'status' => 'pending',

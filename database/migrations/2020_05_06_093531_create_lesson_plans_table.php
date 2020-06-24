@@ -16,6 +16,7 @@ class CreateLessonPlansTable extends Migration
         Schema::create('lesson_plans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('substrand_id');
+            $table->unsignedBigInteger('lesson_count');
             $table->date('start_date');
             $table->date('end_date');
             $table->enum('status', ['pending', 'in_progress', 'overdue', 'complete']);
