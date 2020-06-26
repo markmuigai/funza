@@ -84,6 +84,7 @@
     </div>
 
 
+    @auth
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-scrollUp navbar-sticky navbar-white">
       <div class="container">
@@ -167,4 +168,5 @@
         </div>
       </div>
     </nav>
+    @endauth
 </header>
