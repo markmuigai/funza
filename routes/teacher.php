@@ -44,9 +44,6 @@ Route::name('performance.results.')->namespace('Performance')->prefix('/performa
 });
 
 // Subject Performance metrics
-Route::name('performance.subjects.')->namespace('subject')->prefix('/performance/subjects')->group(function () {
-    Route::resource('results', 'ResultController');
-});
 
 // Lesson Plan
 Route::name('classroom.subject.')->prefix('/classroom/{classroom}/subject/{subject}')->group(function () {

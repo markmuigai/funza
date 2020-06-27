@@ -7,10 +7,13 @@ use App\Grade;
 use App\Subject;
 use Illuminate\Http\Request;
 use App\Exports\UsersExport;
-use App\Exports\UsersExportTemplate;
 use App\Imports\UsersImport;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use App\Exports\UsersExportTemplate;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 
 class TeacherController extends Controller
 {
@@ -49,8 +52,31 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        return $request->all();
+        DB::transaction(function () use ($request){        
+            // Fetch auth user's school
+            $school = auth()->user()->schools->first();
+
+            // Create user
+            $teacher = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make('secret'),
+            ]);
+
+            // Store subjects they can teach
+            $teacher->subjects()->attach($request->subjects);
+
+            // Assign user to school    
+            $school->users()->attach($teacher->id);
+
+            // Assign school admin role to the pivot table instances of the users selected
+            $teacher->schoolAdministration($school)->roles()->attach(Role::where('name','teacher')->first()->id);
+
+        });
+
+        return redirect()->route('schoolAdmin.teachers.index')->with([
+            'success' => 'Teacher created successfully'
+        ]);
     }
 
     /**
@@ -129,10 +155,13 @@ class TeacherController extends Controller
      */
     public function classAssignment($user_id)
     {
+        // Fetch user
+        $user = User::find($user_id);
+
         return view('schoolAdmin.teacher.classAssignment',[
-            'teacher' => User::find($user_id),
+            'teacher' => $user,
             'grades' => Grade::all(),
-            'subjects' => Subject::all()
+            'subjects' => $user->subjects
         ]);
     }
 

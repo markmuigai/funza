@@ -31,7 +31,8 @@ class School extends Model
     {
         return $this->users->filter(function ($user) {
             return $user->schoolAdministration($this)->hasRole('teacher');
-        });
+        })->sortByDesc('created_at');
+        ;
     }
 
     /**

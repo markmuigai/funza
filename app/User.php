@@ -65,6 +65,14 @@ class User extends Authenticatable
                                 ->first();
     }
 
+    /**
+     * Fetch the subjects a teacher can be assigned to
+     */
+    public function subjects()
+    {
+        return $this->belongsToMany('App\Subject', 'teacher_subjects', 'user_id', 'subject_id');
+    }
+
     // Fetch classroom subject instances
     public function classroomSubjects()
     {

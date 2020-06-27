@@ -30,13 +30,23 @@
 									</div>
 								</div>
 							</div>
-							<label for="assign-class">Assign class and subject</label>
-
+							<label for="assign-class">Subjects taught</label>
+							@foreach ($subjects as $subject)
+							<div class="form-check my-1">
+								<div class="pretty p-icon p-round p-pulse">
+									<input type="checkbox" name="subjects[]" value="{{ $subject->id }}"/>
+									<div class="state p-danger">
+											<i class="icon mdi mdi-check"></i>
+											<label>{{ $subject->name }}</label>
+									</div>
+								</div>
+							</div>
+							@endforeach
 						</div>
 						<!-- /.box-body -->
 
 						<div class="box-footer">
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" class="btn btn-primary mt-5">Submit</button>
 						</div>
 					</form>
 				</div>
