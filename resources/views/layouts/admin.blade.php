@@ -92,29 +92,11 @@
                 Classes
             </a>
           </li>
-          <li class="nav-item has-treeview {{ request()->routeIs('schoolAdmin.teachers.*') ? 'menu-open' : '' }}">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-users yellow"></i>
-              <p>
+          <li class="nav-item {{ request()->routeIs('schoolAdmin.teachers.*') ? 'active' : '' }}">
+            <a href="{{ route('schoolAdmin.teachers.index') }}" class="nav-link">
+              <i class="nav-icon fas fas fa-users yellow"></i>
                 Teachers
-                <i class="right fas fa-angle-left"></i>
-              </p>
             </a>
-            <ul class="nav nav-treeview ml-3">
-              <li class="nav-item {{ request()->routeIs('schoolAdmin.teachers.index') ? 'active' : '' }}">
-                <a href="{{ route('schoolAdmin.teachers.index') }}" class="nav-link">
-                  <p>Teacher Details</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-school cyan nav-icon"></i>
-                  <p>My School</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item {{ request()->routeIs('schoolAdmin.students.index') ? 'active' : '' }}">
             <a href="{{ route('schoolAdmin.students.index') }}" class="nav-link">
