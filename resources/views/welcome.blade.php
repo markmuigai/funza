@@ -87,16 +87,16 @@
   <!-- ====================================
   ———	CALL TO ACTION
   ===================================== -->
-  <section class="py-9 bg-parallax" style="background-image: url(assets/img/background/background-img-1.jpg);">
+  <section class="py-9 bg-parallax" style="background-image: url(assets/img/background/footer-bg-img.jpg);">
     <div class="container">
       <div class="wow fadeInUp">
         <div class="section-title justify-content-center">
           <h2 class="text-white text-center">Need More Information?</h2>
         </div>
         <div class="text-center">
-          <p class="text-white font-size-18 mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod</p>
-          <a href="contact-us.html" class="btn btn-danger shadow-sm text-uppercase mt-4">
-            <i class="fa fa-phone mr-2" aria-hidden="true"></i>Contact
+          <p class="text-white font-size-18 mb-0">Whether you have a question about features, trials, need a demo or anything else, our team is ready to answer all your questions.</p>
+          <a href="#contact" class="btn btn-danger shadow-sm text-uppercase mt-4">
+            <i class="fa fa-envelope mr-2" aria-hidden="true"></i>Get in Touch
           </a>
         </div>
       </div>
@@ -104,379 +104,59 @@
   </section>
 
   <!-- ====================================
-  ———	COURSES SECTION
+  ———	TESTIMONIALS SECTION
   ===================================== -->
-  <section class="py-9" id="courses">
+  <section class="pt-10">
     <div class="container">
-      <div class="section-title justify-content-center mb-4 mb-md-8 wow fadeInUp">
+      <div class="section-title justify-content-center mb-9 mb-md-10 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
         <span class="shape shape-left bg-info"></span>
-        <h2 class="text-danger">Our Courses</h2>
+        <h2 class="text-danger">Testimonials</h2>
         <span class="shape shape-right bg-info"></span>
       </div>
-
-      <div class="row wow fadeInUp">
-        <div class="col-sm-6 col-lg-3 col-xs-12">
-          <div class="card">
-            <a href="course-single-left-sidebar.html" class="position-relative">
-              <img class="card-img-top lazyestload" data-src="assets/img/courses/courses-img1.jpg" src="assets/img/courses/courses-img1.jpg" alt="Card image">
-              <div class="card-img-overlay">
-                <span class="badge badge-warning badge-rounded-circle">$50</span>
+  
+      <div class="row wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+        <div class="col-md-6 col-lg-4">
+          <div class="card bg-warning card-hover mb-9">
+            <div class="card-body text-center px-md-5 px-lg-6 my-2">
+              <div class="card-icon-border-large border-warning mtn-80">
+                <i class="fa fa-quote-left text-warning" aria-hidden="true"></i>
               </div>
-            </a>
-            <div class="card-body border-top-5 px-3 border-warning">
-              <h3 class="card-title">
-                <a class="text-warning text-capitalize d-block text-truncate" href="course-single-left-sidebar.html">Morbi Scelerisque Nibh.</a>
-              </h3>
-              <ul class="list-unstyled text-muted">
-                <li class="mb-1">
-                  <i class="fa fa-calendar-o mr-2" aria-hidden="true"></i>Age 2 to 4 Years
-                </li>
-                <li>
-                  <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9.00AM-11.00AM
-                </li>
-              </ul>
-
-              <p> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
-              <div class="d-block">
-                <a href="product-cart.html" class="btn btn-white text-uppercase mb-1 btn-hover-warning">
-                  <i class="fa fa-shopping-basket mr-2" aria-hidden="true"></i>Add to Cart
-                </a>
-                <a href="course-single-left-sidebar.html" class="btn btn-link text-hover-warning pl-2 pl-lg-0">
-                  <i class="fa fa-angle-double-right mr-1" aria-hidden="true"></i> More
-                </a>
+              <blockquote class="blockquote blockquote-sm mt-2">
+                <p class="font-normal mb-5"> Integrating Funza has improved the quality of service we provide as a learning institution.</p>
+                <footer class="blockquote-footer text-uppercase text-white">Amanda Bett<cite class="d-block text-capitalize font-size-14 opacity-70" title="Source Title">Precious Blood Academy Director</cite></footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-md-6 col-lg-4">
+          <div class="card bg-success card-hover mb-9">
+            <div class="card-body text-center px-md-5 px-lg-6 my-2">
+              <div class="card-icon-border-large border-success mtn-80">
+                <i class="fa fa-quote-left text-success" aria-hidden="true"></i>
               </div>
+              <blockquote class="blockquote blockquote-sm mt-2">
+                <p class="font-normal mb-5">Funza has reduced the effort in identifying where students are struggling and how to help them.</p>
+                <footer class="blockquote-footer text-uppercase text-white">Jeff Gichira <cite class="d-block text-capitalize font-size-14 opacity-70" title="Source Title">Teacher</cite></footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-md-6 col-lg-4">
+          <div class="card bg-danger card-hover mb-9">
+            <div class="card-body text-center px-md-5 px-lg-6 my-2">
+              <div class="card-icon-border-large border-danger mtn-80">
+                <i class="fa fa-quote-left text-danger" aria-hidden="true"></i>
+              </div>
+              <blockquote class="blockquote blockquote-sm mt-2">
+                <p class="font-normal mb-5">Funza collects and analyzes detaied student performance data that helps us form effective strategy </p>
+                <footer class="blockquote-footer text-uppercase text-white">Derek Otiende<cite class="d-block text-capitalize font-size-14 opacity-70" title="Source Title">KNEC Official</cite></footer>
+              </blockquote>
             </div>
           </div>
         </div>
 
-        <!-- Card -->
-        <div class="col-sm-6 col-lg-3 col-xs-12">
-          <div class="card">
-            <a href="course-single-left-sidebar.html" class="position-relative">
-              <img class="card-img-top lazyestload" data-src="assets/img/courses/courses-img2.jpg" src="assets/img/courses/courses-img2.jpg" alt="Card image">
-              <div class="card-img-overlay">
-                <span class="badge badge-success badge-rounded-circle">$50</span>
-              </div>
-            </a>
-            <div class="card-body border-top-5 px-3 border-success">
-              <h3 class="card-title">
-                <a class="text-success text-capitalize d-block text-truncate" href="course-single-left-sidebar.html">Phasellus convallis eros.</a>
-              </h3>
-              <ul class="list-unstyled text-muted">
-                <li class="mb-1">
-                  <i class="fa fa-calendar-o mr-2" aria-hidden="true"></i>Age 2 to 4 Years
-                </li>
-                <li>
-                  <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9.00AM-11.00AM
-                </li>
-              </ul>
-              <p> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
-              <div class="d-block">
-                <a href="product-cart.html" class="btn btn-white text-uppercase mb-1 btn-hover-success">
-                  <i class="fa fa-shopping-basket mr-2" aria-hidden="true"></i>Add to Cart
-                </a>
-                <a href="course-single-left-sidebar.html" class="btn btn-link text-hover-success pl-2 pl-lg-0">
-                  <i class="fa fa-angle-double-right mr-1" aria-hidden="true"></i> More
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card -->
-        <div class="col-sm-6 col-lg-3 col-xs-12">
-          <div class="card">
-            <a href="course-single-left-sidebar.html" class="position-relative">
-              <img class="card-img-top lazyestload" data-src="assets/img/courses/courses-img3.jpg" src="assets/img/courses/courses-img3.jpg" alt="Card image">
-              <div class="card-img-overlay">
-                <span class="badge badge-danger badge-rounded-circle">$50</span>
-              </div>
-            </a>
-            <div class="card-body border-top-5 px-3 border-danger">
-              <h3 class="card-title">
-                <a class="text-danger text-capitalize d-block text-truncate" href="course-single-left-sidebar.html">Suspendisse a libero da.</a>
-              </h3>
-              <ul class="list-unstyled text-muted">
-                <li class="mb-1">
-                  <i class="fa fa-calendar-o mr-2" aria-hidden="true"></i>Age 2 to 4 Years
-                </li>
-                <li>
-                  <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9.00AM-11.00AM
-                </li>
-              </ul>
-              <p> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
-              <div class="d-block">
-                <a href="product-cart.html" class="btn btn-white text-uppercase mb-1 btn-hover-danger">
-                  <i class="fa fa-shopping-basket mr-2" aria-hidden="true"></i>Add to Cart
-                </a>
-                <a href="course-single-left-sidebar.html" class="btn btn-link text-hover-danger pl-2 pl-lg-0">
-                  <i class="fa fa-angle-double-right mr-1" aria-hidden="true"></i> More
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card -->
-        <div class="col-sm-6 col-lg-3 col-xs-12">
-          <div class="card">
-            <a href="course-single-left-sidebar.html" class="position-relative">
-              <img class="card-img-top lazyestload" data-src="assets/img/courses/courses-img4.jpg" src="assets/img/courses/courses-img4.jpg" alt="Card image">
-              <div class="card-img-overlay">
-                <span class="badge badge-info badge-rounded-circle">$50</span>
-              </div>
-            </a>
-            <div class="card-body border-top-5 px-3 border-info">
-              <h3 class="card-title">
-                <a class="text-info text-capitalize d-block text-truncate" href="course-single-left-sidebar.html">Aenean cursus urna nec.</a>
-              </h3>
-              <ul class="list-unstyled text-muted">
-                <li class="mb-1">
-                  <i class="fa fa-calendar-o mr-2" aria-hidden="true"></i>Age 2 to 4 Years
-                </li>
-                <li>
-                  <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9.00AM-11.00AM
-                </li>
-              </ul>
-              <p> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
-              <div class="d-block">
-                <a href="product-cart.html" class="btn btn-white text-uppercase mb-1 btn-hover-info">
-                  <i class="fa fa-shopping-basket mr-2" aria-hidden="true"></i>Add to Cart
-                </a>
-                <a href="course-single-left-sidebar.html" class="btn btn-link text-hover-info pl-2 pl-lg-0">
-                  <i class="fa fa-angle-double-right mr-1" aria-hidden="true"></i> More
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================
-  ———	COUNTER-UP SECTION
-  ===================================== -->
-  <section class="py-9 pb-8 bg-parallax" style="background-image: url(assets/img/background/countup-bg-img.jpg);">
-    <div class="container">
-      <div class="sectionTitleSmall text-center mb-7 wow fadeInUp">
-        <h2 class="font-weight-bold text-white">Some Fun Facts</h2>
-        <p class="text-white font-size-15">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod</p>
-      </div>
-
-      <div class="row wow fadeInUp" id="counter">
-        <div class="col-sm-3 col-xs-12">
-          <div  class="text-center text-white mb-5">
-            <div class="counter-value" data-count="179">0</div>
-            <span class="d-inline-block bg-warning text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3">Events Held</span>
-          </div>
-        </div>
-
-        <div class="col-sm-3 col-xs-12">
-          <div class="text-center text-white mb-5">
-            <div class="counter-value" data-count="548">0</div>
-            <span class="d-inline-block bg-success text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3">happy funs</span>
-          </div>
-        </div>
-
-        <div class="col-sm-3 col-xs-12">
-          <div class="text-center text-white mb-5">
-            <div class="counter-value" data-count="305">0</div>
-            <span class="d-inline-block bg-danger text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3">happy Clients</span>
-          </div>
-        </div>
-
-        <div class="col-sm-3 col-xs-12">
-          <div class="text-center text-white mb-5">
-            <div class="counter-value" data-count="1000">0</div>
-            <span class="d-inline-block bg-info text-uppercase font-weight-medium rounded-sm shadow-sm mt-1 py-2 px-3">hours support</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================
-  ———	BLOG SECTION
-  ===================================== -->
-  <section class="pt-9 pb-7" id="blog">
-    <div class="container">
-      <div class="section-title justify-content-center mb-4 mb-md-8 wow fadeInUp">
-        <span class="shape shape-left bg-info"></span>
-        <h2 class="text-danger">Latest News</h2>
-        <span class="shape shape-right bg-info"></span>
-      </div>
-
-      <div class="row wow fadeInUp">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="position-relative">
-              <a href="blog-single-left-sidebar.html">
-                <img class="card-img-top lazyestload" data-src="assets/img/blog/blog-img1.jpg" src="assets/img/blog/blog-img1.jpg" alt="Card image">
-              </a>
-              <div class="card-img-overlay p-0">
-                <span class="badge badge-rounded badge-warning m-4"> 10 <br> July</span>
-              </div>
-            </div>
-
-            <div class="card-body border-top-5 px-3 border-warning">
-              <h3 class="card-title">
-                <a class="text-warning text-capitalize d-block text-truncate" href="blog-single-left-sidebar.html">The standard chunk of Lorem.</a>
-              </h3>
-              <ul class="list-unstyled d-flex flex-md-column flex-lg-row">
-                <li class="mr-2">
-                  <a class="text-muted" href="blog-single-left-sidebar.html">
-                    <i class="fa fa-user mr-2" aria-hidden="true"></i>Jone Doe
-                  </a>
-                </li>
-                <li class="mr-2">
-                  <a class="text-muted" href="blog-single-left-sidebar.html">
-                    <i class="fa fa-comments-o mr-2" aria-hidden="true"></i>4 Comments
-                  </a>
-                </li>
-              </ul>
-              <p class="mb-2"> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classi cal Latin literature.</p>
-              <a class="btn btn-link text-hover-warning pl-0" href="blog-single-left-sidebar.html">
-                <i class="fa fa-angle-double-right mr-1" aria-hidden="true"></i> Read More
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card">
-            <div class="position-relative">
-              <a href="blog-single-left-sidebar.html">
-                <img class="card-img-top lazyestload" data-src="assets/img/blog/blog-img2.jpg" src="assets/img/blog/blog-img2.jpg" alt="Card image">
-              </a>
-              <div class="card-img-overlay p-0">
-                <span class="badge badge-success badge-rounded m-4"> 14 <br> Jun</span>
-              </div>
-            </div>
-
-            <div class="card-body border-top-5 px-3 border-success">
-              <h3 class="card-title">
-                <a class="text-success text-capitalize d-block text-truncate" href="blog-single-left-sidebar.html">Vestibulum congue massa vitae.</a>
-              </h3>
-              <ul class="list-unstyled d-flex flex-md-column flex-lg-row">
-                <li class="mr-2">
-                  <a class="text-muted" href="blog-single-left-sidebar.html">
-                    <i class="fa fa-user mr-2" aria-hidden="true"></i>Jone Doe
-                  </a>
-                </li>
-                <li class="mr-2">
-                  <a class="text-muted" href="blog-single-left-sidebar.html">
-                    <i class="fa fa-comments-o mr-2" aria-hidden="true"></i>4 Comments
-                  </a>
-                </li>
-              </ul>
-              <p class="mb-2"> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classi cal Latin literature.</p>
-              <a class="btn btn-link text-hover-success pl-0" href="blog-single-left-sidebar.html">
-                <i class="fa fa-angle-double-right mr-1" aria-hidden="true"></i> Read More
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card">
-            <div class="position-relative">
-              <a href="blog-single-left-sidebar.html">
-                <img class="card-img-top lazyestload" data-src="assets/img/blog/blog-img3.jpg" src="assets/img/blog/blog-img3.jpg" alt="Card image">
-              </a>
-              <div class="card-img-overlay p-0">
-                <span class="badge badge-danger badge-rounded m-4"> 14 <br> Jun</span>
-              </div>
-            </div>
-
-            <div class="card-body border-top-5 px-3 border-danger">
-              <h3 class="card-title">
-                <a class="text-danger text-capitalize d-block text-truncate" href="blog-single-left-sidebar.html">Vestibulum congue massa vitae.</a>
-              </h3>
-              <ul class="list-unstyled d-flex flex-md-column flex-lg-row">
-                <li class="mr-2">
-                  <a class="text-muted" href="blog-single-left-sidebar.html">
-                    <i class="fa fa-user mr-2" aria-hidden="true"></i>Jone Doe
-                  </a>
-                </li>
-                <li class="mr-2">
-                  <a class="text-muted" href="blog-single-left-sidebar.html">
-                    <i class="fa fa-comments-o mr-2" aria-hidden="true"></i>4 Comments
-                  </a>
-                </li>
-              </ul>
-              <p class="mb-2"> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classi cal Latin literature.</p>
-              <a class="btn btn-link text-hover-danger pl-0" href="blog-single-left-sidebar.html">
-                <i class="fa fa-angle-double-right mr-1" aria-hidden="true"></i> Read More
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="btn-aria text-center mt-4 wow fadeInUp">
-        <a href="blog-grid.html" class="btn btn-danger text-uppercase">View More</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================
-  ———	CONTACT SECTION
-  ===================================== -->
-  <section class="bg-light py-7 py-md-10">
-    <div class="container">
-      <div class="row wow fadeInUp">
-        <div class="col-sm-6 col-xs-12">
-          <div class="section-title align-items-baseline mb-4">
-            <h2 class="text-danger px-0 mb-0">Our Address</h2>
-          </div>
-          <p class="text-dark font-size-15">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <ul class="list-unstyled">
-            <li class="media align-items-center mb-3">
-              <div class="icon-rounded-circle-small bg-warning mr-2">
-                <i class="fa fa-map-marker text-white"></i>
-              </div>
-              <div class="media-body">
-                <p class="mb-0">9/4/C Ring Road,Garden Street Dhaka,Bangladesh-1200</p>
-              </div>
-            </li>
-            <li class="media align-items-center mb-3">
-              <div class="icon-rounded-circle-small bg-success mr-2">
-                <i class="fa fa-envelope text-white"></i>
-              </div>
-              <div class="media-body">
-                <p class="mb-0"><a class="text-color" href="mailto:hello@example.com">hello@example.com</a></p>
-              </div>
-            </li>
-            <li class="media align-items-center mb-3">
-              <div class="icon-rounded-circle-small bg-info mr-2">
-                <i class="fa fa-phone text-white"></i>
-              </div>
-              <div class="media-body">
-                <p class="mb-0"><a class="text-color" href="tel:[00] 333 555 888">333 555 888</a></p>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="col-sm-6 col-xs-12">
-          <form>
-            <div class="form-group form-group-icon">
-              <i class="fa fa-user "></i>
-              <input type="text" class="form-control border-warning" placeholder="First name" required>
-            </div>
-            <div class="form-group form-group-icon">
-              <i class="fa fa-envelope "></i>
-              <input type="email" class="form-control border-success" placeholder="Email address" required>
-            </div>
-            <div class="form-group form-group-icon">
-              <i class="fa fa-comments "></i>
-              <textarea class="form-control border-info" placeholder="Write message" rows="6"></textarea>
-            </div>
-              <button type="submit" class="btn btn-danger float-right text-uppercase">
-                Send Message
-              </button>
-          </form>
-        </div>
       </div>
     </div>
   </section>
