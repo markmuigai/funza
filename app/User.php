@@ -39,6 +39,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * Change name to uppercase
+     */
+    public function getNameAttribute($name)
+    {
+        return ucfirst($name);
+    }
+    
+    /**
      * Fetch classSubject pivot assigned to a teacher
      */
     public function classroomSubject()

@@ -14,6 +14,14 @@ class Substrand extends Model
     protected $fillable = ['name'];
 
     /**
+     * Change name to uppercase
+     */
+    public function getNameAttribute($name)
+    {
+        return ucfirst($name);
+    }
+
+    /**
      * Fetch the associated strand
      */
     public function strand()
