@@ -37,4 +37,18 @@ class lessonPlan extends Model
     {
         return Carbon::parse($end_date)->toFormattedDateString();
     }
+
+    /**
+     * Fetch number of assessments required
+     */
+    public function assessmentCount()
+    {
+        if($this->lesson_count < 5){
+            return 2;
+        }elseif($this->lesson_count > 5 && $this->lesson_count <=10){
+            return 3;
+        }elseif($this->lesson_count > 10){
+            return 4;
+        }
+    }
 }
