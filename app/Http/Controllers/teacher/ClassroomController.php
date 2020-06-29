@@ -49,7 +49,7 @@ class ClassroomController extends Controller
     {
         return view('teacher.classroom.show',[
             'classroom' => $classroom,
-            'subjects' => $classroom->grade->subjects()->paginate(8),
+            'subjects' => auth()->user()->subjectsForClass($classroom->id),
             'students' => $classroom->currentStudents()->paginate(8)
         ]);
     }

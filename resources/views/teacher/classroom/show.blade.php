@@ -14,7 +14,7 @@
         $colors = ['primary', 'warning',  'info', 'success'];
         $scores = [80,85,70,90];
       @endphp
-      @foreach ($subjects->take(2) as $key => $subject)
+      @foreach ($subjects as $key => $subject)
         <div class="col-lg-6 col-xs-6">
           <div class="card  text-primary">
             <div class="card-body">
@@ -36,7 +36,8 @@
 					<div class="card-body">
 						@component('components.tables.students',[
 							'students' => $students,
-							'classroom' => $classroom
+							'classroom' => $classroom,
+							'subjects' => $subjects
 						])
 						@endcomponent
 					</div>

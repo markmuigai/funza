@@ -1,39 +1,29 @@
-<table class="table p-5 bg-transaparent">
+<table style="table-layout: fixed; width: 100%" class="table p-5 bg-transaparent text-center">
     <tr>
 				<th>Name</th>
-				<th colspan="2">
-					<div class="row">
-						<div class="col-md-2 d-flex justify-content-center">
-							Total score
-						</div>
-						<div class="col-md-5 d-flex justify-content-center">
-							Mathematics Activities score
-						</div>
-					</div>
-				</th>
+				<th>Total Score</th>
+				@foreach ($subjects as $subject)
+					<th style="word-wrap: break-word" class="text-wrap">{{$subject->name}}</th>
+				@endforeach
         <th>Actions</th>
     </tr>
     @foreach ($students as $student)
         <tr>
 						<td>{{$student->name}}</td>
-						<td colspan="2">
-							<div class="row">
-								<div class="col-md-2 d-flex justify-content-center">
-									@if ($student->recentTotalScore()!==null)
-										{{$student->recentTotalScore()}}%
-									@else
-										Pending
-									@endif
-								</div>
-								<div class="col-md-5 d-flex justify-content-center">
-									@if ($classroom->recentSubjectScore($subject_id = 1)!==null)
-										{{$classroom->recentSubjectScore($subject_id = 1)}}%
-									@else
-										Pending
-									@endif
-								</div>
-							</div>
+						<td>
+							@if ($student->recentTotalScore()!==null)
+								{{$student->recentTotalScore()}}%
+							@else
+								Pending
+							@endif
 						</td>
+						@foreach ($subjects as $subject)
+							@if ($classroom->recentSubjectScore($subject->id)!==null)
+								<td>{{$classroom->recentSubjectScore($subject->id)}}%</td>
+							@else
+								<td>Pending</td>
+							@endif
+						@endforeach
 						<td><a href="{{ Route('teacher.performance.results.students.show', ['student' => $student])}}" class="btn btn-primary btn-sm">View Student Performance</a></td>
         </tr>
     @endforeach
