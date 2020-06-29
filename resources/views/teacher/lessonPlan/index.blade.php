@@ -37,7 +37,11 @@
               {{$lessonPlan->status}}
             </td>
             <td class="text-muted">
-              <a href="#" class="btn btn-primary">Mark as Complete</a>
+							<a class="btn btn-primary btn-sm m-2" 
+								href="{{ Route('teacher.classroom.subject.topic.outcome-result.create', ['classroom' => $classroom, 'subject'=> $subject, 'substrand' => $lessonPlan->substrand, 'assessment_count' => $lessonPlan->substrand->assessmentcount($classroom->currentStudents())]) }}">
+								Assess Learning outcomes
+							</a>
+              <a href="#" class="btn btn-success text-white btn-sm m-2">Mark as Complete</a>
             </td>
           </tr>
           @endforeach
