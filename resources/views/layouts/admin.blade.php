@@ -44,13 +44,6 @@
         </div>
       </div>
     </form>
-    <ul class="nav navbar-nav ml-auto">
-      <li class="nav-item}} d-none d-sm-inline-block">
-        <a class="nav-link">
-          <p>Register School</p>
-        </a>
-      </li>
-    </ul>
   </nav>
   <!-- /.navbar -->
 
@@ -232,7 +225,24 @@
 <!-- ./wrapper -->
 
     {{-- app.js --}}
+    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
     <script src="/js/app.js/"></script>
     @yield('app.js')
+    @if(session()->has('success'))
+        <script>
+            $(document).ready(function () {
+                toastr.options.timeOut = {{ session()->get('toast.timeout', 10000) }};
+                toastr.options.extendedTimeOut = 0;
+                toastr.options.closeButton = true;
+                toastr.success('@component('components.alerts.toastr', [
+                    'message' => session()->get('success'),
+                    'action' => [
+                        'url' => session()->get('toast.action.url'),
+                        'name' => session()->get('toast.action.name')
+                    ]
+                ]) @endcomponent', '')
+            })
+        </script>
+    @endif
 </body>
 </html>

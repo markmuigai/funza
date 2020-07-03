@@ -11,10 +11,10 @@
         <tr>
 						<td>{{$student->name}}</td>
 						<td>
-							@if ($student->recentTotalScore()!==null)
-								{{$student->recentTotalScore()}}%
-							@else
+							@if ($student->recentTotalScore()==null)
 								Pending
+							@else
+								{{$student->recentTotalScore()}}%
 							@endif
 						</td>
 						@foreach ($subjects as $subject)
