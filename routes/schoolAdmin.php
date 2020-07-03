@@ -32,8 +32,14 @@ Route::get('teachers/{teacher}/classAssignment', 'TeacherController@classAssignm
 // Fetch classes based on a grade ajax
 Route::get('teachers/classAssignment/fetchClasses/{grade}', 'TeacherController@fetchGradeClasses')->name('teachers.class-assignment.fetch-classes');
 
+// Fetch subjects based on a grade ajax
+Route::get('teachers/classAssignment/fetchSubjects/{class}/{teacher_id}', 'TeacherController@fetchClassSubjects')->name('teachers.class-assignment.fetch-subjects');
+
 // Assignment classes and subjects to teachers post
 Route::post('teachers/{teacher}/classAssignment', 'TeacherController@storeClassAssignment')->name('teachers.class-assignment.store');
+
+// Remove teacher from a subject and class
+Route::delete('teachers/{teacher}/classAssignment/{classroomSubject}', 'TeacherController@deleteClassAssignment')->name('teachers.class-assignment.destroy');
 
 // Students
 Route::resource('students', 'StudentController');
