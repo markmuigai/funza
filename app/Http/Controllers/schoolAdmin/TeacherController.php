@@ -215,10 +215,10 @@ class TeacherController extends Controller
         // dd($classroom_subject);
         
         // Assign grade and subject pivot instance to the teacher
-        // $classroomSubject->delete();
+        $classroomSubject->delete();
 
         return redirect()->back()->with([
-            'success' => 'Classes taught by updated successfully' 
+            'success' => 'Classes taught by '.$teacher->name.' updated successfully' 
         ]);
     }
 }

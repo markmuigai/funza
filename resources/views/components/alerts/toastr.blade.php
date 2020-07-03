@@ -1,0 +1,1 @@
+<div>{{ $message }}@isset($action['url'])<br><a href="{{ $action['url'] }}" class="btn-u rounded btn-u-md text-center my-2">{{ $action['name'] }}</a>@endisset</div>

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
+@include('layouts.alerts')
 @section('app.content')
-    @include('layouts.alerts')
     <div id="content" class="withdrawn">
         @yield('content')
     </div>  
