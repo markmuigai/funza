@@ -77,7 +77,7 @@ class OutcomeResultController extends Controller
             event(new ClassAssessed($classroom, $substrand));
         });
         
-        return redirect()->routRoute('teacher.classroom.subject.lessonPlan.index', ['classroom'=> $classroom, 'subject' => $subject])->with([
+        return redirect()->route('teacher.classroom.subject.lessonPlan.index', ['classroom'=> $classroom, 'subject' => $subject])->with([
             'success' => 'Student Assessed successfully'
         ]);
     }

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('app.content')
-    <div id="content" class="withdrawn">
+@include('layouts.alerts')
+    <div id="content" class="withdrawn" style="min-height: 698px;">
         @yield('content')
     </div>  
     @include('layouts.teacher.footer')
