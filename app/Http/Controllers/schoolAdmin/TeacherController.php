@@ -5,6 +5,7 @@ namespace App\Http\Controllers\schoolAdmin;
 use App\User;
 use App\Grade;
 use App\Subject;
+use App\classroomSubject;
 use Illuminate\Http\Request;
 use App\Exports\UsersExport;
 use App\Imports\UsersImport;
@@ -174,6 +175,23 @@ class TeacherController extends Controller
     }
 
     /**
+     * Ajax call to fetch subjects that can be taught by a teacher for a class
+     */
+    public function fetchClassSubjects($class_id, $user_id)
+    {
+        // Fetch teacher
+        $teacher = User::find($user_id);
+
+        // Subjects already assigned to the teacher for selected class
+        $assigned_subjects_for_class = $teacher->subjectsForClass($class_id)->pluck('id');
+
+        // Fetch subjects that can be taught for a particular class
+        $subjects = $teacher->subjects->whereNotIn('id',$assigned_subjects_for_class);
+
+        return json_encode($subjects->pluck('name','id'));
+    }
+
+    /**
      * Store class assignment
      */
     public function storeClassAssignment(Request $request, User $teacher)
@@ -184,6 +202,23 @@ class TeacherController extends Controller
             'subject_id' => $request->subject
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with([
+            'success' => 'Classroms taught by '.$teacher->name.' updated' 
+        ]);
+    }
+
+    /**
+     * Delete class assignment
+     */
+    public function deleteClassAssignment(Request $request, User $teacher, classroomSubject $classroomSubject)
+    {
+        // dd($classroom_subject);
+        
+        // Assign grade and subject pivot instance to the teacher
+        // $classroomSubject->delete();
+
+        return redirect()->back()->with([
+            'success' => 'Classes taught by updated successfully' 
+        ]);
     }
 }
