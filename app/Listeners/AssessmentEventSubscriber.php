@@ -49,9 +49,7 @@ class AssessmentEventSubscriber implements ShouldQueue
             $total_score = $substrand_scores->sum();
 
             // Check if strand has been assessed
-            if($total_score == 0){
-                return 0;
-            }else{
+            if($total_score !== 0){
                 // max possible score
                 $max_score = $substrand_scores->count()*100;
                     
@@ -74,9 +72,7 @@ class AssessmentEventSubscriber implements ShouldQueue
             $total_score = $strand_scores->sum();
 
             // Check if strand has been assessed
-            if($total_score == 0){
-                return 0;
-            }else{
+            if($total_score !== 0){
                 // max possible score
                 $max_score = $strand_scores->filter()->count()*100;
 
@@ -96,9 +92,7 @@ class AssessmentEventSubscriber implements ShouldQueue
             $total_score = $subject_scores->sum();
 
             // Check if strand has been assessed
-            if($total_score == 0){
-                return 0;
-            }else{
+            if($total_score !== 0){
                 // max possible score
                 $max_score = $strand_scores->filter()->count()*100;
 
@@ -135,9 +129,7 @@ class AssessmentEventSubscriber implements ShouldQueue
             })->flatten()->count()*100;
 
             // Check if a substrand has been assessed for all students
-            if($max_possible_total == 0){
-                return 0;
-            }else{
+            if($max_possible_total !== 0){
                 // Fetch number of assessments made for a substrand for the whole class
                 $raw_total =  $classroom->currentStudents()->map(function($student) use($substrand){
                     return $student->substrandScores->where('substrand_id', $substrand->id)->pluck('score');
@@ -177,9 +169,7 @@ class AssessmentEventSubscriber implements ShouldQueue
             $total_score = $substrand_scores->sum();
 
             // Check if strand has been assessed
-            if($total_score == 0){
-                return 0;
-            }else{
+            if($total_score !== 0){
                 // max possible score
                 $max_score = $substrand_scores->count()*100;
 
@@ -215,9 +205,7 @@ class AssessmentEventSubscriber implements ShouldQueue
             $total_score = $strand_scores->sum();
 
             // Check if strand has been assessed
-            if($total_score == 0){
-                return 0;
-            }else{
+            if($total_score !== 0){
                 // max possible score
                 $max_score = $strand_scores->filter()->count()*100;
 
