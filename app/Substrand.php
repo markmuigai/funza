@@ -35,6 +35,12 @@ class Substrand extends Model
         return $this->hasMany('App\Outcome');
     }
 
+    // Get the scores of a substrand
+    public function studentSubstrandScores()
+    {
+        return $this->hasMany('App\studentSubstrandScores');
+    }
+
     // Get the lesson plans of s substrand
     public function lessonPlan()
     {
