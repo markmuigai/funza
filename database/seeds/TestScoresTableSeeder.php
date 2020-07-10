@@ -2,6 +2,7 @@
 
 use App\Student;
 use App\Subject;
+use App\OutcomeResult;
 use App\StudentStrandScore;
 use App\StudentSubstrandScore;
 use Illuminate\Database\Seeder;
@@ -21,21 +22,69 @@ class TestScoresTableSeeder extends Seeder
 			$subject = Subject::first();
 
 			// Generate scores for each substrand using 
-			foreach(Student::all() as $student)
+			foreach(Student::take(1)->get() as $student)
 			{
-				// Generate normal distribution scores
-				$benchmark = generateScore(40,100,12,1);
-
 				foreach($subject->substrands as $substrand)
 				{
-					// Score to be a random number in the range of the first assessment
-					$score = rand(($benchmark-8), ($benchmark+8));
+					// for each assessment
+					for($i = 1; $i <= $substrand->lessonPlan->assessmentCount(); $i++)
+					{
+						// Outcome option count
+						$benchmark = generateScore(2,5,1.5,1);
 
-					// Create score
-					$substrand_score_model = $student->substrandScores()->create([
-							'substrand_id' => $substrand->id,
-							'score' => $score
-					]);
+						// Create an outcome result for each outcome
+						foreach($substrand->outcomes as $outcome)
+						{
+							if((2 < $benchmark) && ($benchmark <= 3)){
+								$score = 2;
+							}else{
+								$score = round($benchmark);
+							}
+
+							// dd(round($score));
+
+							// fetch outcome option that matches the score
+							$outcome_option_id = $outcome->outcomeOptions()->where('score', $score)->get()->first()->id;
+
+							// Create outcome results
+							$outcome_result = OutcomeResult::create([
+								'student_id' => $student->id,
+								'outcome_id' => $outcome->id,
+								'count' => $i,
+								'outcome_option_id' => $outcome_option_id 
+							]);
+						}
+						
+						/**
+						 * Fetch substrand performance percentage
+						 */
+						// fetch the number of outcomes for the substrand
+						$outcome_count = $substrand->outcomes->count();
+
+						// Calculate the maxumum score
+						$raw_substrand_score = OutcomeResult::where('student_id', $student->id)->get()->filter(function($outcome_result) use($substrand){
+							return $outcome_result->outcome->substrand->id == $substrand->id; 
+						})->map(function($i){
+							return $i->outcomeOption->score;
+						})->sum();
+
+						$max_score = OutcomeResult::where('student_id', $student->id)->get()->filter(function($outcome_result) use($substrand){
+							return $outcome_result->outcome->substrand->id == $substrand->id; 
+						})->count() * 5;
+
+						// Store scores in database
+						StudentSubstrandScore::create([
+								'student_id' => $student->id,
+								'substrand_id' => $substrand->id,
+								'score' => ($raw_substrand_score/$max_score)*100
+						]);
+					}
+
+					$all_scores = OutcomeResult::all()->map(function($i){
+						return $i->outcomeOption->score;
+					})->sum();
+
+					$substrand->outcomes->count();
 
 					$substrand_scores =  $substrand->strand->substrands->map(function($substrand) use($student){
 							return StudentSubstrandScore::where('student_id', $student->id)->where('substrand_id', $substrand->id)->pluck('score');
