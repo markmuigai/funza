@@ -4,6 +4,7 @@ use App\Student;
 use App\Subject;
 use App\OutcomeResult;
 use App\StudentStrandScore;
+use App\StudentSubjectScore;
 use App\StudentSubstrandScore;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +23,7 @@ class TestScoresTableSeeder extends Seeder
 			$subject = Subject::first();
 
 			// Generate scores for each substrand using 
-			foreach(Student::take(1)->get() as $student)
+			foreach(Student::all() as $student)
 			{
 				foreach($subject->substrands as $substrand)
 				{
@@ -73,46 +74,81 @@ class TestScoresTableSeeder extends Seeder
 						})->count() * 5;
 
 						// Store scores in database
-						StudentSubstrandScore::create([
+						$substrand_score = StudentSubstrandScore::create([
 								'student_id' => $student->id,
 								'substrand_id' => $substrand->id,
 								'score' => ($raw_substrand_score/$max_score)*100
 						]);
-					}
 
-					$all_scores = OutcomeResult::all()->map(function($i){
-						return $i->outcomeOption->score;
-					})->sum();
-
-					$substrand->outcomes->count();
-
-					$substrand_scores =  $substrand->strand->substrands->map(function($substrand) use($student){
+						$substrand_scores =  $substrand->strand->substrands->map(function($substrand) use($student){
 							return StudentSubstrandScore::where('student_id', $student->id)->where('substrand_id', $substrand->id)->pluck('score');
-					})->flatten();
+						})->flatten();
 
-					// max score attained
-					$total_score = $substrand_scores->sum();
+						// max score attained
+						$total_score = $substrand_scores->sum();
 
-					// Check if strand has been assessed
-					if($total_score !== 0){
-						// max possible score
-						$max_score = $substrand_scores->count()*100;
-								
-						// Store scores in database
-						$strand_score = $student->strandScores()->create([
-								'strand_id' => $substrand->strand->id,
+						// Check if strand has been assessed
+						if($total_score !== 0){
+							// max possible score
+							$max_score = $substrand_scores->count()*100;
+									
+							// Store scores in database
+							$strand_score = $student->strandScores()->create([
+									'strand_id' => $substrand->strand->id,
+									'score' => ($total_score/$max_score)*100
+							]);
+						}else{
+							// dd($substrand_score_model->substrand->toArray());
+							// dd($student->substrandScores->count(), StudentSubstrandScore::all()->count());
+							// dd($substrand_scores);
+							dd($substrand->strand->id);
+						}
+
+						/**
+						 * Fetch subject performance 
+						 */
+						// strand scores
+						$strand_scores =  $subject->strands->map(function($strand) use($student, $substrand){
+							return StudentStrandScore::where('student_id', $student->id)->where('strand_id', $substrand->strand->id)->pluck('score');
+						})->flatten();
+
+						// max score attained
+						$total_score = $strand_scores->sum();
+
+						// Check if strand has been assessed
+						if($total_score !== 0){
+							// max possible score
+							$max_score = $strand_scores->filter()->count()*100;
+
+							// Store scores in database
+							$subject_score = $student->subjectScores()->create([
+								'subject_id' => $subject->id,
 								'score' => ($total_score/$max_score)*100
-						]);
-					}else{
-						// dd($substrand_score_model->substrand->toArray());
-						// dd($student->substrandScores->count(), StudentSubstrandScore::all()->count());
-						// dd($substrand_scores);
-						dd($substrand->strand->id);
+							]);   
+						}
+
+						/**
+						 * Fetch total student score
+						 */
+						$subject_scores =  StudentSubjectScore::where('student_id', $student->id)->get()->pluck('score');
+
+						// max score attained
+						$total_score = $subject_scores->sum();
+
+						// Check if strand has been assessed
+						if($total_score !== 0){
+							// max possible score
+							$max_score = $subject_scores->filter()->count()*100;
+
+							// Store scores in database
+							$total_score = $student->totalScores()->create([
+								'score' => ($total_score/$max_score)*100
+							]);   
+						}
 					}
+
+					// dd(StudentSubjectScore::all()->count());
 				}
-
-				// dd(StudentStrandScore::all()->toArray());
-
 			}
 		});
 	}
