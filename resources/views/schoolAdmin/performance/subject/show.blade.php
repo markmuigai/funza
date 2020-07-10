@@ -3,47 +3,51 @@
 @section('header', $subject->name.' detailed performance')
 @section('content')
   <div class="container-fluid">
-    <h3>Overall Strand Stats</h3>
+    <h3>Recent Strand Scores</h3>
     <div class="row">
-      <div class="col-lg-4 col-xs-6">
+      @php
+        $colors = ['blue', 'green',  'purple', 'red'];
+      @endphp
+      @foreach ($subject->strands->take(4) as $key => $strand)
+        <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-blue text-white">
+          <div class="small-box bg-{{$colors[$key]}} text-white">
             <div class="inner">
-                <h3>Subtraction</h3>
-
-                <p>Best Performance</p>
+              @if(App\Classroom::find(21)->recentStrandScore($strand->id)==null)
+                <h3>Pending</h3>
+              @else
+                <h3>{{App\Classroom::find(21)->recentStrandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
+              @endif
+              <p>{{ $strand->name }}</p>
             </div>
             <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+              <i class="ion ion-stats-bars"></i>
             </div>
           </div>
-      </div>
-      <div class="col-lg-4 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-green text-white">
-          <div class="inner">
-              <h3>Multiplication</h3>
-
-              <p>Worst Performance</p>
-          </div>
-          <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-          </div>
         </div>
-      </div>
-
-      <div class="col-lg-4 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-purple text-white">
-          <div class="inner">
-              <h3>20%</h3>
-
-              <p>Assessment Completion</p>
+      @endforeach
+    </div>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTopicsPerformance" aria-expanded="false" aria-controls="collapseTopicsPerformance">View All Strands</button>
+    <div class="collapse mt-4" id="collapseTopicsPerformance">
+      <div class="row">
+        @foreach ($subject->strands->except($subject->strands->take(4)->keys()->toArray()) as $key => $strand)
+          <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-{{$colors[$key % 4]}} text-white">
+              <div class="inner">
+                @if(App\Classroom::find(21)->recentStrandScore($strand->id)==null)
+                  <h3>Pending</h3>
+                @else
+                  <h3>{{App\Classroom::find(21)->recentStrandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
+                @endif
+                <p>{{ $strand->name }}</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+            </div>
           </div>
-          <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
     <h3 class="mt-2">Substrand performance</h3>
