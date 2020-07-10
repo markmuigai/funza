@@ -136,7 +136,7 @@ class AssessmentEventSubscriber implements ShouldQueue
                 })->flatten()->sum();
 
                 // Calculate the pssible maximum percentage score 
-                $class_total = $classroom->currentStudents()->count()*100;
+                $class_total = $classroom->currentStudents()->count()*100*$substrand->assessmentcount($classroom->currentStudents());
                 
                 return $avg_substrand_score = ($raw_total/$class_total)*100;
             }
@@ -171,7 +171,7 @@ class AssessmentEventSubscriber implements ShouldQueue
             // Check if strand has been assessed
             if($total_score !== 0){
                 // max possible score
-                $max_score = $substrand_scores->count()*100;
+                $max_score = $substrand_scores->count()*100*$substrand->assessmentcount($classroom->currentStudents());
 
                 return ($total_score/$max_score)*100;
             }
@@ -207,7 +207,7 @@ class AssessmentEventSubscriber implements ShouldQueue
             // Check if strand has been assessed
             if($total_score !== 0){
                 // max possible score
-                $max_score = $strand_scores->filter()->count()*100;
+                $max_score = $strand_scores->filter()->count()*100*$substrand->assessmentcount($classroom->currentStudents());
 
                 return ($total_score/$max_score)*100;
             }
