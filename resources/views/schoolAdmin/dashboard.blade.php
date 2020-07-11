@@ -3,53 +3,44 @@
     
 @section('content')
 <div class="container-fluid pt-4">
-    <h4 class="my-3 text-center">Dashboard</h4>
-    <div class="row">
-        <div class="col-md-6">
-            <h5 class="my-3">Students</h5>
-            @if($students->isEmpty())
-                <div class="card p-2 align-items-center">
-                    <div class="card-body">
-												<h4>No students uploaded </h4>
-												{{-- Student --}}
-												<canvas id="studentScores" width="400" height="400"></canvas>
-                    </div>
-                </div>
-            @else   
-                @component('components.tables.students', [
-                    'students' => $students
-                ])   
-                @endcomponent
-                <a href="{{ Route('schoolAdmin.students.index') }}" class="btn btn-primary">View More</a>
-            @endif
-        </div>
-        <div class="col-md-6">
-            <h5 class="my-3">Teachers</h5>
-            @if($teachers->isEmpty())
-                <div class="card p-2 align-items-center">
-                    <div class="card-body">
-                        <h4>No teachers uploaded</h4>
-                    </div>
-                </div>
-            @else   
-                @component('components.tables.teachers', [
-                    'teachers' => $teachers
-                ])   
-                @endcomponent
-                <a href="{{ Route('schoolAdmin.teachers.index') }}" class="btn btn-primary">View More</a>
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <h5 class="my-3">Performance Summary</h5>
-            <div class="card p-2 align-items-center">
-                <div class="card-body">
-                    <h4>Performance Metrics Unavailable </h4>
-                </div>
-            </div>
-        </div>
-    </div>
+	@if (App\studentSubstrandScore::all()->isEmpty())
+		<div class="card p-2 align-items-center">
+			<div class="card-body">
+					<h4>Performance summary unavailable</h4>
+			</div>
+		</div>
+	@else
+		<h4 class="my-3 text-center">Dashboard</h4>
+		<div class="row">
+				<div class="col-md-6">
+					<div class="card p-2 align-items-center">
+						<h5 class="my-3">Average Total Scores</h5>
+							<div class="card-body">
+									<canvas id="studentScores" width="600" height="400"></canvas>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="card p-2 align-items-center">
+						<h5 class="my-3">Average Subject Performance</h5>
+							<div class="card-body">
+								<canvas id="subjectScores" width="600" height="400"></canvas>
+							</div>
+					</div>
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-md-12">
+						<h5 class="my-3">Performance Summary</h5>
+						<div class="card p-2 align-items-center">
+								<div class="card-body">
+										<h4>Performance Metrics Unavailable </h4>
+										
+								</div>
+						</div>
+				</div>
+		</div>
+	@endif
 </div>
 @endsection
 @section('js')
@@ -65,34 +56,40 @@
 						label: "Africa",
 						borderColor: "#3e95cd",
 						fill: false
-					}, { 
-						data: [282,350,411,502,635,809,947,1402,3700,5267],
-						label: "Asia",
-						borderColor: "#8e5ea2",
-						fill: false
-					}, { 
-						data: [168,170,178,190,203,276,408,547,675,734],
-						label: "Europe",
-						borderColor: "#3cba9f",
-						fill: false
-					}, { 
-						data: [40,20,10,16,24,38,74,167,508,784],
-						label: "Latin America",
-						borderColor: "#e8c3b9",
-						fill: false
-					}, { 
-						data: [6,3,2,2,7,26,82,172,312,433],
-						label: "North America",
-						borderColor: "#c45850",
-						fill: false
 					}
 				]
 			},
 			options: {
 				title: {
 					display: true,
+					responsive: false,
 					text: 'World population per region (in millions)'
 				}
+			}
+		});
+
+		var ctx = $('#subjectScores');
+		var labels = @json($classroom->getSubjectAverageChartScores()->pluck('name'));
+		var scores = @json($classroom->getSubjectAverageChartScores()->pluck('score'));
+		var studentScores = new Chart(ctx, {
+			type: 'horizontalBar',
+			data: {
+				labels: labels,
+				datasets: [
+					{
+						label: "Score(Percent)",
+						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#3e95cd","#8e5ea2", "#3cba9f"],
+						data: scores,
+					}
+				]
+			},
+			options: {
+				legend: { display: false },
+				title: {
+					display: true,
+					text: 'Average subject scores'
+				},
+				responsive: false
 			}
 		});
 });

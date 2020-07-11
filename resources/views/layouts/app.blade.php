@@ -19,7 +19,12 @@
     {{-- Funza --}}
     <link href="{{ asset('css/kidz.css') }}" rel="stylesheet">
     <link href="{{ asset('css/kidz-color5.css') }}" rel="stylesheet"> 
-
+    <style type="css">
+        footer{
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- ====================================

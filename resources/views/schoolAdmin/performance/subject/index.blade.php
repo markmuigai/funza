@@ -3,48 +3,11 @@
 @section('header', 'Subject performance')
 @section('content')
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-4 col-xs-6">
-						<!-- small box -->
-						<div class="small-box bg-blue text-white">
-							<div class="inner">
-									<h3>Mathematics</h3>
-
-									<p>Best Performance</p>
-							</div>
-							<div class="icon">
-									<i class="ion ion-stats-bars"></i>
-							</div>
-						</div>
-				</div>
-				<div class="col-lg-4 col-xs-6">
-					<!-- small box -->
-					<div class="small-box bg-green text-white">
-						<div class="inner">
-								<h3>English Language Activities</h3>
-
-								<p>Worst Performance</p>
-						</div>
-						<div class="icon">
-								<i class="ion ion-stats-bars"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-xs-6">
-					<!-- small box -->
-					<div class="small-box bg-purple text-white">
-						<div class="inner">
-								<h3>20%</h3>
-
-								<p>Assessment Completion</p>
-						</div>
-						<div class="icon">
-								<i class="ion ion-stats-bars"></i>
-						</div>
-					</div>
-				</div>
-			</div>
+      <div class="card">
+        <div class="card-body">
+          <canvas id="allSubjectScores" width="1500" height="400"></canvas>
+        </div>
+      </div>
 		</div>
     <div class="container-fluid pt-4">
         <a href="{{ Route('schoolAdmin.students.create') }}" class="btn btn-primary my-3">Add New Student</a>
@@ -142,6 +105,24 @@
             }else{
                 $('select[name="class"]').empty();
             }
+        });
+
+        var ctx = $('#allSubjectScores');
+        var dataset = @json($classroom->getSubjectChartScores());
+        var labels = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'December']];
+        var allSubjectScores = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: dataset 
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Subject scores per each assessment'
+            },
+            responsive: false
+          }
         });
     });
 </script>

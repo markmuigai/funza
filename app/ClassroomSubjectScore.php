@@ -12,4 +12,9 @@ class ClassroomSubjectScore extends Model
      * @var array
      */
     protected $fillable = [ 'classroom_id', 'subject_id', 'score'];
+
+    /**
+     * Get the associated subject
+     */
+    
 }

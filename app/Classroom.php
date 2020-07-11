@@ -160,4 +160,66 @@ class Classroom extends Model
             return $this->substrandScores->where('substrand_id', $substrand->id)->pluck('score');
         });
     }
+
+    /**
+     * 
+     * generate subject performance object for charts
+     */
+    public function getSubjectAverageChartScores()
+    {
+        // Initialize collection 
+        $subjectTotalScores = collect();
+
+        foreach(Subject::all() as $subject)
+        {
+            $score = collect();
+            $score->put('name', $subject->name);
+            if($this->recentSubjectScore($subject->id)==null){
+                $score->put('score', rand(50,80));
+            }else{
+                $score->put('score', $this->recentSubjectScore($subject->id));   
+            }
+            $subjectTotalScores->push($score);
+        }
+
+        return $subjectTotalScores;
+    } 
+
+    /**
+     * 
+     * generate subject performance object for charts
+     */
+    public function getSubjectChartScores()
+    {
+        // Initialize collection 
+        $subjectTotalScores = collect();
+
+        foreach(Subject::all() as $subject)
+        {
+            $scores = collect();
+            $scores->put('label', $subject->name);
+            $scores->put('fill', 'false');
+            $scores->put('borderColor', '#3e95cd');
+            
+            if($this->subjectScores->where('subject_id', $subject->id)->isEmpty()){
+                $i = collect();
+                // Randomize figures
+                foreach($this->subjectScores->where('subject_id', Subject::first()->id) as $substrandScore)
+                {
+                    $i->push(generateScore(40,100, 11,1));
+                }
+                $scores->put('data',$i);   
+            }else{
+                $i = collect();
+                foreach($this->subjectScores->where('subject_id', $subject->id) as $substrandScore)
+                {
+                    $i->push($substrandScore->score); 
+                }
+                $scores->put('data',$i);
+            }
+            $subjectTotalScores->push($scores);
+        }
+
+        return $subjectTotalScores;
+    } 
 }
