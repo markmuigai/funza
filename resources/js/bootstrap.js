@@ -14,6 +14,7 @@ try {
     window.toastr = require('toastr');
     window.noUiSlider - require('nouislider/distribute/nouislider');
     window.select2 = require('select2');
+    window.chart = require('chart.js');
     // require('owl.caurosel');
 
     require('admin-lte');

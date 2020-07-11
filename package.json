@@ -29,6 +29,7 @@
         "@mdi/font": "^4.8.95",
         "admin-lte": "^3.0.2",
         "animate.css": "^3.7.2",
+        "chart.js": "^2.9.3",
         "datatables.net-bs4": "^1.10.19",
         "isotope": "^1.0.0-alpha.3",
         "loadingio-bar": "^0.1.1",
