@@ -340,19 +340,65 @@ class Classroom extends Model
         }
 
         return $subjectTotalScores;
-		} 
+	} 
 		
-		/**
-		 * Get outcome options percentages
-		 */
-		public function percentageForOutcome($outcomeOption)
-		{
-			$outcomeOptionCount = $this->currentStudents()->map(function($student) use($outcomeOption){
-				return $student->allOutcomeResultsForSubstrand($outcomeOption->Outcome->substrand->id)->where('outcome_option_id', $outcomeOption->id)->count();
-			})->sum();
+    /**
+     * Get outcome options percentages
+     */
+    public function percentageForOutcome($outcomeOption)
+    {
+        $outcomeOptionCount = $this->currentStudents()->map(function($student) use($outcomeOption){
+            return $student->allOutcomeResultsForSubstrand($outcomeOption->Outcome->substrand->id)->where('outcome_option_id', $outcomeOption->id)->count();
+        })->sum();
 
-			$maxOutcomeCount = $this->substrandScoresForSubstrand($outcomeOption->Outcome->substrand)->count() * $this->currentStudents()->count();
+        $maxOutcomeCount = $this->substrandScoresForSubstrand($outcomeOption->Outcome->substrand)->count() * $this->currentStudents()->count();
 
-			return ($outcomeOptionCount/$maxOutcomeCount)*100;
-		}
+        return ($outcomeOptionCount/$maxOutcomeCount)*100;
+    }
+    
+    /**
+     * Get student totals chart data
+     */
+    public function monthlyStudentScoreTotals($month)
+    {
+        // Fetch student total scores for assessed during passed month        
+        $totalScores = $this->currentStudents()->map(function($student)use($month){
+            return $student->totalScores;
+        })->flatten();
+
+        return round($totalScores->filter(function($score)use($month){
+            return $score->created_at->month == $month;
+        })->pluck('score')->avg());
+    }
+
+    public function getStudentScoreTotalsChart()
+    {
+        // Initialize collection
+        $temp = collect();
+
+        $scores = collect();
+
+        $labels = collect();
+
+        $month_scores = collect();
+
+        // For each month
+        for($month = 1; $month<=12; $month++)
+        {
+            if($this->monthlyStudentScoreTotals($month)==true){
+                $month_scores->push($this->monthlyStudentScoreTotals($month));
+            }
+        }
+
+        // Push to score collection
+        $temp->put('strands', $labels);
+        $temp->put('label', 'Total Scores');
+        $temp->put('data', $month_scores);
+        $temp->put('borderColor', '#ea77ad');
+        $temp->put('fill', 'false');
+
+        $scores = collect();
+        $scores->push($temp);
+        return $scores;
+    }
 }

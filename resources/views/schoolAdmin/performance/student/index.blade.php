@@ -3,6 +3,14 @@
 @section('header', 'Student performance')
 @section('content')
     <div class="container-fluid">
+      <div class="card">
+        <h5 class="my-4 text-center">Students Average Perfomance over time</h5>
+        <div class="card-body">
+          <canvas id="studentScoreTotals" width="1500" height="400"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
         <a href="{{ Route('schoolAdmin.students.create') }}" class="btn btn-primary my-3">Add New Student</a>
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
           Download Performance PDF
@@ -107,6 +115,24 @@
             }else{
                 $('select[name="class"]').empty();
             }
+        });
+
+        var ctx = $('#studentScoreTotals');
+        var dataset = @json(App\Classroom::find(21)->getStudentScoreTotalsChart());
+        var labels = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var studentScoreTotals = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: dataset 
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Subject scores over Time'
+            },
+            responsive: false
+          }
         });
     });
 </script>
