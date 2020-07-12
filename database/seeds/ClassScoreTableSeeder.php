@@ -4,11 +4,15 @@ use App\Student;
 use App\Subject;
 use App\Classroom;
 use App\Substrand;
+use Carbon\Carbon;
 use App\OutcomeResult;
 use App\StudentStrandScore;
 use App\StudentSubjectScore;
+use App\ClassroomStrandScore;
+use App\ClassroomSubjectScore;
 use App\StudentSubstrandScore;
 use Illuminate\Database\Seeder;
+use App\ClassroomSubstrandScore;
 use Illuminate\Support\Facades\DB;
 
 class ClassScoreTableSeeder extends Seeder
@@ -48,9 +52,11 @@ class ClassScoreTableSeeder extends Seeder
 					return $student->substrandScores()->where('substrand_id', $substrandId)->take($i)->get()->pluck('score');
 				})->flatten()->sum();
 				
-				$classroom->substrandScores()->create([
+				app(ClassroomSubstrandScore::class)->timestamps = false;
+				$ClassroomSubstrandScore = $classroom->substrandScores()->create([
 					'substrand_id' => $substrandId,
-					'score' => ($substrand_score/($classroom->currentStudents()->count()*100*$i))*100
+					'score' => ($substrand_score/($classroom->currentStudents()->count()*100*$i))*100,
+					'created_at' => Carbon::parse($substrand->lessonPlan->start_date)->addDays($i*3)
 				]);
 
 				/**
@@ -60,9 +66,11 @@ class ClassScoreTableSeeder extends Seeder
 					return $student->strandScores()->where('strand_id', $substrand->strand->id)->take($i)->get()->pluck('score');
 				})->flatten()->sum();
 				
-				$classroom->strandScores()->create([
+				app(ClassroomStrandScore::class)->timestamps = false;
+				$ClassroomStrandScore = $classroom->strandScores()->create([
 					'strand_id' => $substrand->strand->id,
-					'score' => ($strand_score/($classroom->currentStudents()->count()*100*$i))*100
+					'score' => ($strand_score/($classroom->currentStudents()->count()*100*$i))*100,
+					'created_at' => Carbon::parse($substrand->lessonPlan->start_date)->addDays($i*3)
 				]);
 
 				/**
@@ -72,9 +80,11 @@ class ClassScoreTableSeeder extends Seeder
 					return $student->subjectScores()->where('subject_id', $substrand->strand->subject->id)->take($i)->get()->pluck('score');
 				})->flatten()->sum();
 				
-				$classroom->subjectScores()->create([
+				app(ClassroomSubjectScore::class)->timestamps = false;
+				$ClassroomSubjectScore = $classroom->subjectScores()->create([
 					'subject_id' => $substrand->strand->subject->id,
-					'score' => ($subject_score/($classroom->currentStudents()->count()*100*$i))*100
+					'score' => ($subject_score/($classroom->currentStudents()->count()*100*$i))*100,
+					'created_at' => Carbon::parse($substrand->lessonPlan->start_date)->addDays($i*3)
 				]);
 			}
 		}

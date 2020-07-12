@@ -2,7 +2,9 @@
 
 use App\Student;
 use App\Subject;
+use Carbon\Carbon;
 use App\OutcomeResult;
+use App\StudentTotalScore;
 use App\StudentStrandScore;
 use App\StudentSubjectScore;
 use App\StudentSubstrandScore;
@@ -92,10 +94,14 @@ class TestScoresTableSeeder extends Seeder
 							// max possible score
 							$max_score = $substrand_scores->count()*100;
 									
+							// Disable timestamps
+							app(StudentStrandScore::class)->timestamps = false;
+
 							// Store scores in database
 							$strand_score = $student->strandScores()->create([
 									'strand_id' => $substrand->strand->id,
-									'score' => ($total_score/$max_score)*100
+									'score' => ($total_score/$max_score)*100,
+									'created_at' => Carbon::parse($substrand->lessonPlan->start_date)->addDays($i*3)
 							]);
 						}else{
 							// dd($substrand_score_model->substrand->toArray());
@@ -120,10 +126,14 @@ class TestScoresTableSeeder extends Seeder
 							// max possible score
 							$max_score = $strand_scores->filter()->count()*100;
 
+							// Disable timestamps
+							app(StudentSubjectScore::class)->timestamps = false;
+
 							// Store scores in database
 							$subject_score = $student->subjectScores()->create([
 								'subject_id' => $subject->id,
-								'score' => ($total_score/$max_score)*100
+								'score' => ($total_score/$max_score)*100,
+								'created_at' => Carbon::parse($substrand->lessonPlan->start_date)->addDays($i*3)
 							]);   
 						}
 
@@ -140,14 +150,16 @@ class TestScoresTableSeeder extends Seeder
 							// max possible score
 							$max_score = $subject_scores->filter()->count()*100;
 
+							// Disable timestamps
+							app(StudentTotalScore::class)->timestamps = false;
+							
 							// Store scores in database
 							$total_score = $student->totalScores()->create([
-								'score' => ($total_score/$max_score)*100
-							]);   
+								'score' => ($total_score/$max_score)*100,
+								'created_at' => Carbon::parse($substrand->lessonPlan->start_date)->addDays($i*3)
+							]);  
 						}
 					}
-
-					// dd(StudentSubjectScore::all()->count());
 				}
 			}
 		});
