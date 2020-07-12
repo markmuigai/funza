@@ -16,5 +16,9 @@ class ClassroomSubjectScore extends Model
     /**
      * Get the associated subject
      */
-    
+    public function subject()
+    {
+        return $this->belongsTo('App\Subject');
+    }
+
 }
