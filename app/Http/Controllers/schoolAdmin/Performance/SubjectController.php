@@ -62,6 +62,14 @@ class SubjectController extends Controller
     }
 
     /**
+     * Return classroom subjects chart data
+     */
+    public function ClassSubjectChartScores(Request $request)
+    {
+        return Classroom::find(21)->getSubjectChartScores($request->query('subjects'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

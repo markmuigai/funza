@@ -80,3 +80,6 @@ Route::name('performance.results.')->namespace('Performance')->prefix('/performa
 Route::name('performance.subjects.')->namespace('subject')->prefix('/performance/subjects')->group(function () {
     Route::resource('results', 'ResultController');
 });
+
+// Ajax fetch selected subjects for chart
+Route::get('performance/subjects/chartFilter', 'Performance\SubjectController@ClassSubjectChartScores')->name('performance.subjects.chartFilter');
