@@ -3,6 +3,14 @@
 @section('header', $substrand->name.' detailed performance')
 @section('content')
   <div class="container-fluid">
+    <div class="card">
+      <h5 class="my-4 text-center">Substrand Perfomance</h5>
+      <div class="card-body">
+        <canvas id="allSubstrandScores" width="1500" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
     <div class="form-row">
       <div class="form-group col-md-2">
           <select name="grade" id="grade" class="form-control">
@@ -52,7 +60,7 @@
 												{{$outcomeOption->name}}
 											</div>
 											<div class="col-md-2 d-flex justify-content-center">
-												20%
+												{{$classroom->percentageForOutcome($outcomeOption)}}
 											</div>
 										</div>
 									</td>
@@ -101,6 +109,41 @@
               $('select[name="class"]').empty();
           }
       });
+
+      var ctx = $('#allSubstrandScores');
+        var dataset = @json($classroom->getSubstrandAverageChartScores(App\Substrand::find($substrand->id)));
+        var labels = @json($classroom->getSubstrandAverageChartScores(App\Substrand::find($substrand->id))->pluck('count')->first()[0]);
+        var allSubstrandScores = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: dataset 
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Strand scores over time'
+            },
+            scales: {
+              xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'N.o of Assessments'
+                  }
+              }],
+              yAxes: [{
+                display: true,
+                ticks: {
+                    // beginAtZero: true,
+                    // steps: 10,
+                    // stepValue: 5,
+                  }
+              }]
+            },
+            responsive: false
+          }
+        });
   });
 </script>
 @endsection

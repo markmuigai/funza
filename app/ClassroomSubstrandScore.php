@@ -12,4 +12,12 @@ class ClassroomSubstrandScore extends Model
      * @var array
      */
     protected $fillable = [ 'classroom_id', 'substrand_id', 'score'];
+
+    /**
+     * Get the associated substrand
+     */
+    public function substrand()
+    {
+        return $this->belongsTo('App\Substrand');
+    }
 }

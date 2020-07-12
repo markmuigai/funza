@@ -53,7 +53,7 @@ class SubstrandController extends Controller
     {
         return view('schoolAdmin.performance.subject.strand.show', [
             'grades' => Grade::all(),
-            'classrooms' => Classroom::all(),
+            'classroom' => Classroom::find(21),
             'subject' => $subject,
             'strand' => $strand,
             'substrand' => $substrand

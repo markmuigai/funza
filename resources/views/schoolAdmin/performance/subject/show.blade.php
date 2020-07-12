@@ -134,7 +134,7 @@
         });
     });
 
-    var ctx = $('#allSubjectScores');
+        var ctx = $('#allSubjectScores');
         var dataset = @json($classroom->getStrandAverageChartScores($subject));
         var labels = @json($classroom->getStrandAverageChartScores($subject)->pluck('strands')->first());
         var allSubjectScores = new Chart(ctx, {

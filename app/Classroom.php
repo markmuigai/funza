@@ -162,6 +162,46 @@ class Classroom extends Model
     }
 
     /**
+     * Fetch substrand scores based on substrand
+     */
+    public function substrandScoresForSubstrand($substrand)
+    {
+        return $this->subStrandScores->filter(function($substrandScore)use($substrand){
+            return $substrandScore->substrand == $substrand;
+        });
+    }
+
+    /**
+     * generate strand performance object for charts
+     */
+    public function getSubStrandAverageChartScores($substrand)
+    {
+        // Initialize collection
+        $substrandTotalScore = collect();
+
+        $scores = collect();
+
+        $labels = collect();
+
+        // Get assessed strands
+        foreach($this->substrandScoresForSubstrand($substrand) as $substrandScore)
+        {
+            $scores->push($substrandScore->score);
+				}
+				
+				$labels->push(range(1,$this->substrandScoresForSubstrand($substrand)->count()));
+        $substrandTotalScore->put('count', $labels);
+        $substrandTotalScore->put('label', $substrand->name);
+        $substrandTotalScore->put('data', $scores);
+        $substrandTotalScore->put('borderColor', '#ea77ad');
+        $substrandTotalScore->put('fill', 'false');
+
+        $scores = collect();
+        $scores->push($substrandTotalScore);
+        return $scores;
+    }
+
+    /**
      * Get strand scores based on strand  
      */
     public function strandScoresForStrand($strand)
@@ -176,11 +216,7 @@ class Classroom extends Model
      */
     public function assessedStrands()
     {
-        if($this->strandScoresForStrand($strand)->isNotEmpty())
-        {
-            $labels->push($strand->name);
-            $scores->push(round($this->strandScoresForStrand($strand)->pluck('score')->avg()));
-        }
+
     }
     
     /**
@@ -304,5 +340,19 @@ class Classroom extends Model
         }
 
         return $subjectTotalScores;
-    } 
+		} 
+		
+		/**
+		 * Get outcome options percentages
+		 */
+		public function percentageForOutcome($outcomeOption)
+		{
+			$outcomeOptionCount = $this->currentStudents()->map(function($student) use($outcomeOption){
+				return $student->allOutcomeResultsForSubstrand($outcomeOption->Outcome->substrand->id)->where('outcome_option_id', $outcomeOption->id)->count();
+			})->sum();
+
+			$maxOutcomeCount = $this->substrandScoresForSubstrand($outcomeOption->Outcome->substrand)->count() * $this->currentStudents()->count();
+
+			return ($outcomeOptionCount/$maxOutcomeCount)*100;
+		}
 }
