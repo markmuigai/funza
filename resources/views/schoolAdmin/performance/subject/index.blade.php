@@ -6,6 +6,17 @@
       <div class="card">
         <div class="card-body">
           <canvas id="allSubjectScores" width="1500" height="400"></canvas>
+          <form id ="fetchChartSubject">
+            @foreach (App\Subject::all() as $subject)
+              <div class="pretty p-icon p-round p-pulse">
+                <input id="subject{{ $subject->id }}" class="filterSubject" type="checkbox" name="subjects[]" value="{{ $subject->id }}"/>
+                <div class="state p-danger">
+                    <i class="icon mdi mdi-check"></i>
+                    <label>{{ $subject->name }}</label>
+                </div>
+              </div>
+            @endforeach
+          </form>
         </div>
       </div>
 		</div>
@@ -107,9 +118,12 @@
             }
         });
 
+        $('#subject1').prop( "checked", true );
+        $('#subject2').prop( "checked", true );
+
         var ctx = $('#allSubjectScores');
-        var dataset = @json($classroom->getSubjectChartScores());
-        var labels = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'December']];
+        var dataset = @json($classroom->getSubjectChartScores([1,2]));
+        var labels = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var allSubjectScores = new Chart(ctx, {
           type: 'line',
           data: {
@@ -123,6 +137,30 @@
             },
             responsive: false
           }
+        });
+
+        $(".filterSubject").change(function(){
+          var subjects = [];
+          $('input:checkbox.filterSubject').each(function () {
+              (this.checked ? subjects.push($(this).val()): "");
+          });
+
+          $.ajax({
+            url: '/school-admin/performance/subjects/chartFilter',
+            data: {'subjects': subjects},
+            type: "get",
+            dataType: "json",
+            success:function(data) {
+              newdata = data
+
+              allSubjectScores.data.datasets = [];
+
+              allSubjectScores.data.datasets = data;
+              
+              allSubjectScores.update();
+            }
+          });
+
         });
     });
 </script>
