@@ -186,38 +186,67 @@ class Classroom extends Model
     } 
 
     /**
+     * Group results by month
+     */
+    public function monthlySubjectResults($subject, $month)
+    {
+        // Fetch scores for a subject assessed during passed month
+        $scores =  $this->subjectScores->where('subject_id', $subject->id)->filter(function($substrandScore)use($month){
+            return $substrandScore->created_at->month == $month;
+        })->pluck('score');
+
+        // If subject has not been assessed, randomize data
+        if($scores->sum() == 0){
+            // Return average score for the month
+            return generateScore(60,90,11,1);
+        }else{
+            return round(($scores->sum()/($scores->count()*100))*100);
+        }
+    }
+    
+    /**
      * 
      * generate subject performance object for charts
      */
-    public function getSubjectChartScores()
+    public function getSubjectChartScores($subjects)
     {
         // Initialize collection 
         $subjectTotalScores = collect();
 
-        foreach(Subject::all() as $subject)
+        // Line graph colors
+        $colors = [ '#f0c24b', '#ea77ad', 'blue', '#ea7066', '#b5d56a', '#84bed6', '#a597e7', '#2f3c43',];
+
+        // Counter to select color for each iteration
+        $i = 0;
+
+        $months = collect();
+
+        foreach($subjects as $subject)
         {
+            $subject = Subject::findorFail($subject);
+
             $scores = collect();
             $scores->put('label', $subject->name);
             $scores->put('fill', 'false');
-            $scores->put('borderColor', '#3e95cd');
+            $scores->put('borderColor', $colors[$i]);
             
-            if($this->subjectScores->where('subject_id', $subject->id)->isEmpty()){
-                $i = collect();
-                // Randomize figures
-                foreach($this->subjectScores->where('subject_id', Subject::first()->id) as $substrandScore)
-                {
-                    $i->push(generateScore(40,100, 11,1));
-                }
-                $scores->put('data',$i);   
-            }else{
-                $i = collect();
-                foreach($this->subjectScores->where('subject_id', $subject->id) as $substrandScore)
-                {
-                    $i->push($substrandScore->score); 
-                }
-                $scores->put('data',$i);
+            $month_scores = collect();
+
+            // For each month
+            for($month = 1; $month<=12; $month++)
+            {
+                // Subject score for the month
+                $month_scores->push($this->monthlySubjectResults($subject, $month));
             }
+
+            // Push to score collection
+            $scores->put('data', $month_scores);
+
+            // Push to all scores collection
             $subjectTotalScores->push($scores);
+
+            // Iterate colors
+            $i = $i+1;
         }
 
         return $subjectTotalScores;
