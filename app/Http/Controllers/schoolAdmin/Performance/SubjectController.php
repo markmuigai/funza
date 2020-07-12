@@ -57,7 +57,8 @@ class SubjectController extends Controller
     {
         // Fetch students of a class
         return view('schoolAdmin.performance.subject.show',[
-            'subject' =>  $subject
+            'subject' =>  $subject,
+            'classroom' => Classroom::find(21),
         ]);
     }
 

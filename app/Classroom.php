@@ -162,6 +162,60 @@ class Classroom extends Model
     }
 
     /**
+     * Get strand scores based on strand  
+     */
+    public function strandScoresForStrand($strand)
+    {
+        return $this->strandScores->filter(function($strandScore)use($strand){
+            return $strandScore->strand == $strand;
+        });
+    }
+
+    /**
+     * Return strands which have been assessed
+     */
+    public function assessedStrands()
+    {
+        if($this->strandScoresForStrand($strand)->isNotEmpty())
+        {
+            $labels->push($strand->name);
+            $scores->push(round($this->strandScoresForStrand($strand)->pluck('score')->avg()));
+        }
+    }
+    
+    /**
+     * generate strand performance object for charts
+     */
+    public function getStrandAverageChartScores($subject)
+    {
+        // Initialize collection
+        $strandTotalScore = collect();
+
+        $scores = collect();
+
+        $labels = collect();
+
+        // Get assessed strands
+        foreach($subject->strands as $strand)
+        {
+            if($this->strandScoresForStrand($strand)->isNotEmpty())
+            {
+                $labels->push($strand->name);
+                $scores->push(round($this->strandScoresForStrand($strand)->pluck('score')->avg()));
+            }
+        }
+        $strandTotalScore->put('strands', $labels);
+        $strandTotalScore->put('label', $subject->name);
+        $strandTotalScore->put('data', $scores);
+        $strandTotalScore->put('borderColor', '#ea77ad');
+        $strandTotalScore->put('fill', 'false');
+
+        $scores = collect();
+        $scores->push($strandTotalScore);
+        return $scores;
+    }
+
+    /**
      * 
      * generate subject performance object for charts
      */

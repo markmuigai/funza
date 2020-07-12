@@ -4,6 +4,7 @@
 @section('content')
 		<div class="container-fluid">
       <div class="card">
+        <h5 class="my-4 text-center">All Subjects Perfomance over time</h5>
         <div class="card-body">
           <canvas id="allSubjectScores" width="1500" height="400"></canvas>
           <form id ="fetchChartSubject">
@@ -133,7 +134,7 @@
           options: {
             title: {
               display: true,
-              text: 'Subject scores per each assessment'
+              text: 'Subject scores over Time'
             },
             responsive: false
           }

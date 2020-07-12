@@ -3,6 +3,14 @@
 @section('header', $subject->name.' detailed performance')
 @section('content')
   <div class="container-fluid">
+    <div class="card">
+      <h5 class="my-4 text-center">{{$subject->name}} Strand Perfomance</h5>
+      <div class="card-body">
+        <canvas id="allSubjectScores" width="1500" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
     <h3>Recent Strand Scores</h3>
     <div class="row">
       @php
@@ -13,10 +21,10 @@
           <!-- small box -->
           <div class="small-box bg-{{$colors[$key]}} text-white">
             <div class="inner">
-              @if(App\Classroom::find(21)->recentStrandScore($strand->id)==null)
+              @if($classroom->recentStrandScore($strand->id)==null)
                 <h3>Pending</h3>
               @else
-                <h3>{{App\Classroom::find(21)->recentStrandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{$classroom->recentStrandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
               @endif
               <p>{{ $strand->name }}</p>
             </div>
@@ -35,10 +43,10 @@
             <!-- small box -->
             <div class="small-box bg-{{$colors[$key % 4]}} text-white">
               <div class="inner">
-                @if(App\Classroom::find(21)->recentStrandScore($strand->id)==null)
+                @if($classroom->recentStrandScore($strand->id)==null)
                   <h3>Pending</h3>
                 @else
-                  <h3>{{App\Classroom::find(21)->recentStrandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
+                  <h3>{{$classroom->recentStrandScore($strand->id)}}<sup style="font-size: 20px">%</sup></h3>
                 @endif
                 <p>{{ $strand->name }}</p>
               </div>
@@ -77,21 +85,13 @@
             <div class="box-body table-responsive no-padding">
               @component('components.schoolAdmin.tables.strands.performance', [
                 'subject' => $subject,
-                'substrands' => $strand->first()->substrands
+                'substrands' => $subject->substrands
               ])   
               @endcomponent
             </div>
             <!-- /.box-body -->
           </div>
         </form>
-      </div>
-    </div>
-    <div class="card mt-5">
-      <div class="card-header">
-        Overall performance Chart
-      </div>
-      <div class="card-body">
-        scores
       </div>
     </div>
   </div>
@@ -133,5 +133,47 @@
             }
         });
     });
+
+    var ctx = $('#allSubjectScores');
+        var dataset = @json($classroom->getStrandAverageChartScores($subject));
+        var labels = @json($classroom->getStrandAverageChartScores($subject)->pluck('strands')->first());
+        var allSubjectScores = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: dataset 
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Strand scores over time'
+            },
+            responsive: false
+          }
+        });
+
+        $(".filterSubject").change(function(){
+          var subjects = [];
+          $('input:checkbox.filterSubject').each(function () {
+              (this.checked ? subjects.push($(this).val()): "");
+          });
+
+          $.ajax({
+            url: '/school-admin/performance/subjects/chartFilter',
+            data: {'subjects': subjects},
+            type: "get",
+            dataType: "json",
+            success:function(data) {
+              newdata = data
+
+              allSubjectScores.data.datasets = [];
+
+              allSubjectScores.data.datasets = data;
+              
+              allSubjectScores.update();
+            }
+          });
+
+        });
 </script>
 @endsection

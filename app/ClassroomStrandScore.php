@@ -12,4 +12,12 @@ class ClassroomStrandScore extends Model
      * @var array
      */
     protected $fillable = [ 'classroom_id', 'strand_id', 'score'];
+
+    /**
+     * Get the associated strand
+     */
+    public function strand()
+    {
+        return $this->belongsTo('App\Strand');
+    }
 }
