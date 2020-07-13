@@ -59,10 +59,17 @@
             </button>
           </div>
           <div class="modal-body">
-            <a href="{{ Route('schoolAdmin.teachers.export.csv-template') }}" class="btn btn-primary">Download CSV Template </a>
-            <a href="{{ Route('schoolAdmin.teachers.import') }}" class="btn btn-success">Import</a>
+            <a href="{{ Route('schoolAdmin.teachers.export.csv-template') }}" class="btn btn-primary mb-3">Download CSV Template </a>
+            <form method="POST" action="{{route('schoolAdmin.teachers.import')}}" enctype="multipart/form-data">
+              @csrf
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Select CSV file</label>
+                <input type="file" class="form-control-file" name="teachersCsv" id="exampleFormControlFile1">
+              </div>
           </div>
           <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Import</button>
+            </form>            
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>

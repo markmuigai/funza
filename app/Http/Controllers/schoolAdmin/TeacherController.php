@@ -8,7 +8,8 @@ use App\Subject;
 use App\classroomSubject;
 use Illuminate\Http\Request;
 use App\Exports\UsersExport;
-use App\Imports\UsersImport;
+use App\Imports\TeachersImport;
+use App\Exports\TeachersExport;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Exports\UsersExportTemplate;
@@ -128,9 +129,14 @@ class TeacherController extends Controller
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function import() 
+    public function import(Request $request) 
     {
-        Excel::import(new UsersImport,request()->file('file'));
+        // $path1 = $request->file('teachersCsv')->store('temp'); 
+        // $path=storage_path('app').'/'.$path1;  
+        
+        // Excel::import(new TeachersImport, $path);
+
+        Excel::import(new TeachersImport,$request->file('teachersCsv'));
            
         return back();
     }
@@ -140,7 +146,7 @@ class TeacherController extends Controller
     */
     public function export() 
     {
-        return Excel::download(new UsersExport(auth()->user()->schools->first()->teachers()->toArray()), 'users.xlsx');
+        return Excel::download(new TeachersExport(auth()->user()->schools->first()->teachers()->toArray()), 'teachers.xlsx');
     }
 
         /**

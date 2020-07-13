@@ -24,7 +24,7 @@ Route::get('csv/teachers/export', 'TeacherController@export')->name('teachers.ex
 Route::get('csv/teachers/csv-template', 'TeacherController@exportCSVTemplate')->name('teachers.export.csv-template');
 
 // Import teachers csv
-Route::get('csv/teachers/import', 'TeacherController@import')->name('teachers.import');
+Route::post('csv/teachers/import', 'TeacherController@import')->name('teachers.import');
 
 // Assignment classes and subjects to teachers
 Route::get('teachers/{teacher}/classAssignment', 'TeacherController@classAssignment')->name('teachers.class-assignment');

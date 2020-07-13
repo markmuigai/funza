@@ -43,7 +43,7 @@ class User extends Authenticatable
      */
     public function getNameAttribute($name)
     {
-        return ucfirst($name);
+        return ucfirst(strtolower($name));
     }
     
     /**
