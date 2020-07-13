@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\schoolAdmin;
 
+use App\Classroom;
 use Illuminate\Http\Request;
+use App\Imports\StudentsImport;
+use App\Exports\StudentsExport;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\StudentsExportTemplate;
 
 class StudentController extends Controller
 {
@@ -89,9 +95,11 @@ class StudentController extends Controller
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function import() 
+    public function import(Request $request) 
     {
-        Excel::import(new UsersImport,request()->file('file'));
+        $classroom = Classroom::find($request->query('classroom'));
+
+        Excel::import(new StudentsImport($classroom), $request->file('studentsCsv'));
            
         return back();
     }
@@ -101,14 +109,14 @@ class StudentController extends Controller
     */
     public function export() 
     {
-        return Excel::download(new UsersExport(auth()->user()->schools->first()->teachers()->toArray()), 'users.xlsx');
+        return Excel::download(new StudentsExport(auth()->user()->schools->first()->teachers()->toArray()), 'students_template.xlsx');
     }
 
-        /**
+    /**
     * @return \Illuminate\Support\Collection
     */
     public function exportCSVTemplate() 
     {
-        return Excel::download(new UsersExportTemplate, 'users.xlsx');
+        return Excel::download(new StudentsExportTemplate, 'users.xlsx');
     }
 }

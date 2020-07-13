@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\schoolAdmin;
 
 use App\Grade;
+use App\Classroom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class GradeController extends Controller
@@ -31,7 +33,9 @@ class GradeController extends Controller
      */
     public function create()
     {
-        //
+        return view('schoolAdmin.grade.create',[
+            'grades' => Grade::all() 
+        ]);
     }
 
     /**
@@ -42,7 +46,31 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+			DB::transaction(function () use ($request){  
+				$school = auth()->user()->schools()->first();
+
+				// Assign grades to the school
+				foreach($request->grades as $grade)
+				{
+						$school->grades()->attach($grade);
+				}
+
+				// Assign classes to the gradeschool pivot instances
+				foreach($school->gradeSchools as $gradeSchool)
+				{
+					foreach($request->streams as $stream)
+					{
+						Classroom::create([
+								'grade_school_id' => $gradeSchool->id,
+								'name' => $gradeSchool->grade->name.$stream['name']
+						]);
+					}
+				}
+			});
+			
+			return redirect()->route('schoolAdmin.grades.index')->with([
+					'success' => 'Classes created successfully'
+			]);
     }
 
     /**

@@ -3,11 +3,12 @@
 namespace App\Exports;
 
 use App\User;
+
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class UsersExportTemplate implements FromArray, WithHeadings
+class StudentsExportTemplate implements FromArray, WithHeadings
 {
     /**
      * Specifiy row headings
@@ -15,8 +16,11 @@ class UsersExportTemplate implements FromArray, WithHeadings
     public function headings(): array
     {
         return [
-            'Name',
-            'Email',
+            'Student Name',
+            'telno',
+            'address',
+            'Guardian name',
+            'Guardian Email'
         ];
     }
 

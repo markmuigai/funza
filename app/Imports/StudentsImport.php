@@ -2,23 +2,29 @@
 
 namespace App\Imports;
 
-use App\User;
+use App\Student;
+use App\StudentParent;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
-class TeachersImport implements ToCollection
+class StudentsImport implements ToCollection
 {
+    public function  __construct($classroom)
+    {
+        $this->classroom= $classroom;
+    }
+
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) 
         {
-            if($row[0]!==null && $row == $rows[0]){
-                $teacher = User::create([
+            if($row[0]!==null && $row !== $rows[0]){
+                $student = Student::create([
                     'name' => $row[0],
-                    'email'    => $row[1], 
-                    'password' => Hash::make('secret'),
+                    'telno' => $row[1],
+                    'address' => $row[2]
                 ]);
     
                 // Fetch auth user's school
@@ -28,10 +34,17 @@ class TeachersImport implements ToCollection
                 // $teacher->subjects()->attach($request->subjects);
     
                 // Assign user to school    
-                $school->users()->attach($teacher->id);
+                $school->users()->attach($student->id);
     
                 // Assign school admin role to the pivot table instances of the users selected
-                $teacher->schoolAdministration($school)->roles()->attach(Role::where('name','teacher')->first()->id);
+                $this->classroom->students()->attach($student->id, ['status' => true]);
+
+                // Create Parent accounts
+                $parent = StudentParent::create([
+                    'student_id' => $student->id,
+                    'name' => $row[3],
+                    'email' => $row[4]
+                ]);
             }
         }
     }

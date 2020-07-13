@@ -51,7 +51,7 @@ Route::get('csv/students/export', 'StudentController@export')->name('students.ex
 Route::get('csv/students/csv-template', 'StudentController@exportCSVTemplate')->name('students.export.csv-template');
 
 // Import students csv
-Route::get('csv/students/import', 'StudentController@import')->name('students.import');
+Route::post('csv/students/import', 'StudentController@import')->name('students.import');
 
 // Grades
 Route::resource('grades', 'GradeController');

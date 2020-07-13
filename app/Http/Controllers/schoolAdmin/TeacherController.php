@@ -131,10 +131,6 @@ class TeacherController extends Controller
     */
     public function import(Request $request) 
     {
-        // $path1 = $request->file('teachersCsv')->store('temp'); 
-        // $path=storage_path('app').'/'.$path1;  
-        
-        // Excel::import(new TeachersImport, $path);
 
         Excel::import(new TeachersImport,$request->file('teachersCsv'));
            
@@ -154,7 +150,7 @@ class TeacherController extends Controller
     */
     public function exportCSVTemplate() 
     {
-        return Excel::download(new UsersExportTemplate, 'users.xlsx');
+        return Excel::download(new UsersExportTemplate, 'teachers_template.xlsx');
     }
 
     /**

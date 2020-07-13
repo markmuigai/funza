@@ -6,7 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classroom extends Model
 {
-    //
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'grade_school_id','name'
+    ];
+
     /**
      * Fetch teachers assigned to a class
      */

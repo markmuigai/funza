@@ -6,6 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'telno', 'address'
+    ];
+
+    /**
+     * Change name to uppercase
+     */
+    public function getNameAttribute($name)
+    {
+        return ucfirst(strtolower($name));
+    }
+
     // Fetch outcome results of a student
     public function outcomeResults()
     {

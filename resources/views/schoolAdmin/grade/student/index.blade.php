@@ -57,16 +57,23 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Import Students CSV</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">Import Students CSV </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <a href="{{ Route('schoolAdmin.students.export.csv-template') }}" class="btn btn-primary">Download CSV Template </a>
-            <a href="{{ Route('schoolAdmin.students.import') }}" class="btn btn-success">Import</a>
+            <a href="{{ Route('schoolAdmin.students.export.csv-template') }}" class="btn btn-primary mb-3">Download CSV Template </a>
+            <form method="POST" action="{{route('schoolAdmin.students.import', ['classroom' =>  $classroom->id])}}" enctype="multipart/form-data">
+              @csrf
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Select CSV file</label>
+                <input type="file" class="form-control-file" name="studentsCsv" id="exampleFormControlFile1">
+              </div>
           </div>
           <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Import</button>
+            </form>            
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
