@@ -85,7 +85,8 @@
             <div class="box-body table-responsive no-padding">
               @component('components.schoolAdmin.tables.strands.performance', [
                 'subject' => $subject,
-                'substrands' => $subject->substrands
+                'substrands' => $subject->substrands,
+                'classroom' => $classroom
               ])   
               @endcomponent
             </div>

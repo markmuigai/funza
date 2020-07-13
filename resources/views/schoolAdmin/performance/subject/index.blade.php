@@ -2,6 +2,13 @@
 @section('page-title', 'School Admin Dashboard')
 @section('header', 'Subject performance')
 @section('content')
+@if(!$classroom)
+<div class="card p-2 align-items-center">
+  <div class="card-body">
+      <h4>Performance summary unavailable</h4>
+  </div>
+</div>
+@else
 		<div class="container-fluid">
       <div class="card">
         <h5 class="my-4 text-center">All Subjects Perfomance over time</h5>
@@ -89,6 +96,7 @@
         </div>
       </div>
     </div>
+@endif
 @endsection
 
 @section('js')
@@ -122,8 +130,8 @@
         $('#subject1').prop( "checked", true );
         $('#subject2').prop( "checked", true );
 
-        var ctx = $('#allSubjectScores');
-        var dataset = @json($classroom->getSubjectChartScores([1,2]));
+        var ctx = $('#allSubjectScores'); 
+        var dataset = @json($subjectChartScores);
         var labels = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var allSubjectScores = new Chart(ctx, {
           type: 'line',

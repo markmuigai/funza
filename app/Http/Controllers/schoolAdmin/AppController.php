@@ -18,15 +18,21 @@ class AppController extends Controller
         $user = auth()->user();
 
         // Fetch classroom
-        $classroom = Classroom::find(21);
+        if(auth()->user()->schools->first()->id == 1){
+            $classroom = Classroom::find(21);
 
-        // All student score totals
-        $studentTotalScores = $classroom->currentStudents()->map(function($student){
+            // All student score totals
+            $studentTotalScores = $classroom->currentStudents()->map(function($student){
             return $student->recentTotalScore();
         });
+        }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
+            App\Classroom::has('students')->first();
+        }else{
+            $classroom = null;
+        }
 
         return view('schoolAdmin.dashboard', [
-            'classroom' => Classroom::find(21),
+            'classroom' => $classroom,
             'teachers' => collect([]),
             'students' => collect([]),
         ]);

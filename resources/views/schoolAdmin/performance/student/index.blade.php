@@ -2,6 +2,13 @@
 @section('page-title', 'School Admin Dashboard')
 @section('header', 'Student performance')
 @section('content')
+@if(!$classroom)
+<div class="card p-2 align-items-center">
+  <div class="card-body">
+      <h4>Performance summary unavailable</h4>
+  </div>
+</div>
+@else
     <div class="container-fluid">
       <div class="card">
         <h5 class="my-4 text-center">Students Average Perfomance over time</h5>
@@ -87,6 +94,7 @@
         </div>
       </div>
     </div>
+@endif
 @endsection
 
 @section('js')
@@ -118,7 +126,7 @@
         });
 
         var ctx = $('#studentScoreTotals');
-        var dataset = @json(App\Classroom::find(21)->getStudentScoreTotalsChart());
+        var dataset = @json($studentScoreTotalsChart);
         var labels = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var studentScoreTotals = new Chart(ctx, {
           type: 'line',

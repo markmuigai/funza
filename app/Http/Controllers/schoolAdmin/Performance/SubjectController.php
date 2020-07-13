@@ -18,11 +18,27 @@ class SubjectController extends Controller
     public function index()
     {
         // dd(Classroom::find(21)->recentSubjectScore(Subject::find(2)));
+        // Fetch classroom
+        if(auth()->user()->schools->first()->id == 1){
+            $classroom = Classroom::find(21);
+
+            $subjectChartScores = $classroom->getSubjectChartScores([1,2]);
+
+        }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
+            $classroom = App\Classroom::has('students')->first();
+
+            $subjectChartScores = $classroom->getSubjectChartScores([1,2]);
+        }else{
+            $classroom = null;
+            $subjectChartScores = [];
+        }
+
         // Fetch students of a class
         return view('schoolAdmin.performance.subject.index',[
             'grades' => Grade::all(),
-            'classroom' => Classroom::find(21),
-            'subjects' => Subject::all()
+            'classroom' => $classroom,
+            'subjects' => Subject::all(),
+            'subjectChartScores' => $subjectChartScores
         ]);
     }
 
@@ -55,10 +71,19 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
+        // Fetch classroom
+        if(auth()->user()->schools->first()->id == 1){
+            $classroom = Classroom::find(21);
+        }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
+            $classroom = App\Classroom::has('students')->first();
+        }else{
+            $classroom = null;
+        }
+
         // Fetch students of a class
         return view('schoolAdmin.performance.subject.show',[
             'subject' =>  $subject,
-            'classroom' => Classroom::find(21),
+            'classroom' => $classroom,
         ]);
     }
 
@@ -67,7 +92,20 @@ class SubjectController extends Controller
      */
     public function ClassSubjectChartScores(Request $request)
     {
-        return Classroom::find(21)->getSubjectChartScores($request->query('subjects'));
+        if(auth()->user()->schools->first()->id == 1){
+            $classroom = Classroom::find(21);
+
+            return $classroom->getSubjectChartScores($request->query('subjects'));
+
+        }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
+            $classroom = App\Classroom::has('students')->first();
+
+            return $classroom->getSubjectChartScores($request->query('subjects'));
+        }else{
+            $classroom = null;
+
+            return [];
+        }
     }
 
     /**

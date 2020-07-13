@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SchoolAdmin\Performance;
 use App\Grade;
 use App\Subject;
 use App\Student;
+use App\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,11 +18,31 @@ class StudentController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->schools->first()->id == 1){
+            $classroom = Classroom::find(21);
+
+            $studentScoreTotalsChart = $classroom->getStudentScoreTotalsChart();
+
+            $students = $classroom->students->paginate(10);
+        }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
+            $classroom = App\Classroom::has('students')->first();
+
+            $studentScoreTotalsChart = $classroom->getStudentScoreTotalsChart();
+
+            $students = $classroom->students->paginate(10);
+        }else{
+            $classroom = null;
+            $students = [];
+            $studentScoreTotalsChart = [];
+        }
+
         // Fetch students of a class
         return view('schoolAdmin.performance.student.index',[
+            'classroom' => $classroom,
             'grades' => Grade::all(),
             'subjects' => Subject::all(),
-            'students' => Student::take(10)->paginate(5)
+            'students' => $students,
+            'studentScoreTotalsChart' => $studentScoreTotalsChart
         ]);
     }
 

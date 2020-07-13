@@ -64,7 +64,7 @@ Route::get('grade/{grade}/classroom/{classroom}/students', 'ClassroomController@
 
 // Performance metrics
 Route::name('performance.results.')->namespace('Performance')->prefix('/performance/results')->group(function () {
-    Route::resource('students', 'StudentController');;
+    Route::resource('students', 'StudentController');
     Route::resource('subjects', 'SubjectController');
     Route::name('students.')->prefix('/students/{student}/')->group(function () {
         Route::resource('strands', 'StrandController');

@@ -3,7 +3,18 @@
     
 @section('content')
 <div class="container-fluid pt-4">
-	@if (App\studentSubstrandScore::all()->isEmpty())
+	@php
+		if($classroom)
+		{
+			$subjectAverageChartScores = $classroom->getSubjectAverageChartScores()->pluck('name');
+
+			$subjectAverageChartScores = $classroom->getSubjectAverageChartScores()->pluck('score');
+		}else{
+			$subjectAverageChartScores = [];
+			$subjectAverageChartScores = [];
+		}		
+	@endphp
+	@if(!$classroom)
 		<div class="card p-2 align-items-center">
 			<div class="card-body">
 					<h4>Performance summary unavailable</h4>
@@ -69,8 +80,8 @@
 		});
 
 		var ctx = $('#subjectScores');
-		var labels = @json($classroom->getSubjectAverageChartScores()->pluck('name'));
-		var scores = @json($classroom->getSubjectAverageChartScores()->pluck('score'));
+		var labels = @json($subjectAverageChartScores);
+		var scores = @json($subjectAverageChartScores);
 		var studentScores = new Chart(ctx, {
 			type: 'horizontalBar',
 			data: {
