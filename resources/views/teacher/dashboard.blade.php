@@ -30,7 +30,7 @@
 							</h3>
 							<ul class="list-unstyled text-muted">
 								<li>
-									<i class="fa fa-calendar-o mr-2" aria-hidden="true"></i>Grade {{ $class->grade->name }}
+									<i class="fa fa-calendar-o mr-2" aria-hidden="true"></i>Grade {{ $class->grade()->name }}
 								</li>
 								<li>
 									<i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{{ $class->students->count() }} Students

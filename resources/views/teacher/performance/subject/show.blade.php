@@ -62,7 +62,8 @@
             <div class="box-body table-responsive no-padding">
               @component('components.teacher.tables.strands.performance', [
                 'subject' => $subject,
-                'substrands' => $strand->first()->substrands
+                'substrands' => $strand->first()->substrands,
+                'classroom' => $classroom
               ])   
               @endcomponent
             </div>

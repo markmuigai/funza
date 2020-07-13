@@ -29,7 +29,7 @@
 											<th>Class</th>
 											<th>Actions</th>
 									</tr>
-									@foreach ($grade->classrooms as $classroom)
+									@foreach ($grade->classrooms(auth()->user()->schools()->first()) as $classroom)
 											<tr>
 													<td>{{ $classroom->name }}</td>
 													<td>
@@ -46,7 +46,6 @@
 					</div>
 				</div>
 			@endforeach
-			{{$grades->links()}}
 		</div>
 	</div>
 @endsection

@@ -42,4 +42,20 @@ class School extends Model
     {
         return $this->belongsToMany('App\Student');
     }
+
+    /**
+     * Get the associated grade
+     */
+    public function grades()
+    {
+        return $this->belongsToMany('App\Grade', 'grade_schools');
+    }
+
+    /**
+     * Get the associated school grade pivot
+     */
+    public function GradeSchools()
+    {
+        return $this->hasMany('App\GradeSchool', 'school_id');
+    }
 }

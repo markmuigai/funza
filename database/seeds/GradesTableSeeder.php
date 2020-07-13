@@ -1,6 +1,7 @@
 <?php
 
 use App\Grade;
+use App\School;
 use App\Subject;
 use Illuminate\Database\Seeder;
 
@@ -13,30 +14,48 @@ class GradesTableSeeder extends Seeder
      */
     public function run()
     {
-        Grade::create([
+        // Fetch school
+        $school = School::first();
+
+        $grade = Grade::create([
             'name' => 'Pre Primary Subjects 1 (pp1)'
         ]);
 
-        Grade::create([
+        // Attach to school
+        $school->grades()->attach($grade->id);
+
+        $grade = Grade::create([
             'name' => 'Pre Primary Subjects 2 (pp2)'
         ]);
 
-        Grade::create([
+        $grade = Grade::create([
             'name' => '1'
         ]);
 
-        Grade::create([
+        // Attach to school
+        $school->grades()->attach($grade->id);
+
+        $grade = Grade::create([
             'name' => '2'
         ]);
 
-        Grade::create([
+        // Attach to school
+        $school->grades()->attach($grade->id);
+
+        $grade = Grade::create([
             'name' => '3'
         ]);
+
+        // Attach to school
+        $school->grades()->attach($grade->id);
 
         $grade = Grade::create([
             'name' => '4'
         ]);
         
+        // Attach to school
+        $school->grades()->attach($grade->id);
+
         // Fetch all subjects
         $subjects = Subject::all();
         
@@ -45,36 +64,60 @@ class GradesTableSeeder extends Seeder
             $grade->subjects()->attach($subject->id);
         }
 
-        Grade::create([
+        $grade = Grade::create([
             'name' => '5'
         ]);
 
-        Grade::create([
+        // Attach to school
+        $school->grades()->attach($grade->id);
+
+        $grade = Grade::create([
             'name' => '6'
         ]);
         
-        Grade::create([
+        // Attach to school
+        $school->grades()->attach($grade->id);
+
+        $grade = Grade::create([
             'name' => '7'
         ]);
 
-        Grade::create([
+        // Attach to school
+        $school->grades()->attach($grade->id);
+
+        $grade = Grade::create([
             'name' => '8'
         ]);
 
-        Grade::create([
+        // Attach to school
+        $school->grades()->attach($grade->id);
+
+        $grade = Grade::create([
             'name' => '9'
         ]);
 
-        Grade::create([
+        // Attach to school
+        $school->grades()->attach($grade->id);
+
+        $grade = Grade::create([
             'name' => '10'
         ]);
 
-        Grade::create([
+        // Attach to school
+        $school->grades()->attach($grade->id);
+
+        $grade = Grade::create([
             'name' => '11'
         ]);
 
-        Grade::create([
+        // Attach to school
+        $school->grades()->attach($grade->id);
+
+        $grade = Grade::create([
             'name' => '12'
         ]);
+
+        // Attach to school
+        $school->grades()->attach($grade->id);
     }
 }

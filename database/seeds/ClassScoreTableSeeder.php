@@ -25,7 +25,7 @@ class ClassScoreTableSeeder extends Seeder
 	public function run()
 	{
 		// Select class 4
-		$classroom = Classroom::find(21);
+		$classroom = Classroom::where('name', '4A')->get()->first();
 
 		$assessmentCounts = collect();
 

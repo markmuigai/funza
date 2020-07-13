@@ -41,7 +41,7 @@ class Student extends Model
      */
     public function currentGrade()
     {
-        return $this->classrooms()->wherePivot('status', true)->first()->grade;
+        return $this->classrooms()->wherePivot('status', true)->first()->grade();
     }
 
     /**

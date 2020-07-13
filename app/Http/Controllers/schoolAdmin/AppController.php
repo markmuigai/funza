@@ -19,7 +19,7 @@ class AppController extends Controller
 
         // Fetch classroom
         if(auth()->user()->schools->first()->id == 1){
-            $classroom = Classroom::find(21);
+            $classroom = Classroom::where('name', '4A')->get()->first();
 
             // All student score totals
             $studentTotalScores = $classroom->currentStudents()->map(function($student){

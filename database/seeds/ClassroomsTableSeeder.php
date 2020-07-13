@@ -1,7 +1,7 @@
 <?php
 
-use App\Grade;
 use App\Classroom;
+use App\GradeSchool;
 use Illuminate\Database\Seeder;
 
 class ClassroomsTableSeeder extends Seeder
@@ -16,28 +16,28 @@ class ClassroomsTableSeeder extends Seeder
         /**
          * Create classrooms for grades
          */
-        $grades = Grade::all();
+        $gradeSchools = GradeSchool::all();
 
-        // Create classrooms for every grade
-        foreach($grades as $grade){
+        // Create classrooms for every instance of grade classroom
+        foreach($gradeSchools as $gradeSchool){
             Classroom::create([
-                'grade_id' => $grade->id,
-                'name' => $grade->name.'A'
+                'grade_school_id' => $gradeSchool->id,
+                'name' => $gradeSchool->grade->name.'A'
             ]);
 
             Classroom::create([
-                'grade_id' => $grade->id,
-                'name' => $grade->name.'B'
+                'grade_school_id' => $gradeSchool->id,
+                'name' => $gradeSchool->grade->name.'B'
             ]);
 
             Classroom::create([
-                'grade_id' => $grade->id,
-                'name' => $grade->name.'C'
+                'grade_school_id' => $gradeSchool->id,
+                'name' => $gradeSchool->grade->name.'C'
             ]);
 
             Classroom::create([
-                'grade_id' => $grade->id,
-                'name' => $grade->name.'D'
+                'grade_school_id' => $gradeSchool->id,
+                'name' => $gradeSchool->grade->name.'D'
             ]);
         }
 

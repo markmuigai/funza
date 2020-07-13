@@ -19,7 +19,7 @@ class StudentController extends Controller
     public function index()
     {
         if(auth()->user()->schools->first()->id == 1){
-            $classroom = Classroom::find(21);
+            $classroom = Classroom::where('name', '4A')->get()->first();
 
             $studentScoreTotalsChart = $classroom->getStudentScoreTotalsChart();
 

@@ -11,7 +11,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <select name="grade" id="grade" class="form-control">
-                            <option selected>Grade</option>
+                            <option selected> Select Grade</option>
                             @foreach ($grades as $grade)
                                 <option value="{{ $grade->id }}">{{ $grade->name }}</option>
                             @endforeach
@@ -19,12 +19,15 @@
                     </div>
                     <div class="form-group col-md-2">
                         <select name="class" id="class" class="form-control">
-                          <option selected>Class</option>
+                          <option selected>Select Class</option>
                         </select>
                     </div>
                     <div class="form-group col-md-4">
 											<select name="subject" id="subject" class="form-control">
-												<option selected>Subject</option>
+												<option>Select Subject</option>
+												@foreach ($subjects as $subject)
+													<option value="{{ $subject->id }}">{{ $subject->name }}</option>
+												@endforeach
 											</select>
                     </div>
                     <div class="col-md-2">
@@ -50,7 +53,7 @@
                     </tr>
                     @foreach ($teacher->classroomSubject()->get() as $classroomSubject)
                         <tr>
-                            <td>{{ $classroomSubject->classroom->grade->name }}</td>
+                            <td>{{ $classroomSubject->classroom->grade()->name }}</td>
                             <td>{{ $classroomSubject->classroom->name }}</td>
                             <td>{{ $classroomSubject->subject->name }}</td>
                             <td>
@@ -93,7 +96,7 @@
                         });
                         
                         $('select[name="class"]').removeAttr('disabled');
-												// $('select[name="subject"]').removeAttr('disabled');
+												$('select[name="subject"]').removeAttr('disabled');
 
                     }
                 });
@@ -102,30 +105,30 @@
             }
         });
 
-				$('select[name="class"]').on('change', function() {
-            var classID = $(this).val();
-            if(classID) {
-								var userID = @json($teacher->id);
-                $.ajax({
-                    url: '/school-admin/teachers/classAssignment/fetchSubjects/'+classID+'/'+userID,
-                    type: "GET",
-                    dataType: "json",
-                    success:function(data) {
+        // $('select[name="class"]').on('change', function() {
+        //     var classID = $(this).val();
+        //     if(classID) {
+		// 						var userID = @json($teacher->id);
+        //         $.ajax({
+        //             url: '/school-admin/teachers/classAssignment/fetchSubjects/'+classID+'/'+userID,
+        //             type: "GET",
+        //             dataType: "json",
+        //             success:function(data) {
 
                         
-                        $('select[name="subject"]').empty();
-												$('select[name="subject"]').append('<option>Select Subject</option>');
-                        $.each(data, function(key, value) {
-                            $('select[name="subject"]').append('<option value="'+ key +'">'+ value +'</option>');
-                        });
+        //                 $('select[name="subject"]').empty();
+		// 										$('select[name="subject"]').append('<option>Select Subject</option>');
+        //                 $.each(data, function(key, value) {
+        //                     $('select[name="subject"]').append('<option value="'+ key +'">'+ value +'</option>');
+        //                 });
                         
-                        $('select[name="subject"]').removeAttr('disabled');
-                    }
-                });
-            }else{
-                $('select[name="class"]').empty();
-            }
-					});
+        //                 $('select[name="subject"]').removeAttr('disabled');
+        //             }
+        //         });
+        //     }else{
+        //         $('select[name="class"]').empty();
+        //     }
+		// });
     });
 </script>
 @endsection

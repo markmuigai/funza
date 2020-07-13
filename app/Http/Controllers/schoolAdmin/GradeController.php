@@ -15,9 +15,12 @@ class GradeController extends Controller
      */
     public function index()
     {
+        // Fetch auth user grades
+        $grades = auth()->user()->schools->first()->grades;
+        
         // Return grades view
         return view('schoolAdmin.grade.index', [
-            'grades' => Grade::paginate(7)
+            'grades' => $grades
         ]); 
     }
 

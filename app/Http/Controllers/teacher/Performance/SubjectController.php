@@ -17,10 +17,18 @@ class SubjectController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->schools->first()->id == 1){
+            $classroom = Classroom::where('name', '4A')->get()->first();
+        }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
+            $classroom = Classroom::has('students')->first();
+        }else{
+            $classroom = null;
+        }
+        
         // Fetch students of a class
         return view('teacher.performance.subject.index',[
             'grades' => Grade::all(),
-            'classroom' => Classroom::find(21),
+            'classroom' => $classroom,
             'subjects' => Subject::all()
         ]);
     }
@@ -54,9 +62,18 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
+        // Fetch classroom
+        if(auth()->user()->schools->first()->id == 1){
+            $classroom = Classroom::where('name', '4A')->get()->first();
+        }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
+            $classroom = App\Classroom::has('students')->first();
+        }else{
+            $classroom = null;
+        }
         // Fetch students of a class
         return view('teacher.performance.subject.show',[
-            'subject' =>  $subject
+            'subject' =>  $subject,
+            'classroom' => $classroom
         ]);
     }
 

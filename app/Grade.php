@@ -14,10 +14,27 @@ class Grade extends Model
         return $this->belongsToMany('App\Subject');
     }
 
-    // Classrooms of a grade
-    public function classrooms()
+    /**
+     * Get the associated grade
+     */
+    public function schools()
     {
-        return $this->hasMany('App\Classroom');
+        return $this->belongsToMany('App\School','grade_schools');
+    }
+
+    // Classrooms of a grade for a school
+    public function classrooms($school)
+    {
+        return $school->GradeSchools->where('grade_id', $this->id)->first()->classrooms;
+
+    }
+
+    /**
+     * Get the associated GradeSubject pivot table
+     */
+    public function gradeSchool()
+    {
+        return $this->hasMany('App\GradeSchool');
     }
 
     /**
@@ -29,7 +46,7 @@ class Grade extends Model
         $substrand = Substrand::find($substrand_id);
         
         // Calculate the maximum raw score 
-        $class_totals = $this->classrooms->map(function($classroom) use($substrand){
+        $class_totals = $this->classrooms(auth()->user()->schools()->first())->map(function($classroom) use($substrand){
             return $classroom->substrandScore($substrand->id);
         });
 

@@ -18,10 +18,15 @@ class Classroom extends Model
         });
     }
 
-    // Fetch a clasrooms subject
+    // Fetch pivot instance of the grade and school a class belongs to
+    public function gradeSchool()
+    {
+        return $this->belongsTo('App\GradeSchool', 'grade_school_id');
+    }
+
     public function grade()
     {
-        return $this->belongsTo('App\Grade');
+        return $this->gradeSchool->grade;
     }
 
     // Fetch students of a class ever

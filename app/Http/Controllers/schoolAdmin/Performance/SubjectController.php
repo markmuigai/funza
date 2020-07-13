@@ -20,7 +20,7 @@ class SubjectController extends Controller
         // dd(Classroom::find(21)->recentSubjectScore(Subject::find(2)));
         // Fetch classroom
         if(auth()->user()->schools->first()->id == 1){
-            $classroom = Classroom::find(21);
+            $classroom = Classroom::where('name', '4A')->get()->first();
 
             $subjectChartScores = $classroom->getSubjectChartScores([1,2]);
 
@@ -73,7 +73,7 @@ class SubjectController extends Controller
     {
         // Fetch classroom
         if(auth()->user()->schools->first()->id == 1){
-            $classroom = Classroom::find(21);
+            $classroom = Classroom::where('name', '4A')->get()->first();
         }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
             $classroom = App\Classroom::has('students')->first();
         }else{
@@ -93,7 +93,7 @@ class SubjectController extends Controller
     public function ClassSubjectChartScores(Request $request)
     {
         if(auth()->user()->schools->first()->id == 1){
-            $classroom = Classroom::find(21);
+            $classroom = Classroom::where('name', '4A')->get()->first();
 
             return $classroom->getSubjectChartScores($request->query('subjects'));
 

@@ -51,9 +51,18 @@ class SubstrandController extends Controller
      */
     public function show(Subject $subject, Strand $strand, Substrand $substrand)
     {
+        // Fetch classroom
+        if(auth()->user()->schools->first()->id == 1){
+            $classroom = Classroom::where('name', '4A')->get()->first();
+        }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
+            $classroom = Classroom::has('students')->first();
+        }else{
+            $classroom = null;
+        }
+
         return view('schoolAdmin.performance.subject.strand.show', [
             'grades' => Grade::all(),
-            'classroom' => Classroom::find(21),
+            'classroom' => $classroom,
             'subject' => $subject,
             'strand' => $strand,
             'substrand' => $substrand

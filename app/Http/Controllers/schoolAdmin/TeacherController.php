@@ -168,7 +168,7 @@ class TeacherController extends Controller
         return view('schoolAdmin.teacher.classAssignment',[
             'teacher' => $user,
             'grades' => Grade::all(),
-            'subjects' => $user->subjects
+            'subjects' => Subject::all()
         ]);
     }
 
@@ -177,7 +177,7 @@ class TeacherController extends Controller
      */
     public function fetchGradeClasses($grade_id)
     {
-        return json_encode(Grade::find($grade_id)->classrooms->pluck('name','id'));
+        return json_encode(Grade::find($grade_id)->classrooms(auth()->user()->schools()->first())->pluck('name','id'));
     }
 
     /**
@@ -202,6 +202,7 @@ class TeacherController extends Controller
      */
     public function storeClassAssignment(Request $request, User $teacher)
     {
+        dd($request->all());
         // Assign grade and subject pivot instance to the teacher
         $teacher->classroomSubject()->create([
             'classroom_id' => $request->class,
