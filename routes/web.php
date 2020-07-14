@@ -12,9 +12,7 @@
 */
 
 // Landing Page
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@landingPage');
 
 // Auth scaffolding
 Auth::routes();

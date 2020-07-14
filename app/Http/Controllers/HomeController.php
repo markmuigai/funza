@@ -25,4 +25,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    /**
+     * Landing Page
+     */
+    public function landingPage() {
+        return view('welcome');
+    }
 }
