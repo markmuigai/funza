@@ -83,9 +83,9 @@
                   @endforeach
                 </td>
                 <td>
-                  <button class="btn btn-primary">
-                    View Detailed Results
-                  </button>
+                  <a href="{{ Route('schoolAdmin.performance.results.students.subjects.substrands.show', ['student'=>$student, 'subject' => $subject, 'substrand' => $substrand ]) }}" class="btn btn-primary">
+                  View Detailed Results
+                </a>
                 </td>
               </tr>
 						@endforeach
@@ -142,6 +142,24 @@
             datasets: dataset 
           },
           options: {
+            scales: {
+              xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Strands for subject'
+                  }
+              }],
+              yAxes: [{
+                display: true,
+                ticks: {
+                    // beginAtZero: true,
+                    // steps: 10,
+                    // stepValue: 5,
+                    // max:100
+                  }
+              }]
+            },
             title: {
               display: true,
               text: 'Strand scores over time'

@@ -53,7 +53,8 @@
             <div class="box-body table-responsive no-padding">
               @component('components.schoolAdmin.tables.students.subjects', [
                 'subjects' => $subjects,
-                'student' => $student
+                'student' => $student,
+                'classroom' => $classroom
               ])   
               @endcomponent
             </div>

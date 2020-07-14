@@ -129,7 +129,7 @@
                   display: true,
                   scaleLabel: {
                     display: true,
-                    labelString: 'N.o of Assessments'
+                    labelString: 'Score for each assessment'
                   }
               }],
               yAxes: [{

@@ -68,7 +68,11 @@ Route::name('performance.results.')->namespace('Performance')->prefix('/performa
     Route::resource('subjects', 'SubjectController');
     Route::name('students.')->namespace('Student')->prefix('/students/{student}/')->group(function () {
         Route::resource('subjects', 'SubjectController');
-        Route::resource('strands', 'StrandController');
+        
+    });
+
+    Route::name('students.subjects.')->namespace('Student')->prefix('/student/{student}/subject/{subject}/')->group(function () {
+        Route::resource('substrands', 'SubstrandController');
     });
 
     // Subject performance by substrand

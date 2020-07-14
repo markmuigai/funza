@@ -386,6 +386,48 @@ class Student extends Model
     }
 
     /**
+     * generate strand performance object for charts
+     */
+    public function getSubStrandAverageChartScores($substrand)
+    {
+        // Initialize collection
+        $substrandTotalScore = collect();
+
+        $scores = collect();
+
+        $labels = collect();
+
+        // Get assessed strands
+        foreach($this->substrandScoresForSubstrand($substrand) as $substrandScore)
+        {
+            $scores->push($substrandScore->score);
+        }
+				
+		$labels->push(range(1,$this->substrandScoresForSubstrand($substrand)->count()));
+        $substrandTotalScore->put('count', $labels);
+        $substrandTotalScore->put('label', $substrand->name);
+        $substrandTotalScore->put('data', $scores);
+        $substrandTotalScore->put('borderColor', '#ea77ad');
+        $substrandTotalScore->put('fill', 'false');
+
+        $scores = collect();
+        $scores->push($substrandTotalScore);
+        return $scores;
+    }
+
+    /**
+     * Get outcome options percentages
+     */
+    public function percentageForOutcome($outcomeOption)
+    {
+        $outcomeOptionCount = $this->allOutcomeResultsForSubstrand($outcomeOption->Outcome->substrand->id)->where('outcome_option_id', $outcomeOption->id)->count();
+
+        $maxOutcomeCount = $this->substrandScoresForSubstrand($outcomeOption->Outcome->substrand)->count();
+
+        return round(($outcomeOptionCount/$maxOutcomeCount)*100,2);
+    }
+
+    /**
      * Substrands assessed
      */
     public function AssessedSubstrands()

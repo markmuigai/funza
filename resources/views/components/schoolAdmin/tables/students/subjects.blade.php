@@ -1,7 +1,8 @@
 <table class="table p-5 bg-transaparent">
   <tr>
       <th>Subject</th>
-      <th>Average score</th>
+      <th>Student Average score</th>
+      <th>Class {{$classroom->name}} average score</th>
       <th>Actions</th>
   </tr>
   @foreach ($subjects as $subject)
@@ -10,7 +11,9 @@
           <td>{{$subject->name}}</td>
           @if ($student->recentSubjectScore($subject->id)!==null)
             <td>{{$student->recentSubjectScore($subject->id)}}%</td>
+            <td>{{$classroom->recentSubjectScore($subject->id)}}%</td>
           @else
+            <td>Pending</td>
             <td>Pending</td>
           @endif
           <td>

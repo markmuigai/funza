@@ -179,9 +179,7 @@ class Classroom extends Model
      */
     public function substrandScoresForSubstrand($substrand)
     {
-        return $this->subStrandScores->filter(function($substrandScore)use($substrand){
-            return $substrandScore->substrand == $substrand;
-        });
+        return $this->subStrandScores->where('substrand_id', $substrand->id);
     }
 
     /**
@@ -200,9 +198,9 @@ class Classroom extends Model
         foreach($this->substrandScoresForSubstrand($substrand) as $substrandScore)
         {
             $scores->push($substrandScore->score);
-				}
+		}
 				
-				$labels->push(range(1,$this->substrandScoresForSubstrand($substrand)->count()));
+		$labels->push(range(1,$this->substrandScoresForSubstrand($substrand)->count()));
         $substrandTotalScore->put('count', $labels);
         $substrandTotalScore->put('label', $substrand->name);
         $substrandTotalScore->put('data', $scores);

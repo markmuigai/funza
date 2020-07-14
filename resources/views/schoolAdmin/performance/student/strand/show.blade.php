@@ -1,108 +1,149 @@
 @extends('layouts.schoolAdmin')
 @section('page-title', 'School Admin Dashboard')
-@section('header', $student->name.' '.$strand->name.' performance')	
+@section('header', $substrand->name.' detailed performance')
 @section('content')
-
-	<div class="container-fluid pt-4">
-		<div class="card">
-			<div class="card-header">
-				<h3>Assessed Substrands</h3>
-			</div>
-			<div class="card-body">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Substrand</th>
-							<th>Total Average score</th>
-							<th>N.o of assessments</th>
-							<th>Assessment scores</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach ($student->substrandsAssessed($strand->id) as $substrand)
+  <div class="container-fluid">
+    <div class="card">
+      <h5 class="my-4 text-center">Substrand Perfomance</h5>
+      <div class="card-body">
+        <canvas id="allSubstrandScores" width="1500" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="form-row">
+      <div class="form-group col-md-2">
+          <select name="grade" id="grade" class="form-control">
+              <option selected>Select Grade</option>
+              @foreach ($grades as $grade)
+                  <option value="{{ $grade->id }}">Grade: {{ $grade->name }}</option>
+              @endforeach
+          </select>
+      </div>
+      <div class="form-group col-md-2">
+          <select name="class" id="class" class="form-control">
+              <option selected>Class</option>
+          </select>
+      </div>
+      <div class="col-md-2">
+          <button type="submit" class="btn btn-primary">Filter</button>
+      </div>
+    </div>
+    <h3 class="mt-2">Substrand performance</h3>
+    @foreach($substrand->outcomes as $outcome)
+			<div class="card mt-2">
+				<div class="card-header">
+					{{$outcome->name}}
+				</div>
+				<div class="card-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th colspan="2">
+									<div class="row">
+										<div class="col-md-5">
+											Assessment Rubric
+										</div>
+										<div class="col-md-2 d-flex justify-content-center">
+											Student percentage
+										</div>
+									</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($outcome->outcomeOptions as $outcomeOption)
 								<tr>
-									<td>{{$substrand->name}}</td>
-									<td>{{$student->recentSubstrandScore($substrand->id)}}%</td>
-									<td>{{$student->assessmentsCountForSubstrand($substrand->id)}}</td>
-									<td>
-										@foreach($student->assessmentScoresPercentage($substrand->id) as $score)
-											<span class="badge badge-pill badge-primary rem-2" style="font-size:1.2em">{{$score}}%</span>
-										@endforeach
-									</td>
-									<td>
-										<button class="btn btn-primary">
-											View Detailed Results
-										</button>
+									<td colspan="2">
+										<div class="row">
+											<div class="col-md-5">
+												{{$outcomeOption->name}}
+											</div>
+											<div class="col-md-2 d-flex justify-content-center">
+												{{$student->percentageForOutcome($outcomeOption)}}
+											</div>
+										</div>
 									</td>
 								</tr>
-						@endforeach
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<div class="accordion" id="accordionExample">
-			@foreach ($student->substrandsAssessed($strand->id) as $substrand)
-				<div class="card">
-					<div class="card-header" id="headingOne">
-						<h4 class="mb-0">
-							<div class="row">
-								<div class="col-md-2">
-									{{ $substrand->name }}
-								</div>
-								<div class="col-md-2">
-									<span class="">Total Score: 80%</span>
-								</div>
-								<div class="col-md-6 offset-md-2">
-									<button class="btn btn-primary float-right" type="button" data-toggle="collapse" data-target="#collapseOne{{$substrand->id}}" aria-expanded="true" aria-controls="collapseOne">
-										Assessment 3 Results
-									</button>
-									<button class="btn btn-primary float-right mr-2" type="button" data-toggle="collapse" data-target="#collapseOne{{$substrand->id}}" aria-expanded="true" aria-controls="collapseOne">
-										Assessment 2 Results
-									</button>
-									<button class="btn btn-primary float-right mr-2" type="button" data-toggle="collapse" data-target="#collapseOne{{$substrand->id}}" aria-expanded="true" aria-controls="collapseOne">
-										Assessment 1 Results
-									</button>
-								</div>
-							</div>
-
-						</h4>
-					</div>
-					<div id="collapseOne{{$substrand->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-						<div class="card-body">
-							@if($student->outcomeResultsForSubstrand($substrand->id, 2)->isEmpty())
-								<h3>The substrand has not been assessed yet</h3>
-							@else
-								<table class="table table-hover">
-									<tbody>
-										<tr>
-												<th>Outcome</th>
-												<th>Score (Out of 5)</th>
-												<th>Outcome Results</th>
-										</tr>
-										@foreach ($student->outcomeResultsForSubstrand($substrand->id, 1) as $outcomeResult)
-											<tr>
-													<td>{{ $outcomeResult->outcome->name }}</td>
-													<td>{{$outcomeResult->outcomeOption->score}}</td>
-													<td>
-														{{$outcomeResult->outcomeOption->name}}
-													</td>
-											</tr>
-										@endforeach
-									</tbody>
-								</table>	
-							@endif						
-						</div>
-					</div>
+							@endforeach
+						</tbody>
+					</table>
 				</div>
-			@endforeach
-			{{-- {{$strand->substrands->links()}} --}}
-		</div>
-	</div>
-
+			</div>
+    @endforeach
+    <div class="card mt-5">
+      <div class="card-header">
+        Overall performance Chart
+      </div>
+      <div class="card-body">
+        scores
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('js')
-<script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('select[name="class"]').attr('disabled', 'disabled');
+      $('select[name="subject"]').attr('disabled', 'disabled');
+
+      $('select[name="grade"]').on('change', function() {
+          var gradeID = $(this).val();
+          if(gradeID) {
+              $.ajax({
+                  url: '/school-admin/teachers/classAssignment/fetchClasses/'+gradeID,
+                  type: "GET",
+                  dataType: "json",
+                  success:function(data) {
+                      $('select[name="class"]').empty();
+                      $.each(data, function(key, value) {
+                          $('select[name="class"]').append('<option value="'+ key +'">'+ value +'</option>');
+                      });
+                      
+                      $('select[name="class"]').removeAttr('disabled');
+                      $('select[name="subject"]').removeAttr('disabled');
+                  }
+              });
+          }else{
+              $('select[name="class"]').empty();
+          }
+      });
+
+      var ctx = $('#allSubstrandScores');
+        var dataset = @json($student->getSubstrandAverageChartScores(App\Substrand::find($substrand->id)));
+        var labels = @json($student->getSubstrandAverageChartScores(App\Substrand::find($substrand->id))->pluck('count')->first()[0]);
+        var allSubstrandScores = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: dataset 
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Strand scores over time'
+            },
+            scales: {
+              xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Score For Each assessment'
+                  }
+              }],
+              yAxes: [{
+                display: true,
+                ticks: {
+                    // beginAtZero: true,
+                    // steps: 10,
+                    // stepValue: 5,
+                  }
+              }]
+            },
+            responsive: false
+          }
+        });
+  });
 </script>
 @endsection
