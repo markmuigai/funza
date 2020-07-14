@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class classTeacher extends Model
+class ClassTeacher extends Model
 {
     /**
      * Fetch the subject being taught by a teacher for a certain class

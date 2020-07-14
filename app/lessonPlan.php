@@ -5,7 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
-class lessonPlan extends Model
+class LessonPlan extends Model
 {
     /**
      * The attributes that are mass assignable.

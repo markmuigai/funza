@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class classroomSubject extends Pivot
+class ClassroomSubject extends Pivot
 {
     //specify table
     protected $table = 'classroom_subject';
