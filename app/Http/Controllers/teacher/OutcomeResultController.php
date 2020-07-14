@@ -7,7 +7,7 @@ use App\Subject;
 use App\Student;
 use App\Classroom;
 use App\Substrand;
-use App\outcomeResult;
+use App\OutcomeResult;
 use App\OutcomeOption;
 use Illuminate\Http\Request;
 use App\Events\ClassAssessed;
