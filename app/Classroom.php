@@ -418,4 +418,14 @@ class Classroom extends Model
         $scores->push($temp);
         return $scores;
     }
+
+    /**
+     * Fetch class total score
+     */
+    public function classTotalScore()
+    {
+        return round($this->currentStudents()->map(function($student){
+            return $student->recentTotalScore();
+        })->avg(),1);
+    }
 }

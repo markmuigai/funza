@@ -3,6 +3,7 @@
         <th>Name</th>
         <th>Current Class</th>
         <th>Total score</th>
+        <th>Class average score</th>
         <th>Actions</th>
     </tr>
     @foreach ($students as $student)
@@ -12,7 +13,9 @@
             <td>{{$student->currentClass()->name}}</td>
             @if ($student->recentTotalScore()!==null)
               <td>{{$student->recentTotalScore()}}%</td>
+              <td>{{$classroom->classTotalScore()}}%</td>
             @else
+            <td>Pending</td>
             <td>Pending</td>
             @endif
             <td>

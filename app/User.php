@@ -51,7 +51,7 @@ class User extends Authenticatable
      */
     public function classroomSubject()
     {
-        return $this->hasMany('App\classroomSubject');
+        return $this->hasMany('App\ClassroomSubject');
     }
 
     /**

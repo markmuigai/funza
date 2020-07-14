@@ -5,7 +5,7 @@ namespace App\Http\Controllers\schoolAdmin;
 use App\User;
 use App\Grade;
 use App\Subject;
-use App\classroomSubject;
+use App\ClassroomSubject;
 use Illuminate\Http\Request;
 use App\Exports\UsersExport;
 use App\Imports\TeachersImport;

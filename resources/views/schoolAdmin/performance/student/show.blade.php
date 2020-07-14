@@ -132,7 +132,6 @@
             },
             title: {
               display: true,
-              text: 'Subject scores over Time'
             },
             responsive: false
           }

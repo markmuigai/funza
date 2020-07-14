@@ -1,6 +1,6 @@
 @extends('layouts.schoolAdmin')
 @section('page-title', 'School Admin Dashboard')
-@section('header', 'Student performance')
+@section('header', 'Class '.$classroom->name.' students performance')
 @section('content')
 @if(!$classroom)
 <div class="card p-2 align-items-center">
@@ -11,7 +11,7 @@
 @else
     <div class="container-fluid">
       <div class="card">
-        <h5 class="my-4 text-center">Students Average Perfomance over time</h5>
+        <h5 class="my-4 text-center">Class {{$classroom->name}} Average Perfomance over time</h5>
         <div class="card-body">
           <canvas id="studentScoreTotals" width="1500" height="400"></canvas>
         </div>
@@ -63,7 +63,8 @@
               <div class="box-body table-responsive no-padding">
                 @component('components.schoolAdmin.tables.students.performance', [
                   'students' => $students,
-                  'subjects' => $subjects
+                  'subjects' => $subjects,
+                  'classroom' => $classroom
                 ])   
                 @endcomponent
                 {{$students->links()}}
@@ -155,7 +156,6 @@
             },
             title: {
               display: true,
-              text: 'Subject scores over Time'
             },
             responsive: false
           }
