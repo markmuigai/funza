@@ -17,22 +17,24 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        // dd(Classroom::find(21)->recentSubjectScore(Subject::find(2)));
-        // Fetch classroom
-        if(auth()->user()->schools->first()->id == 1){
+        $school = auth()->user()->schools->first();
+
+                // Fetch classroom
+        if($school->id == 1){
             $classroom = Classroom::where('name', '4A')->get()->first();
 
+            // All student score totals
             $subjectChartScores = $classroom->getSubjectChartScores([1,2]);
-
         }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
-            $classroom = App\Classroom::has('students')->first();
+            $classroom = $school->assessedClassroom();
 
+            // All student score totals
             $subjectChartScores = $classroom->getSubjectChartScores([1,2]);
+
         }else{
             $classroom = null;
             $subjectChartScores = [];
         }
-
         // Fetch students of a class
         return view('schoolAdmin.performance.subject.index',[
             'grades' => Grade::all(),
@@ -71,11 +73,15 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
+        $school = auth()->user()->schools->first();
+
         // Fetch classroom
-        if(auth()->user()->schools->first()->id == 1){
+        if($school->id == 1){
             $classroom = Classroom::where('name', '4A')->get()->first();
+
         }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
-            $classroom = App\Classroom::has('students')->first();
+            $classroom = $school->assessedClassroom();
+
         }else{
             $classroom = null;
         }
@@ -83,7 +89,7 @@ class SubjectController extends Controller
         // Fetch students of a class
         return view('schoolAdmin.performance.subject.show',[
             'subject' =>  $subject,
-            'classroom' => $classroom,
+            'classroom' => $classroom
         ]);
     }
 

@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\SchoolAdmin\Performance;
+namespace App\Http\Controllers\SchoolAdmin\Performance\Student;
 
-use App\Grade;
 use App\Subject;
 use App\Student;
 use App\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class StudentController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,36 +17,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $school = auth()->user()->schools->first();
-
-        // Fetch classroom
-        if($school->id == 1){
-            $classroom = Classroom::where('name', '4A')->get()->first();
-
-            $studentScoreTotalsChart = $classroom->getStudentScoreTotalsChart();
-
-            $students = $classroom->students->paginate(10);
-
-        }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
-            $classroom = $school->assessedClassroom();
-
-            $studentScoreTotalsChart = $classroom->getStudentScoreTotalsChart();
-
-            $students = $classroom->students->paginate(10);
-        }else{
-            $classroom = null;
-            $students = [];
-            $studentScoreTotalsChart = [];
-        }
-
-        // Fetch students of a class
-        return view('schoolAdmin.performance.student.index',[
-            'classroom' => $classroom,
-            'grades' => Grade::all(),
-            'subjects' => Subject::all(),
-            'students' => $students,
-            'studentScoreTotalsChart' => $studentScoreTotalsChart
-        ]);
+        //
     }
 
     /**
@@ -77,13 +47,26 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show(Student $student, Subject $subject)
     {
-        //
-        return view('schoolAdmin.performance.student.show', [
+        $school = auth()->user()->schools->first();
+
+        // Fetch classroom
+        if($school->id == 1){
+            $classroom = Classroom::where('name', '4A')->get()->first();
+
+        }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
+            $classroom = $school->assessedClassroom();
+
+        }else{
+            $classroom = null;
+        }
+
+        // Fetch students of a class
+        return view('schoolAdmin.performance.student.subject.show',[
             'student' => $student,
-            'grades' => Grade::all(),
-            'subjects' => Subject::all()
+            'subject' =>  $subject,
+            // 'classroom' => $classroom
         ]);
     }
 

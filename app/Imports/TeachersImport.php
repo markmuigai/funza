@@ -14,7 +14,7 @@ class TeachersImport implements ToCollection
     {
         foreach ($rows as $row) 
         {
-            if($row[0]!==null && $row == $rows[0]){
+            if($row[0]!==null && $row !== $rows[0]){
                 $teacher = User::create([
                     'name' => $row[0],
                     'email'    => $row[1], 

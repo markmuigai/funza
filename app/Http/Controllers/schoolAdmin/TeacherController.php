@@ -198,7 +198,6 @@ class TeacherController extends Controller
      */
     public function storeClassAssignment(Request $request, User $teacher)
     {
-        dd($request->all());
         // Assign grade and subject pivot instance to the teacher
         $teacher->classroomSubject()->create([
             'classroom_id' => $request->class,

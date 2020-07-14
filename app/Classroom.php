@@ -301,7 +301,9 @@ class Classroom extends Model
         // If subject has not been assessed, randomize data
         if($scores->sum() == 0){
             // Return average score for the month
-            return generateScore(60,90,11,1);
+            if(auth()->user()->schools()->first()->id == 1){
+                return generateScore(60,90,11,1);
+            }
         }else{
             return round(($scores->sum()/($scores->count()*100))*100);
         }
@@ -400,6 +402,8 @@ class Classroom extends Model
         {
             if($this->monthlyStudentScoreTotals($month)==true){
                 $month_scores->push($this->monthlyStudentScoreTotals($month));
+            }else{
+                $month_scores->push(null);
             }
         }
 

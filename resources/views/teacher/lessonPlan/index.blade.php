@@ -12,12 +12,12 @@
       <table class="table table-bordered text-center mb-0">
         <thead>
           <tr>
-            <th class="bg-success text-white text-uppercase" scope="col">Substrand Name</th>
+            <th class="bg-warning text-white text-uppercase" scope="col">Substrand Name</th>
             <th class="bg-success text-white text-uppercase" scope="col">N.o of Lessons</th>
-            <th style="width: 214px" class="bg-success text-white text-uppercase" scope="col">N.o of Assessments Required</th>
+            <th style="width: 214px" class="bg-purple text-white text-uppercase" scope="col">N.o of Assessments Required</th>
+            <th style="width: 214px" class="bg-success text-white text-uppercase" scope="col">N.o of Assessments Done</th>
             <th class="bg-danger text-white text-uppercase" scope="col">Start Date</th>
             <th style="width: 158px" class="bg-info text-white text-uppercase" scope="col">Assessment Deadline</th>
-            <th class="bg-purple text-white text-uppercase" scope="col">Status</th>
             <th class="bg-pink text-white text-uppercase" scope="col">Actions</th>
           </tr>
         </thead>
@@ -32,16 +32,16 @@
               {{$lessonPlan->assessmentcount()}}
             </td>
             <td class="py-4 text-muted">
+              {{$lessonPlan->substrand->assessmentcount($classroom->currentStudents())-1}}
+            </td>
+            <td class="py-4 text-muted">
               {{$lessonPlan->start_date}}
             </td>
             <td class="text-muted">
               {{$lessonPlan->end_date}}
             </td>
-            <td class=" text-muted">
-              {{$lessonPlan->status}}
-            </td>
             <td class="text-muted">
-              @if ($lessonPlan->substrand->assessmentcount($classroom->currentStudents()) <= $lessonPlan->assessmentCount()))
+              @if ($lessonPlan->substrand->assessmentcount($classroom->currentStudents()) <= $lessonPlan->assessmentCount())
                   <a class="btn btn-primary btn-sm m-2" 
                     href="{{ Route('teacher.classroom.subject.topic.outcome-result.create', ['classroom' => $classroom, 'subject'=> $subject, 'substrand' => $lessonPlan->substrand, 'assessment_count' => $lessonPlan->substrand->assessmentcount($classroom->currentStudents())]) }}" disabled>
                     Assess Learning outcomes

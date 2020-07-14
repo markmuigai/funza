@@ -18,8 +18,8 @@
 							@endif
 						</td>
 						@foreach ($subjects as $subject)
-							@if ($classroom->recentSubjectScore($subject->id)!==null)
-								<td>{{$classroom->recentSubjectScore($subject->id)}}%</td>
+							@if ($student->recentSubjectScore($subject->id)!==null)
+								<td>{{$student->recentSubjectScore($subject->id)}}%</td>
 							@else
 								<td>Pending</td>
 							@endif

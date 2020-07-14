@@ -86,7 +86,7 @@ class Substrand extends Model
 
     // Get assessment count
     public function assessmentCount($students)
-    {
+    {        
         // Get an array of unique values of number of times 
         // students have been assessed for a substrand
         $assessment_counter_array =  $students->map(function($student){

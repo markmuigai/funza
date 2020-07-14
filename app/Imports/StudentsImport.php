@@ -34,8 +34,8 @@ class StudentsImport implements ToCollection
                 // $teacher->subjects()->attach($request->subjects);
     
                 // Assign user to school    
-                $school->users()->attach($student->id);
-    
+                $school->students()->attach($student->id);
+
                 // Assign school admin role to the pivot table instances of the users selected
                 $this->classroom->students()->attach($student->id, ['status' => true]);
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SchoolAdmin\Performance;
+namespace App\Http\Controllers\SchoolAdmin\Performance\Student;
 
 use App\Grade;
 use App\Strand;

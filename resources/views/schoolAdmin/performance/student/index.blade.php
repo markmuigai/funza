@@ -135,6 +135,24 @@
             datasets: dataset 
           },
           options: {
+            scales: {
+              xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Performance over time'
+                  }
+              }],
+              yAxes: [{
+                display: true,
+                ticks: {
+                    // beginAtZero: true,
+                    // steps: 10,
+                    // stepValue: 5,
+                    max:100
+                  }
+              }]
+            },
             title: {
               display: true,
               text: 'Subject scores over Time'

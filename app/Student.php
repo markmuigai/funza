@@ -271,7 +271,9 @@ class Student extends Model
         // If subject has not been assessed, randomize data
         if($scores->sum() == 0){
             // Return average score for the month
-            return generateScore(60,90,11,1);
+            if(auth()->user()->schools()->first()->id == 1){
+                return generateScore(60,90,11,1);
+            }  
         }else{
             return round(($scores->sum()/($scores->count()*100))*100);
         }
@@ -323,5 +325,73 @@ class Student extends Model
         }
 
         return $subjectTotalScores;
-	} 
+    } 
+    
+    /**
+     * generate strand performance object for charts
+     */
+    public function getStrandAverageChartScores($subject)
+    {
+        // Initialize collection
+        $strandTotalScore = collect();
+
+        $scores = collect();
+
+        $labels = collect();
+
+        // Get assessed strands
+        foreach($subject->strands as $strand)
+        {
+            if($this->strandScoresForStrand($strand)->isNotEmpty())
+            {
+                $labels->push($strand->name);
+                $scores->push(round($this->strandScoresForStrand($strand)->pluck('score')->avg()));
+            }
+        }
+        $strandTotalScore->put('strands', $labels);
+        $strandTotalScore->put('label', $subject->name);
+        $strandTotalScore->put('data', $scores);
+        $strandTotalScore->put('borderColor', '#ea77ad');
+        $strandTotalScore->put('fill', 'false');
+
+        $scores = collect();
+        $scores->push($strandTotalScore);
+        return $scores;
+    }
+
+    /**
+     * Fetch substrand scores based on strand
+     */
+    public function substrandScoresForStrand($strand)
+    {
+        return $strand->substrands->map(function($substrand) use($classroom){
+            return $this->substrandScores->where('substrand_id', $substrand->id)->pluck('score');
+        });
+    }
+
+    /**
+     * Get strand scores based on strand  
+     */
+    public function strandScoresForStrand($strand)
+    {
+        return $this->strandScores->where('strand_id', $strand->id);
+    }
+
+    /**
+     * Fetch substrand scores based on substrand
+     */
+    public function substrandScoresForSubstrand($substrand)
+    {
+        return $this->subStrandScores->where('substrand_id', $substrand->id);
+    }
+
+    /**
+     * Substrands assessed
+     */
+    public function AssessedSubstrands()
+    {
+        return $this->substrandScores->map(function($score){
+            return $score->substrand;
+        })->unique();
+    }
 }

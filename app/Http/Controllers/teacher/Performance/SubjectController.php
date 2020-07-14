@@ -17,10 +17,15 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->schools->first()->id == 1){
+        $school = auth()->user()->schools->first();
+
+        // Fetch classroom
+        if($school->id == 1){
             $classroom = Classroom::where('name', '4A')->get()->first();
+
         }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
-            $classroom = Classroom::has('students')->first();
+            $classroom = $school->assessedClassroom();
+
         }else{
             $classroom = null;
         }
@@ -62,11 +67,15 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
+        $school = auth()->user()->schools->first();
+
         // Fetch classroom
-        if(auth()->user()->schools->first()->id == 1){
+        if($school->id == 1){
             $classroom = Classroom::where('name', '4A')->get()->first();
+
         }elseif(auth()->user()->schools->first()->students->isNotEmpty()){
-            $classroom = App\Classroom::has('students')->first();
+            $classroom = $school->assessedClassroom();
+
         }else{
             $classroom = null;
         }

@@ -58,4 +58,22 @@ class School extends Model
     {
         return $this->hasMany('App\GradeSchool', 'school_id');
     }
+
+    /**
+     * Get all the classrooms of a school
+     */
+    public function classrooms()
+    {
+        return $this->hasManyThrough('App\Classroom', 'App\GradeSchool');
+    }
+
+    /**
+     * Return first classroom that is not empty
+     */
+    public function assessedClassroom()
+    {
+        return $this->classrooms->filter(function($classroom){
+            return $classroom->currentStudents()->count() !==0;
+        })->first();
+    }
 }

@@ -14,7 +14,7 @@
             <td>Pending</td>
           @endif
           <td>
-              <a href="{{ Route('schoolAdmin.performance.results.subjects.show', ['subject' => $subject]) }}" class="btn btn-primary btn-sm">Detailed Performance Data</a>
+              <a href="{{ Route('schoolAdmin.performance.results.students.subjects.show', ['student' => $student, 'subject' => $subject]) }}" class="btn btn-primary btn-sm">Detailed Performance Data</a>
               <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#performanceSummary-{{$subject->id}}" aria-expanded="true" aria-controls="collapseOne">
                 View Performance Summary
             </button>
