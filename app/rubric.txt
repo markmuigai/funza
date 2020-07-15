@@ -511,3 +511,23 @@ USE OF LETTERS
 "Little evidence in using IT devices for learning and enjoyment."
 
 JAN 4 
+
+
+
+
+
+
+//School 1 credentials
+School admin
+info@preciousacademy.co.ke
+
+Teacher
+MikaylaGwako@gmail.com
+
+
+//School 2 credentials
+School admin
+luffy@learners.com
+
+Teacher
+peterkaniu@gmail.com
